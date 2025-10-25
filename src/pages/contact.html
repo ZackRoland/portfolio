@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav id = "navigation">
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./projects.html">Projects</a></li>
+                <li><a href="./contact">Contact Me</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact Me Here</h2>
+        <form action="/submit" method="post" aria-describedby="contact-desc">
+            <fieldset>
+                <legend>Contact Me Here</legend>
+
+                <label for="first-name">First name:</label>
+                <input type="text" name="first-name" id="first-name" 
+                placeholder="First Name" required>
+                <br><br>
+
+                <label for="last-name">Last name:</label>
+                <input type="text" name="last-name" id="last-name" 
+                placeholder="Last Name" required>
+                <br><br>
+                
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email"
+                placeholder="yourname@example.com" required>
+                <br><br>
+                
+                <label for="job-title">Job title:</label>
+                <input type="text" name="job-title" id="job-title"
+                placeholder="Talent Acquisition Specialist" required>
+                <br><br>
+                
+                <p id="contact-desc">Please select a reason for contacting</p>
+                <select id="category" name="category" required>
+                    <option value="" selected disabled hidden>-- Select Reason --</option>
+                    <option value="job-opportunity">Job Opportunity</option>
+                    <option value="research-opportunity">Research Opportunity</option>
+                    <option value="other-inquires">Other Concerns/Inquiries</option>
+                </select>
+                <br><br>
+
+                <textarea
+                    id="explanation"
+                    name="explanation"
+                    rows="4"
+                    cols="50"
+                    placeholder="Type message here."
+                    required
+                    aria-required="true"
+                ></textarea>
+                <button type="submit">Send</button>
+            </fieldset>
+        </form>
+    </main>
+</body>
+</html>
