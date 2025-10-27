@@ -1,0 +1,19 @@
+:root {
+    --pale-green:#729B79;
+    --mossy-green: #447069;
+    --dark-turqoise: #1C2E2B;
+    --mint-green: #67AB9F;
+    --dark-mint-green: #294540;
+
+    --nav-border-color:white;
+    --nav-fill: var(--mossy-green);
+    --nav-gradient: var(--dark-turqoise);
+    --nav-background-color:#2E2C2F;
+    --nav-background-color-2: #1c1c1c;
+    --nav-text-color:white;
+
+  
+
+    --body-fill:var(--mint-green);
+    --body-gradient: var(--dark-mint-green);
+}
