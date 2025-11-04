@@ -1,0 +1,11 @@
+main {
+    height:max-content;
+}
+main{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+h2 {
+    font-size:xx-large;
+}
