@@ -44,8 +44,8 @@ project-card figure > figcaption > a {
   
 project-card figure > figcaption > svg {
     display: block;
-    width: 64px;                    
-    height: 64px;
+    width: 100px;                    
+    height: 100px;
     margin: .5rem auto 0;           
 }
   
