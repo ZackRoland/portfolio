@@ -15,6 +15,47 @@ h2 {
 h3 {
     text-decoration: underline;
 }
-project-card{
-    margin:2rem;
+project-card {
+    display: block;
+    margin: 2rem auto;              
 }
+  
+project-card > figure {
+    display: grid;
+    justify-items: center;          
+    text-align: center;             
+}
+  
+project-card figure > :is(img, iframe) { 
+    display: block; 
+}
+  
+project-card figure :is(img, iframe) + figcaption {
+    display: block;                 
+    margin-top: .5rem;
+    max-width: min(60ch, 100%);     
+    text-align: center;
+}
+  
+project-card figure > figcaption > a {
+    display: inline-block;
+    text-align: center;
+}
+  
+project-card figure > figcaption > svg {
+    display: block;
+    width: 64px;                    
+    height: 64px;
+    margin: .5rem auto 0;           
+}
+  
+project-card > span {
+    display: block;
+    margin-top: .5rem;
+    text-align: center;
+}
+  
+project-card > h3 { 
+    text-align: center; 
+}
+  
