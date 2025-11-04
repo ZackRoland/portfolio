@@ -68,7 +68,12 @@ li.logo {
     font-size: 1.125rem;
     font-weight: bold;
 }
-
+nav a[aria-current="page"] {
+    background-color: var(--celadon);
+    opacity: .867;
+    font-weight: 600;
+    
+  }
 main {
     display: flex;
     flex-direction: column;
