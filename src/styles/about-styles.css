@@ -1,0 +1,21 @@
+:root {
+    --max-paragraph-size: 60ch;
+}
+main {
+    height:max-content;
+}
+hgroup > p {
+    max-width: var(--max-paragraph-size);
+}
+h3 {
+    text-decoration: underline;
+}
+hgroup, hgroup+section {
+    margin: 2em ;
+}
+hgroup:nth-of-type(odd) {
+    text-align: left;
+}
+hgroup:nth-of-type(even) {
+    text-align: right;
+}
