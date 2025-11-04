@@ -11,25 +11,32 @@
     <header>
         <nav id = "navigation">
             <ul>
-                <li class="logo"><a href="/">ZR</a></li>
+                <li class="logo"><a href="./index.html">ZR</a></li>
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./about.html">About</a></li>
                 <li><a href="./projects.html">Projects</a></li>
                 <li><a href="./contact.html">Contact Me</a></li>
             </ul>
         </nav>
+        <button aria-label="Open menu" popovertarget="main-menu"></button>
+        <menu id="main-menu" popover hidden>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./projects.html">Projects</a></li>
+            <li><a href="./contact.html">Contact Me</a></li>
+        </menu>
     </header>
     <main>
+        <picture>
+            <source srcset="../assets/imgs/original/head-shot/headshot.jpeg" media="(orientation: portrait)">
+            <img src="../assets/imgs/original/head-shot/headshot.jpeg" alt="Zack's headshot">
+        </picture>
         <hgroup id="introduction" aria-labelledby="introduction">
             <h1 id="name" aria-labelledby="name">Hi, I'm Zack</h1>
             <p id="job-specialization" aria-labelledby="job-specialization">
                 <strong>Front-end Web Developer</strong>
             </p>
         </hgroup>
-        <picture>
-            <source srcset="../assets/imgs/original/head-shot/headshot.jpeg" media="(orientation: portrait)">
-            <img src="../assets/imgs/original/head-shot/headshot.jpeg" alt="Zack's headshot">
-        </picture>
         <math>
             <mrow>
               <mi>E</mi>

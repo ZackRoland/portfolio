@@ -1,19 +1,46 @@
 :root {
+    /* Blues */
+    --mint-cream: #F1FFFA;
+    --light-cyan: #C4F5FC;
+    --light-blue: #93B7BE; 
+    --cambridge-blue: #79AEA3;
+    --delft-blue: #434371;
+    --lapis-lazuli: #416788;
+    --glaucous: #7389AE;
+    --tiffany-blue: #81D2C7;
+    --marian-blue: #414288;
+    --keppel: #5FB49C;
+    /* Greens*/
+    --olivine: #B6D094;
+    --celadon: #A0EEC0;
+    --aquamarine: #B7FFD8;
+    --neon-light-green: #70EE9C;
     --pale-green:#729B79;
     --mossy-green: #447069;
     --dark-turqoise: #1C2E2B;
     --mint-green: #67AB9F;
     --dark-mint-green: #294540;
+    --gunmetal: #1E3231;
+    --pistachio: #86CD82; 
+    /* Reds */
+    --wine: #6A2E35;
+    --pale-red: #E5625E; 
 
-    --nav-border-color:white;
-    --nav-fill: var(--mossy-green);
-    --nav-gradient: var(--dark-turqoise);
-    --nav-background-color:#2E2C2F;
-    --nav-background-color-2: #1c1c1c;
-    --nav-text-color:white;
+    /* Purples */
+    --pink-lavender: #D4ADCF;
+    --periwinkle: #D4C2FC;
+    --violet: #4B2840;
+    --dark-magenta: #861388;
+    --rose-taupe: #785964;
+    --tropical-indigo: #998FC7;
+    --mauve: #E2A0FF; 
+    /* Blacks/Greys*/
+    --dim-gray: #666B6A;
+    --silver: #A3A3A3;
+    --smokey-black: #0F1108;
+    --onyx: #454545;
+    --charcoal: #2F4858;
+    --raisin-black: #2E2836;
+    --charcoal-black: #28262C; 
 
-  
-
-    --body-fill:var(--mint-green);
-    --body-gradient: var(--dark-mint-green);
 }
