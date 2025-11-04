@@ -1,52 +1,4 @@
-@import "colors.css";
-:root {
-    --nav-border-color:white;
-    --nav-fill: var(--mossy-green);
-    --nav-gradient: var(--dark-turqoise);
-    --nav-background-color:#2E2C2F;
-    --nav-background-color-2: #1c1c1c;
-    --nav-text-color:white;
 
-    
-
-    --body-fill:var(--mint-green);
-    --body-gradient: var(--dark-mint-green);
-
-    --intro-text-color: white;
-    --two-color-outline: var(--celadon) 5px 5px, var(--tiffany-blue) -5px -5px;
-}
-@media (prefers-color-scheme:1) {
-    body {
-        background: linear-gradient(to left,var(--nav-fill), var(--nav-gradient));
-    }
-    main {
-        background: linear-gradient(to left,var(--body-fill), var(--body-gradient));
-    }
-}
-* {
-    margin: 0;
-    padding: 0;
-    color:var(--olivine);
-    font-family: Helvetica, Arial, sans-serif;
-}
-body {
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(to left,var(--nav-fill), var(--nav-gradient));
-    -background: linear-gradient(to right,var(--smokey-black), var(--charcoal));
-    -background: linear-gradient(to left,var(--body-fill), var(--body-gradient));
-   
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to left,var(--body-fill), var(--body-gradient));
-    -background: linear-gradient(to right,var(--charcoal-black),var(--gunmetal), var(--dark-mint-green),var(--pale-green));
-    height: 40rem;
-}
 
 picture + hgroup {
     transform: translate(0%,-20%);
@@ -68,12 +20,4 @@ picture>img{
     border-radius: 50%;
 
 }
-footer {
-    -background: linear-gradient(to left,var(--nav-fill), var(--nav-gradient));
-    display:flex;
-    justify-content: center;
-    height: 3.5rem;
-}
-small {
-    margin:auto;
-}
+

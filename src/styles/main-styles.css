@@ -16,6 +16,20 @@
     --two-color-outline: var(--celadon) 5px 5px, var(--tiffany-blue) -5px -5px;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    color:var(--olivine);
+    font-family: Helvetica, Arial, sans-serif;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to left,var(--nav-fill), var(--nav-gradient));
+    -background: linear-gradient(to right,var(--smokey-black), var(--charcoal));
+    -background: linear-gradient(to left,var(--body-fill), var(--body-gradient));
+   
+}
 header {   
     height: 5rem;
 }
@@ -53,6 +67,25 @@ li.logo {
 .logo a {
     font-size: 1.125rem;
     font-weight: bold;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to left,var(--body-fill), var(--body-gradient));
+    -background: linear-gradient(to right,var(--charcoal-black),var(--gunmetal), var(--dark-mint-green),var(--pale-green));
+    height: 40rem;
+}
+footer {
+    -background: linear-gradient(to left,var(--nav-fill), var(--nav-gradient));
+    display:flex;
+    justify-content: center;
+    height: 3.5rem;
+}
+small {
+    margin:auto;
 }
 
 @media (max-width: 760px){
