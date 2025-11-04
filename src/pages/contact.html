@@ -4,17 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Me</title>
+    <link rel="stylesheet" href="../styles/main-styles.css">
 </head>
 <body>
     <header>
         <nav id = "navigation">
             <ul>
+                <li class="logo"><a href="./index.html">ZR</a></li>
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./about.html">About</a></li>
                 <li><a href="./projects.html">Projects</a></li>
                 <li><a href="./contact.html">Contact Me</a></li>
             </ul>
         </nav>
+        <button aria-label="Open menu" popovertarget="main-menu"></button>
+        <menu id="main-menu" popover hidden>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./projects.html">Projects</a></li>
+            <li><a href="./contact.html">Contact Me</a></li>
+        </menu>
     </header>
     <main id="contact" aria-labelledby="contact-heading">
         <h2 id="contact-heading">Contact Me Here</h2>
