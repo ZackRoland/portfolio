@@ -1,0 +1,145 @@
+@import "colors.css";
+:root {
+    --nav-border-color:white;
+    --nav-fill: var(--mossy-green);
+    --nav-gradient: var(--dark-turqoise);
+    --nav-background-color:#2E2C2F;
+    --nav-background-color-2: #1c1c1c;
+    --nav-text-color:white;
+
+    
+
+    --body-fill:var(--mint-green);
+    --body-gradient: var(--dark-mint-green);
+
+    --intro-text-color: white;
+    --two-color-outline: var(--celadon) 5px 5px, var(--tiffany-blue) -5px -5px;
+}
+
+header {   
+    height: 5rem;
+}
+menu, nav+button{
+    display: none;
+}
+nav {
+    padding: calc((5rem/16)*5);
+    -background: linear-gradient(to left,var(--nav-fill), var(--nav-gradient));
+    text-transform: uppercase;
+}
+ul {
+    display:flex;
+    list-style-type: none;
+    align-items: baseline;
+    gap: 100px;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 0px;
+}
+ul a:not(.logo a) {
+    box-shadow: var(--two-color-outline);
+    color: var(--nav-text-color);
+    font-size: 0.875rem;
+    -background-color: var(--pale-red);
+}
+ul a {
+    text-decoration: none;
+   
+
+}
+li.logo {
+    margin-right: auto;
+}
+.logo a {
+    font-size: 1.125rem;
+    font-weight: bold;
+}
+
+@media (max-width: 760px){
+    ul a:not(.logo a){
+        display: none;
+    }
+    header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-inline: 1rem;
+    }
+    
+    ul{
+        gap:0;
+    }
+    nav+button{
+        --bar-w: 25px;
+        --bar-h: 5px;
+        --bar-gap: 10px;
+        --bar-color: var(--nav-text-color);
+    
+        position: relative;
+        display: inline-block;
+        width: calc(var(--bar-w) + 16px);
+        height: calc(3 * var(--bar-h) + 2 * var(--bar-gap) + 16px);
+        -border: 1px solid hsl(0 0% 100% / .2);
+        -border-radius: .5rem;
+        border:none;
+        box-shadow: var(--two-color-outline);
+        background: transparent;
+        cursor: pointer;
+    }
+    nav+button::before, nav+button::after{
+        content:"";
+        position:absolute; 
+        left: 50%;
+        top: 50%;
+        height:3px;
+        width: var(--bar-w);
+        height: var(--bar-h);
+        background: var(--bar-color);
+        transform: translate(-50%, -50%);
+        transition: transform .25s ease, opacity .25s ease, top .25s ease;
+    }
+    nav+button::before{
+        box-shadow:
+            0 calc(-1 * (var(--bar-gap) + var(--bar-h))) 0 0 var(--bar-color),
+            0 calc( 1 * (var(--bar-gap) + var(--bar-h))) 0 0 var(--bar-color);
+    }
+    nav+button::after{ opacity:0;}
+    header > menu[popover]{
+        display: none;   
+        -position: fixed;           
+        inset: auto 1rem auto auto; 
+        -translate: 0 50%;
+        top:5rem;
+        right:0%;
+    }
+    menu[popover]:popover-open{
+        display: flex;
+        flex-direction:column;            
+        margin: 0; 
+        padding: 0.5rem 0;
+        list-style: none;
+        background: linear-gradient(to left,var(--nav-fill), var(--nav-gradient));
+        border: 1px solid var(--nav-border-color);
+        -border-radius: .6rem;
+        box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    }
+   
+    menu[popover] > li > a{
+        display: block;
+        padding: .65rem 1rem;
+        color: var(--nav-text-color);
+        text-decoration: none;
+    }
+    menu > li > a:hover{
+    background: hsl(0 0% 100% / .08);
+    }
+    header:has(menu[popover]:popover-open) > button[popovertarget]::before{
+        box-shadow: none;
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+    header:has(menu[popover]:popover-open) > button[popovertarget]::after{
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+    
+}
