@@ -8,4 +8,13 @@ main{
 }
 h2 {
     font-size:xx-large;
+    color: var(--dark-turqoise);
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+h3 {
+    text-decoration: underline;
+}
+project-card{
+    margin:2rem;
 }
