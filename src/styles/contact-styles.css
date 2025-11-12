@@ -1,45 +1,56 @@
+:root {
+    --form-background-color-1:var(--gunmetal-light);
+    
+    --fieldset-border-color-1: black;
+    --legend-font-size-1:1.5rem;
+    --label-color-1: white;
+
+    --input-field-text-color-1: black;
+    --field-text-size-1: 1rem;
+    --select-text-color-1: black;
+}
 main {
     height: max-content;
 }
 
-
-  
+form {
+    -background-color: var(--form-background-color-1);
+}
 fieldset {
     display: flex;
     flex-direction: column;
-    gap: 0rem;
-    min-height: 50vh;
-    -background: white;
-    border: 0.25rem solid black;
-    padding: 2rem;
-    color: var(--nav-text-color);
-    
+    border: 0.25rem solid var(--fieldset-border-color-1);
+    padding:1rem;
 }
-  
 legend {
-    font-size: 1.5rem;
+    font-size: var(--legend-font-size-1);
     font-weight: bold;
     color: var(--dark-turqoise);
     text-align: left;
-    margin-bottom: 1rem;
+    margin:0 0 1rem 0;
 }
-  
-  
-input, select, textarea {
-    padding: 0.6rem 0.8rem;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    background-color: hsl(0 0% 100% / .5);
-    color: var(--nav-text-color);
-    font-family: inherit;
-    border:none;
+fieldset label {
+    color: var(--label-color-1);
 }
-  
-  
+
 select {
     cursor: pointer;
 }
-  
+
+input, select, textarea {
+    padding: 0.3rem 0.4rem;
+    border-radius: 0.5rem;
+    font-size: var(--field-text-size-1);
+    background-color: hsl(0 0% 110% / .5);
+    font-family: inherit;
+    border:none;
+}
+select{
+    color: var(--select-text-color-1);
+}
+input, textarea {
+    color: var(--input-field-text-color-1);
+}
 textarea {
     resize: vertical;
     min-height: 8rem;

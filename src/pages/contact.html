@@ -34,36 +34,35 @@
                 <label for="first-name">First name:</label>
                 <input type="text" name="first-name" id="first-name" 
                 placeholder="First Name" required>
-                <br><br>
+                <br>
 
                 <label for="last-name">Last name:</label>
                 <input type="text" name="last-name" id="last-name" 
                 placeholder="Last Name" required>
-                <br><br>
+                <br>
                 
                 <label for="email">Email:</label>
                 <input type="email" name="email" id="email"
                 placeholder="yourname@example.com" required>
-                <br><br>
+                <br>
                 
                 <label for="job-title">Job title:</label>
                 <input type="text" name="job-title" id="job-title"
-                placeholder="Talent Acquisition Specialist" required>
-                <br><br>
+                placeholder="Ex: Talent Acquisition Specialist" required>
+                <br>
                 
-                <p id="contact-desc">Please select a reason for contacting</p>
-                <select id="category" name="category" required>
+                <label for="contact-desc">Please select a reason for contacting</label>
+                <select id="category" name="category" id="contact-desc" required>
                     <option value="" selected disabled hidden>-- Select Reason --</option>
                     <option value="job-opportunity">Job Opportunity</option>
                     <option value="research-opportunity">Research Opportunity</option>
                     <option value="other-inquires">Other Concerns/Inquiries</option>
                 </select>
-                <br><br>
-
+                <br>
                 <textarea
                     id="explanation"
                     name="explanation"
-                    rows="4"
+                    rows="8"
                     cols="50"
                     placeholder="Type message here."
                     required
