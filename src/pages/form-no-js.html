@@ -27,48 +27,65 @@
         </menu>
     </header>
     <main id="contact" aria-labelledby="contact-heading">
-        <form action="/submit" method="POST" aria-describedby="contact-desc">
+        <form action="https://httpbin.org/post" method="post" aria-describedby="contact-desc">
             <fieldset>
-                <legend>Contact Me Here</legend>
-
-                <label for="first-name">First name:</label>
-                <input type="text" name="first-name" id="first-name" 
-                placeholder="First Name" required>
+                <legend id="form-heading">Contact Me Here</legend>
+                <form-field>
+                    <label for="first-name">First name:</label>
+                    <input type="text" name="first-name" id="first-name" 
+                    placeholder="First Name" required>
+                </form-field>
                 <br>
 
-                <label for="last-name">Last name:</label>
-                <input type="text" name="last-name" id="last-name" 
-                placeholder="Last Name" required>
+                <form-field>
+                    <label for="last-name">Last name:</label>
+                    <input type="text" name="last-name" id="last-name" 
+                    placeholder="Last Name" required>
+                </form-field>
                 <br>
-                
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="email"
-                placeholder="yourname@example.com" required>
+
+                <form-field>
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email"
+                    placeholder="yourname@example.com" required>
+                </form-field>
                 <br>
-                
-                <label for="job-title">Job title:</label>
-                <input type="text" name="job-title" id="job-title"
-                placeholder="Ex: Talent Acquisition Specialist" required>
+
+                <form-field>
+                    <label for="job-title">Job title:</label>
+                    <input type="text" name="job-title" id="job-title"
+                    placeholder="Ex: Talent Acquisition Specialist" required>
+                </form-field>
                 <br>
-                
-                <label for="contact-desc">Please select a reason for contacting</label>
-                <select id="category" name="category" id="contact-desc" required>
-                    <option value="" selected disabled hidden>-- Select Reason --</option>
-                    <option value="job-opportunity">Job Opportunity</option>
-                    <option value="research-opportunity">Research Opportunity</option>
-                    <option value="other-inquires">Other Concerns/Inquiries</option>
-                </select>
+
+                <form-field>
+                    <label for="contact-desc">Please select a reason for contacting</label>
+                    <select id="category" name="category" id="contact-desc" required>
+                        <option value="" selected disabled hidden>-- Select Reason --</option>
+                        <option value="job-opportunity">Job Opportunity</option>
+                        <option value="research-opportunity">Research Opportunity</option>
+                        <option value="other-inquires">Other Concerns/Inquiries</option>
+                    </select>
+                </form-field>
                 <br>
-                <textarea
-                    id="explanation"
-                    name="explanation"
+
+                <input type="hidden" name="possible-bot" id="possible-bot">
+                <form-field>
+                    <label for="message"></label>
+                    <textarea id="message"
+                    name="message"
                     rows="8"
                     cols="50"
                     placeholder="Type message here."
                     required
                     aria-required="true"
-                ></textarea>
-                <button type="submit">Send</button>
+                    ></textarea>
+                </form-field>
+                
+                <form-field>
+                    <label for="submit" hidden>Form Submission</label>
+                    <button type="submit" name="submit" id="submit">Send</button>
+                </form-field>
             </fieldset>
         </form>
     </main>
