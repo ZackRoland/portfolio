@@ -14,6 +14,7 @@ main {
 }
 
 form {
+    max-width:80%;
     -background-color: var(--form-background-color-1);
 }
 fieldset {
@@ -38,12 +39,20 @@ select {
 }
 
 input, select, textarea {
+    width:90%;
     padding: 0.3rem 0.4rem;
     border-radius: 0.5rem;
     font-size: var(--field-text-size-1);
     background-color: hsl(0 0% 110% / .5);
     font-family: inherit;
     border:none;
+}
+input, select, textarea,button {
+    margin: auto
+}
+label {
+    margin: 0 0 0 2.5%;
+    
 }
 select{
     color: var(--select-text-color-1);
@@ -57,6 +66,7 @@ textarea {
 }
   
 button[type="submit"] {
+    width: 90%;
     margin-top: 1rem;
     padding: 0.5rem 0.5rem;
     border: none;
