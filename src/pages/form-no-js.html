@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    <link rel="stylesheet" href="../styles/main-styles.css">
+    <link rel="stylesheet" href="../styles/contact-styles.css">
+</head>
+<body>
+    <header>
+        <nav id = "navigation">
+            <ul>
+                <li class="logo"><a href="./index.html">ZR</a></li>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./projects.html">Projects</a></li>
+                <li><a href="./contact.html" aria-current="page">Contact Me</a></li>
+            </ul>
+        </nav>
+        <button aria-label="Open menu" popovertarget="main-menu"></button>
+        <menu id="main-menu" popover hidden>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./projects.html">Projects</a></li>
+            <li><a href="./contact.html">Contact Me</a></li>
+        </menu>
+    </header>
+    <main id="contact" aria-labelledby="contact-heading">
+        <form action="/submit" method="POST" aria-describedby="contact-desc">
+            <fieldset>
+                <legend>Contact Me Here</legend>
+
+                <label for="first-name">First name:</label>
+                <input type="text" name="first-name" id="first-name" 
+                placeholder="First Name" required>
+                <br>
+
+                <label for="last-name">Last name:</label>
+                <input type="text" name="last-name" id="last-name" 
+                placeholder="Last Name" required>
+                <br>
+                
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email"
+                placeholder="yourname@example.com" required>
+                <br>
+                
+                <label for="job-title">Job title:</label>
+                <input type="text" name="job-title" id="job-title"
+                placeholder="Ex: Talent Acquisition Specialist" required>
+                <br>
+                
+                <label for="contact-desc">Please select a reason for contacting</label>
+                <select id="category" name="category" id="contact-desc" required>
+                    <option value="" selected disabled hidden>-- Select Reason --</option>
+                    <option value="job-opportunity">Job Opportunity</option>
+                    <option value="research-opportunity">Research Opportunity</option>
+                    <option value="other-inquires">Other Concerns/Inquiries</option>
+                </select>
+                <br>
+                <textarea
+                    id="explanation"
+                    name="explanation"
+                    rows="8"
+                    cols="50"
+                    placeholder="Type message here."
+                    required
+                    aria-required="true"
+                ></textarea>
+                <button type="submit">Send</button>
+            </fieldset>
+        </form>
+    </main>
+    <footer>
+        <small id="copywright">&copy; 2025 Zack Roland </small>
+    </footer>
+</body>
+</html>
