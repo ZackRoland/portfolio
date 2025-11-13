@@ -32,29 +32,45 @@
                 <legend id="form-heading">Contact Me Here</legend>
                 <form-field>
                     <label for="first-name">First name:</label>
-                    <input type="text" name="first-name" id="first-name" 
-                    placeholder="First Name" required>
+                    <input type="text" 
+                    name="first-name" 
+                    id="first-name" 
+                    placeholder="First Name" 
+                    max-length="100"
+                    required>
                 </form-field>
                 <br>
 
                 <form-field>
                     <label for="last-name">Last name:</label>
-                    <input type="text" name="last-name" id="last-name" 
-                    placeholder="Last Name" required>
+                    <input type="text" 
+                    name="last-name" 
+                    id="last-name" 
+                    placeholder="Last Name" 
+                    max-length="100"
+                    required>
                 </form-field>
                 <br>
 
                 <form-field>
                     <label for="email">Email:</label>
-                    <input type="email" name="email" id="email"
-                    placeholder="yourname@example.com" required>
+                    <input type="email" 
+                    name="email" 
+                    id="email"
+                    placeholder="yourname@example.com"
+                    max-length="200" 
+                    required>
                 </form-field>
                 <br>
 
                 <form-field>
                     <label for="job-title">Job title:</label>
-                    <input type="text" name="job-title" id="job-title"
-                    placeholder="Ex: Talent Acquisition Specialist" required>
+                    <input type="text" 
+                    name="job-title" 
+                    id="job-title"
+                    placeholder="Ex: Talent Acquisition Specialist" 
+                    max-length="200"
+                    required>
                 </form-field>
                 <br>
 
@@ -77,6 +93,7 @@
                     rows="8"
                     cols="50"
                     placeholder="Type message here."
+                    max-length="10000"
                     required
                     aria-required="true"
                     ></textarea>
