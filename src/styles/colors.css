@@ -10,6 +10,7 @@
     --tiffany-blue: #81D2C7;
     --marian-blue: #414288;
     --keppel: #5FB49C;
+    --columbia-blue: #CFE8EF;
     /* Greens*/
     --olivine: #B6D094;
     --celadon: #A0EEC0;
@@ -24,9 +25,23 @@
     --gunmetal-light: #96ccc9;
     --pistachio: #86CD82; 
     /* Reds */
+    --crayola-red: #EF2D56;
+    --cinnabar: #F4442E;
     --wine: #6A2E35;
     --pale-red: #E5625E; 
-
+    --light-coral: #F08080;
+    --coral-pink: #F4978E;
+    --salmon-pink: #F49097;
+    --rose: #EF3054;
+    --melon: #F8AD9D;
+    --bittersweet: #FF785A;
+    --chocolate-cosmos: #561d25;
+    /* Yellows */
+    --light-orange: #FFDAB9;
+    --vanilla: #ECE4B7;
+    --cream: #F4FEC1;
+    /* Oranges */
+    --sunset: #FBD1A2;
     /* Purples */
     --pink-lavender: #D4ADCF;
     --periwinkle: #D4C2FC;

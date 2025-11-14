@@ -8,6 +8,8 @@
     --input-field-text-color-1: black;
     --field-text-size-1: 1rem;
     --select-text-color-1: black;
+
+    --required-color: var(--crayola-red);
 }
 main {
     height: max-content;
@@ -64,7 +66,9 @@ textarea {
     resize: vertical;
     min-height: 8rem;
 }
-  
+.req {
+    color: var(--required-color);
+}  
 button[type="submit"] {
     width: 90%;
     margin-top: 1rem;

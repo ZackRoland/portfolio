@@ -31,7 +31,10 @@
             <fieldset>
                 <legend id="form-heading">Contact Me Here</legend>
                 <form-field>
-                    <label for="first-name">First name:</label>
+                    <label for="first-name">
+                        <span class="req">*</span>
+                        First name:
+                    </label>
                     <input type="text" 
                     name="first-name" 
                     id="first-name" 
@@ -40,9 +43,11 @@
                     required>
                 </form-field>
                 <br>
-
                 <form-field>
-                    <label for="last-name">Last name:</label>
+                    <label for="last-name">
+                        <span class="req">*</span>
+                        Last name:
+                    </label>
                     <input type="text" 
                     name="last-name" 
                     id="last-name" 
@@ -51,9 +56,11 @@
                     required>
                 </form-field>
                 <br>
-
                 <form-field>
-                    <label for="email">Email:</label>
+                    <label for="email">
+                        <span class="req">*</span>
+                        Email:
+                    </label>
                     <input type="email" 
                     name="email" 
                     id="email"
@@ -62,9 +69,11 @@
                     required>
                 </form-field>
                 <br>
-
                 <form-field>
-                    <label for="job-title">Job title:</label>
+                    <label for="job-title">
+                        <span class="req">*</span>
+                        Job title:
+                    </label>
                     <input type="text" 
                     name="job-title" 
                     id="job-title"
@@ -73,9 +82,11 @@
                     required>
                 </form-field>
                 <br>
-
                 <form-field>
-                    <label for="contact-desc">Please select a reason for contacting</label>
+                    <label for="contact-desc">
+                        <span class="req">*</span>
+                        Please select a reason for contacting
+                    </label>
                     <select id="category" name="category" id="contact-desc" required>
                         <option value="" selected disabled hidden>-- Select Reason --</option>
                         <option value="job-opportunity">Job Opportunity</option>
@@ -87,7 +98,7 @@
 
                 <input type="hidden" name="possible-bot" id="possible-bot">
                 <form-field>
-                    <label for="message"></label>
+                    <label for="message" hidden>Message Box</label>
                     <textarea id="message"
                     name="message"
                     rows="8"
