@@ -12,7 +12,8 @@
     --required-color: var(--crayola-red);
 }
 main {
-    height: max-content;
+    -height: max-content;
+    min-height: 75vh;
 }
 
 form {
@@ -22,7 +23,8 @@ form {
 fieldset {
     display: flex;
     flex-direction: column;
-    border: 0.25rem solid var(--fieldset-border-color-1);
+    -border: 0.25rem solid var(--fieldset-border-color-1);
+    border:none;
     padding:1rem;
 }
 legend {
@@ -58,6 +60,8 @@ label {
 }
 select{
     color: var(--select-text-color-1);
+    text-align: center;
+    width:max-content
 }
 input, textarea {
     color: var(--input-field-text-color-1);
