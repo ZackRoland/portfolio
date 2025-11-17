@@ -6,10 +6,12 @@
     --label-color-1: white;
 
     --input-field-text-color-1: black;
+    --field-width: 20rem;
     --field-text-size-1: 1rem;
     --select-text-color-1: black;
 
     --required-color: var(--crayola-red);
+
 }
 main {
     -height: max-content;
@@ -41,9 +43,13 @@ fieldset label {
 select {
     cursor: pointer;
 }
-
+form-field {
+    display:flex;
+    flex-direction: column;
+    justify-items: flex-start;
+}
 input, select, textarea {
-    width:90%;
+    width:var(--field-width);
     padding: 0.3rem 0.4rem;
     border-radius: 0.5rem;
     font-size: var(--field-text-size-1);
@@ -51,13 +57,11 @@ input, select, textarea {
     font-family: inherit;
     border:none;
 }
-input, select, textarea,button {
-    margin: auto
+.info {
+    font-size:calc(var(--field-text-size-1)*0.9);
+    color: var(--light-orange);
 }
-label {
-    margin: 0 0 0 2.5%;
-    
-}
+
 select{
     color: var(--select-text-color-1);
     text-align: center;
@@ -74,8 +78,8 @@ textarea {
     color: var(--required-color);
 }  
 button[type="submit"] {
-    width: 90%;
-    margin-top: 1rem;
+    margin: 1rem 0 0 0;
+    width: 20rem;
     padding: 0.5rem 0.5rem;
     border: none;
     border-radius: 0.5rem;

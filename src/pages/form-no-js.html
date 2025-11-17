@@ -39,10 +39,14 @@
                         type="text" 
                         name="full-name" 
                         id="full-name" 
-                        placeholder="Gol D. Roger" 
-                        max-length="100"
+                        placeholder="Gol D. Roger"
+                        minlength="3" 
+                        maxlength="100"
                         required
                     >
+                    <output class="error" id="name-error"></output>
+                    <output class="info" id="name-info">Enter your full name. 
+                        Diacritical marks are supported.</output>
                 </form-field>
                 <br>
                 <form-field>
@@ -54,8 +58,10 @@
                     name="email" 
                     id="email"
                     placeholder="yourname@example.com"
-                    max-length="200" 
+                    maxlength="200" 
                     required>
+                    <output class="error" id="email-error"></output>
+                    <output class="info" id="email-info">Enter your email.</output>
                 </form-field>
                 <br>
                 <form-field>
@@ -67,21 +73,26 @@
                     name="job-title" 
                     id="job-title"
                     placeholder="Ex: Talent Acquisition Specialist" 
-                    max-length="200"
-                    required>
+                    maxlength="200"
+                    required
+                    >
+                    <output class="error" id="job-error"></output>
+                    <output class="info" id="job-info">Enter your current job title.</output>
                 </form-field>
                 <br>
                 <form-field>
-                    <label for="contact-desc">
+                    <label for="contact-reason">
                         <span class="req">*</span>
                         Please select a reason for contacting
                     </label>
-                    <select id="category" name="category" id="contact-desc" required>
+                    <select name="contact-reason" id="contact-reason" required>
                         <option value="" selected disabled hidden>-- Select Reason --</option>
                         <option value="job-opportunity">Job Opportunity</option>
                         <option value="research-opportunity">Research Opportunity</option>
                         <option value="other-inquires">Other Concerns/Inquiries</option>
                     </select>
+                    <output class="error" id="contact-error"></output>
+                    <output class="info" id="contact-info"></output>
                 </form-field>
                 <br>
 
@@ -93,10 +104,12 @@
                     rows="8"
                     cols="50"
                     placeholder="Type message here."
-                    max-length="10000"
+                    maxlength="10000"
                     required
                     aria-required="true"
                     ></textarea>
+                    <output class="error" id="msg-error"></output>
+                    <output class="info" id="msg-info"></output>
                 </form-field>
                 
                 <form-field>
