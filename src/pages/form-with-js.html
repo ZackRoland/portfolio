@@ -45,8 +45,8 @@
                         pattern="/[\p{L}\p{M}\p{Zs}.-]+/gu"
                         required
                     >
-                    <output class="error" id="name-error"></output>
-                    <output class="info" id="name-info">Enter your full name. 
+                    <output class="error" id="full-name-error"></output>
+                    <output class="info" id="full-name-info">Enter your full name. 
                         Diacritical marks are supported.</output>
                 </form-field>
                 <br>
@@ -77,8 +77,8 @@
                     maxlength="200"
                     required
                     >
-                    <output class="error" id="job-error"></output>
-                    <output class="info" id="job-info">Enter your current job title.</output>
+                    <output class="error" id="job-title-error"></output>
+                    <output class="info" id="job-title-info">Enter your current job title.</output>
                 </form-field>
                 <br>
                 <form-field>
@@ -100,7 +100,8 @@
                 <input type="hidden" name="possible-bot" id="possible-bot">
                 <form-field>
                     <label for="message" hidden>Message Box</label>
-                    <textarea id="message"
+                    <textarea 
+                    id="msg"
                     name="message"
                     rows="8"
                     cols="50"
