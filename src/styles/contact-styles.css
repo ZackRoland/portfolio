@@ -51,6 +51,7 @@ form-field {
 input, select, textarea {
     width:var(--field-width);
     padding: 0.3rem 0.4rem;
+    border: 2px solid transparent;
     border-radius: 0.5rem;
     font-size: var(--field-text-size-1);
     background-color: hsl(0 0% 110% / .5);
@@ -92,6 +93,6 @@ button[type="submit"] {
   
 
   
-input:invalid, select:invalid, textarea:invalid {
-    border-color: hsl(10 80% 60% / .7);
+input:user-invalid, select:user-invalid, textarea:user-invalid {
+    border:3px solid red;
 }

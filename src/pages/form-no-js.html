@@ -26,8 +26,8 @@
             <li><a href="./contact.html">Contact Me</a></li>
         </menu>
     </header>
-    <main id="contact" aria-labelledby="contact-heading">
-        <form action="https://httpbin.org/post" method="post" aria-describedby="contact-desc">
+    <main id="contact">
+        <form action="https://httpbin.org/post" method="post">
             <fieldset>
                 <legend id="form-heading">Contact Me Here</legend>
                 <form-field>
@@ -42,7 +42,7 @@
                         placeholder="Gol D. Roger"
                         minlength="3" 
                         maxlength="100"
-                        pattern="/[\p{L}\p{M}\p{Zs}.-]+/gu"
+                        pattern="[A-Za-zÀ-ÖØ-öø-ÿ .'-]+"
                         required
                     >
                     <output class="error" id="name-error"></output>
@@ -59,6 +59,7 @@
                     name="email" 
                     id="email"
                     placeholder="yourname@example.com"
+                    minlength="5"
                     maxlength="200" 
                     required>
                     <output class="error" id="email-error"></output>
@@ -97,7 +98,7 @@
                 </form-field>
                 <br>
 
-                <input type="hidden" name="possible-bot" id="possible-bot">
+                <input type="hidden" name="possible-bot" id="possible-bot" value="true">
                 <form-field>
                     <label for="message" hidden>Message Box</label>
                     <textarea id="message"
@@ -105,6 +106,7 @@
                     rows="8"
                     cols="50"
                     placeholder="Type message here."
+                    minlength="10"
                     maxlength="10000"
                     required
                     aria-required="true"
