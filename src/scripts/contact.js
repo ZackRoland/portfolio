@@ -6,6 +6,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const possibleBot = document.getElementById("possible_bot");
     const nameInput = form.elements["full-name"];
     const jobTitleInput = form.elements["job-title"];
+    const msg = form.elements["message"];
+    if (msg) {
+        const msgInfo = getInfoOutput(msg);
+        const maxLength = msg.maxLength > 0 ? msg.maxLength : 10000;
+        const minLength = msg.minLength > 0 ? msg.minLength : 10;
+      
+        function updateMsgInfo() {
+          const length = msg.value.length;
+          const remaining = maxLength - length;
+      
+          if (msgInfo) {
+            msgInfo.textContent =
+              `At least ${minLength} characters. ${remaining} characters remaining.`;
+            msgInfo.classList.toggle("warning", remaining <= 50);
+          }
+        }
+      
+        updateMsgInfo();
+      
+        msg.addEventListener("input", updateMsgInfo);
+    }
+      
 
     let illegalCharRegex;
     try {
@@ -37,6 +59,20 @@ document.addEventListener("DOMContentLoaded", () => {
   
     const form_errors = [];
   
+    const infoIdByName = {
+        message: "msg-info",
+        "full-name": "full-name-info",
+        email: "email-info",
+        "job-title": "job-title-info",
+        "contact-reason": "contact-info",
+      };
+      
+    function getInfoOutput(field) {
+        const name = field.name || field.id;
+        const id = infoIdByName[name];
+        return id ? document.getElementById(id) : null;
+    }
+    
     const errorIdByName = {
       "full-name": "full-name-error",
       "email": "email-error",
