@@ -4,6 +4,36 @@ document.addEventListener("DOMContentLoaded", () => {
   
     const formErrorsField = document.getElementById("form-errors");
     const possibleBot = document.getElementById("possible_bot");
+    const nameInput = form.elements["full-name"];
+    const jobTitleInput = form.elements["job-title"];
+
+    let illegalCharRegex;
+    try {
+        illegalCharRegex = /[^\p{L}\p{M}\p{Zs}.'-]/gu;
+    } catch {
+        illegalCharRegex = /[^A-Za-zÀ-ÖØ-öø-ÿ .'-]/g;
+    }
+
+    function enforceCharacterRules(event) {
+        const input = event.target;
+        const original = input.value;
+        const cleaned = original.replace(illegalCharRegex, "");
+
+        if (cleaned !== original) {
+            input.value = cleaned;
+
+            showTempError(input, "Invalid character entered.");
+        }
+    }
+
+    if (nameInput) {
+        nameInput.addEventListener("input", enforceCharacterRules);
+    }
+
+    if (jobTitleInput) {
+        jobTitleInput.addEventListener("input", enforceCharacterRules);
+    }
+
   
     const form_errors = [];
   
@@ -35,7 +65,21 @@ document.addEventListener("DOMContentLoaded", () => {
       out.textContent = message;
       out.classList.remove("hidden");
     }
-  
+
+    function showTempError(input, message) {
+        const out = getErrorOutput(input);
+        if (!out) return;
+      
+        out.textContent = message;
+        out.classList.remove("hidden");
+        input.classList.add("flash");
+      
+        setTimeout(() => {
+          out.classList.add("hidden");
+          input.classList.remove("flash");
+        }, 2000);
+      }
+      
     if (possibleBot) {
       const markHuman = () => {
         possibleBot.value = "false";
