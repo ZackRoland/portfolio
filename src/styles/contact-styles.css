@@ -96,3 +96,22 @@ button[type="submit"] {
 input:user-invalid, select:user-invalid, textarea:user-invalid {
     border:3px solid red;
 }
+.hidden {
+    display: none;
+}
+  
+.flash {
+    animation: flash-border 0.15s ease-in-out 4;
+}
+
+#msg-info.warning {
+    color: var(--required-color, red);
+    font-weight: bold;
+}
+
+@keyframes flash-border {
+    0%   { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.8); }
+    50%  { box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.4); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+}
+  

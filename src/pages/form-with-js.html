@@ -6,6 +6,7 @@
     <title>Contact Me</title>
     <link rel="stylesheet" href="../styles/main-styles.css">
     <link rel="stylesheet" href="../styles/contact-styles.css">
+    <script src="../scripts/contact.js" defer></script>
 </head>
 <body>
     <header>
@@ -27,7 +28,7 @@
         </menu>
     </header>
     <main id="contact" aria-labelledby="contact-heading">
-        <form action="https://httpbin.org/post" method="post" aria-describedby="contact-desc">
+        <form id="contact-form" action="https://httpbin.org/post" method="post" aria-describedby="contact-desc">
             <fieldset>
                 <legend id="form-heading">Contact Me Here</legend>
                 <form-field>
@@ -42,7 +43,7 @@
                         placeholder="Gol D. Roger"
                         minlength="3" 
                         maxlength="100"
-                        pattern="/[\p{L}\p{M}\p{Zs}.-]+/gu"
+                        pattern="[A-Za-zÀ-ÖØ-öø-ÿ .'-]+"
                         required
                     >
                     <output class="error" id="full-name-error"></output>
@@ -59,6 +60,7 @@
                     name="email" 
                     id="email"
                     placeholder="yourname@example.com"
+                    minlength="5"
                     maxlength="200" 
                     required>
                     <output class="error" id="email-error"></output>
@@ -74,6 +76,7 @@
                     name="job-title" 
                     id="job-title"
                     placeholder="Ex: Talent Acquisition Specialist" 
+                    minlength="3"
                     maxlength="200"
                     required
                     >
@@ -97,7 +100,7 @@
                 </form-field>
                 <br>
 
-                <input type="hidden" name="possible-bot" id="possible-bot">
+                <input type="hidden" name="possible_bot" id="possible_bot" value="true">
                 <form-field>
                     <label for="message" hidden>Message Box</label>
                     <textarea 
@@ -106,6 +109,7 @@
                     rows="8"
                     cols="50"
                     placeholder="Type message here."
+                    minlength="10"
                     maxlength="10000"
                     required
                     aria-required="true"
@@ -116,6 +120,7 @@
                 
                 <form-field>
                     <label for="submit" hidden>Form Submission</label>
+                    <input type="hidden" name="form-errors" id="form-errors" value="[]">
                     <button type="submit" name="submit" id="submit">Send</button>
                 </form-field>
             </fieldset>
