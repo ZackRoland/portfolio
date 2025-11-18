@@ -7,78 +7,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const nameInput = form.elements["full-name"];
     const jobTitleInput = form.elements["job-title"];
     const msg = form.elements["message"];
-    if (msg) {
-        const msgInfo = getInfoOutput(msg);
-        const maxLength = msg.maxLength > 0 ? msg.maxLength : 10000;
-        const minLength = msg.minLength > 0 ? msg.minLength : 10;
-      
-        function updateMsgInfo() {
-          const length = msg.value.length;
-          const remaining = maxLength - length;
-      
-          if (msgInfo) {
-            msgInfo.textContent =
-              `At least ${minLength} characters. ${remaining} characters remaining.`;
-            msgInfo.classList.toggle("warning", remaining <= 50);
-          }
-        }
-      
-        updateMsgInfo();
-      
-        msg.addEventListener("input", updateMsgInfo);
-    }
-      
-
-    let illegalCharRegex;
-    try {
-        illegalCharRegex = /[^\p{L}\p{M}\p{Zs}.'-]/gu;
-    } catch {
-        illegalCharRegex = /[^A-Za-zÀ-ÖØ-öø-ÿ .'-]/g;
-    }
-
-    function enforceCharacterRules(event) {
-        const input = event.target;
-        const original = input.value;
-        const cleaned = original.replace(illegalCharRegex, "");
-
-        if (cleaned !== original) {
-            input.value = cleaned;
-
-            showTempError(input, "Invalid character entered.");
-        }
-    }
-
-    if (nameInput) {
-        nameInput.addEventListener("input", enforceCharacterRules);
-    }
-
-    if (jobTitleInput) {
-        jobTitleInput.addEventListener("input", enforceCharacterRules);
-    }
-
   
-    const form_errors = [];
   
     const infoIdByName = {
-        message: "msg-info",
-        "full-name": "full-name-info",
-        email: "email-info",
-        "job-title": "job-title-info",
-        "contact-reason": "contact-info",
-      };
-      
+      message: "msg-info",
+      "full-name": "full-name-info",
+      email: "email-info",
+      "job-title": "job-title-info",
+      "contact-reason": "contact-info",
+    };
+  
     function getInfoOutput(field) {
-        const name = field.name || field.id;
-        const id = infoIdByName[name];
-        return id ? document.getElementById(id) : null;
+      const name = field.name || field.id;
+      const id = infoIdByName[name];
+      return id ? document.getElementById(id) : null;
     }
-    
+  
     const errorIdByName = {
       "full-name": "full-name-error",
-      "email": "email-error",
+      email: "email-error",
       "job-title": "job-title-error",
       "contact-reason": "contact-error",
-      "message": "msg-error",
+      message: "msg-error",
     };
   
     function getErrorOutput(field) {
@@ -101,21 +51,70 @@ document.addEventListener("DOMContentLoaded", () => {
       out.textContent = message;
       out.classList.remove("hidden");
     }
-
+  
     function showTempError(input, message) {
-        const out = getErrorOutput(input);
-        if (!out) return;
-      
-        out.textContent = message;
-        out.classList.remove("hidden");
-        input.classList.add("flash");
-      
-        setTimeout(() => {
-          out.classList.add("hidden");
-          input.classList.remove("flash");
-        }, 2000);
+      const out = getErrorOutput(input);
+      if (!out) return;
+  
+      out.textContent = message;
+      out.classList.remove("hidden");
+      input.classList.add("flash");
+  
+      setTimeout(() => {
+        out.classList.add("hidden");
+        input.classList.remove("flash");
+      }, 2000);
+    }
+  
+  
+    if (msg) {
+      const msgInfo = getInfoOutput(msg);
+      const maxLength = msg.maxLength > 0 ? msg.maxLength : 10000;
+      const minLength = msg.minLength > 0 ? msg.minLength : 10;
+  
+      function updateMsgInfo() {
+        const length = msg.value.length;
+        const remaining = maxLength - length;
+  
+        if (msgInfo) {
+          msgInfo.textContent =
+            `At least ${minLength} characters. ${remaining} characters remaining.`;
+          msgInfo.classList.toggle("warning", remaining <= 50);
+        }
       }
-      
+  
+      updateMsgInfo();
+      msg.addEventListener("input", updateMsgInfo);
+    }
+  
+  
+    let illegalCharRegex;
+    try {
+      illegalCharRegex = /[^\p{L}\p{M}\p{Zs}.'-]/gu;
+    } catch {
+      illegalCharRegex = /[^A-Za-zÀ-ÖØ-öø-ÿ .'-]/g;
+    }
+  
+    function enforceCharacterRules(event) {
+      const input = event.target;
+      const original = input.value;
+      const cleaned = original.replace(illegalCharRegex, "");
+  
+      if (cleaned !== original) {
+        input.value = cleaned;
+        showTempError(input, "Invalid character entered.");
+      }
+    }
+  
+    if (nameInput) {
+      nameInput.addEventListener("input", enforceCharacterRules);
+    }
+  
+    if (jobTitleInput) {
+      jobTitleInput.addEventListener("input", enforceCharacterRules);
+    }
+  
+  
     if (possibleBot) {
       const markHuman = () => {
         possibleBot.value = "false";
@@ -124,8 +123,11 @@ document.addEventListener("DOMContentLoaded", () => {
       form.addEventListener("change", markHuman, { once: true });
     }
   
+  
+    const form_errors = [];
+  
     form.addEventListener("submit", (event) => {
-      const fd = new FormData(form);               
+      const fd = new FormData(form);
       const attemptErrors = [];
       let hasErrors = false;
   
@@ -138,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
         clearError(element);
       }
   
-      for (const [name, value] of fd) {        
+      for (const [name, value] of fd) {
         const field = form.elements[name];
         if (!field || typeof field.checkValidity !== "function") continue;
   
