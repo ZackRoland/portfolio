@@ -30,6 +30,26 @@
 
     
 }
+:root.dark {
+    --nav-border-color: var(--mint-cream);
+    --nav-fill: var(--charcoal-black);
+    --nav-gradient: var(--smokey-black);
+    --nav-background-color: var(--charcoal-black);
+    --nav-background-color-2: var(--smokey-black);
+    --nav-text-color: var(--mint-cream);
+    --page-highlight: var(--tiffany-blue);
+
+    --body-fill: var(--charcoal-black);
+    --body-gradient: var(--gunmetal);
+
+    --main-fill: var(--dark-turqoise);
+    --main-gradient: var(--charcoal);
+
+    --intro-text-color: var(--mint-cream);
+    --two-color-outline: var(--tiffany-blue) 5px 5px, var(--keppel) -5px -5px;
+    
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -113,6 +133,24 @@ footer {
 }
 small {
     margin:auto;
+}
+.theme-menu details {
+    cursor: pointer;
+}
+
+.theme-options {
+    list-style: none;
+    padding-left: 0;
+    margin: 0.5rem 0 0 0;
+}
+
+.theme-options li button {
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 0.25rem 0;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
 @media (max-width: 760px){

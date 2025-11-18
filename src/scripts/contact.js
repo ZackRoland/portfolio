@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("contactForm");
+    const form = document.querySelector("form");
     if (!form) return;
   
     const formErrorsField = document.getElementById("form-errors");
@@ -90,9 +90,9 @@ document.addEventListener("DOMContentLoaded", () => {
   
     let illegalCharRegex;
     try {
-      illegalCharRegex = /[^\p{L}\p{M}\p{Zs}.'-]/gu;
-    } catch {
-      illegalCharRegex = /[^A-Za-zÀ-ÖØ-öø-ÿ .'-]/g;
+        illegalCharRegex = new RegExp("[^\\p{L}\\p{M}\\p{Zs}.'-]", "gu");
+    } catch (e) {
+        illegalCharRegex = /[^A-Za-zÀ-ÖØ-öø-ÿ .'-]/g;
     }
   
     function enforceCharacterRules(event) {
@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
           errors: attemptErrors,
         });
       }
-  
+      console.log("form_errors before submit:", form_errors);
       if (formErrorsField) {
         try {
           formErrorsField.value = JSON.stringify(form_errors);

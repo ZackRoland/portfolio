@@ -27,7 +27,7 @@
         </menu>
     </header>
     <main id="contact">
-        <form action="https://httpbin.org/post" method="post">
+        <form action="https://httpbin.org/post" method="post" novalidate>
             <fieldset>
                 <legend id="form-heading">Contact Me Here</legend>
                 <form-field>
@@ -42,7 +42,7 @@
                         placeholder="Gol D. Roger"
                         minlength="3" 
                         maxlength="100"
-                        pattern="[A-Za-zÀ-ÖØ-öø-ÿ .'-]+"
+                        pattern="[A-Za-z .'-]+"
                         required
                     >
                     <output class="error" id="name-error"></output>
