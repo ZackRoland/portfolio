@@ -154,27 +154,45 @@ small {
 }
 ::view-transition-old(root),
 ::view-transition-new(root) {
-    animation-duration: 35s;
-    animation-timing-function: ease-out;
+    animation-duration: 1.2s;
+    animation-timing-function: ease-in-out;
 }
 
 ::view-transition-old(root) {
-    animation-name: fade-out;
+    animation-name: crazy-out;
 }
 
 ::view-transition-new(root) {
-    animation-name: fade-in;
+    animation-name: crazy-in;
 }
 
-@keyframes fade-out {
-    from { opacity: 1; }
-    to   { opacity: 0; }
+@keyframes crazy-out {
+    from {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        filter: blur(0);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.8) rotate(-5deg);
+        filter: blur(6px);
+    }
 }
 
-@keyframes fade-in {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+@keyframes crazy-in {
+    from {
+        opacity: 0;
+        transform: scale(1.1) rotate(5deg);
+        filter: blur(6px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        filter: blur(0);
+    }
 }
+
+
 
 
 @media (max-width: 760px){
