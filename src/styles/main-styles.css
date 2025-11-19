@@ -13,6 +13,7 @@
     --nav-padding:2rem;
     --page-highlight:var(--light-cyan);
 
+    --theme-svg-color: white;
 
     --body-fill: var(--mossy-green);
     --body-gradient: var(--dark-turqoise);
@@ -134,11 +135,17 @@ footer {
 small {
     margin:auto;
 }
+#theme-menu-heading {
+    color:var(--nav-text-color);
+
+}
 .theme-menu details {
     cursor: pointer;
+
 }
 
 .theme-options {
+
     list-style: none;
     padding-left: 0;
     margin: 0.5rem 0 0 0;
@@ -152,6 +159,39 @@ small {
     cursor: pointer;
     font-size: 1rem;
 }
+
+.theme-options li button {
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    cursor: pointer;
+  }
+ 
+li > button {
+    background-color: transparent;
+    border: none;
+}  
+.icon-sun,
+.icon-moon {
+    width: 1.5rem;
+    height: 1.5rem;
+    stroke: var(--theme-svg-color);
+    fill: none;
+    stroke-width: 1.8;
+}
+  
+button[data-theme="light"]:hover .icon-sun {
+    transform: rotate(20deg);
+    transition: transform 0.2s ease;
+}
+
+button[data-theme="dark"]:hover .icon-moon {
+    transform: translateY(-1px);
+    transition: transform 0.2s ease;
+}
+  
+
+
 @view-transition {
     navigation: auto;
 }
