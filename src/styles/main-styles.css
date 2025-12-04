@@ -75,14 +75,14 @@ header {
     align-items: center;
 
 }
-nav {
+header > nav {
     -background: linear-gradient(to left,var(--nav-fill), var(--nav-gradient));
     text-transform: uppercase;
     padding:var(--nav-padding);
     flex:1;
     
 }
-ul {
+header ul {
     display:flex;
     list-style-type: none;
     align-items: center;
@@ -91,12 +91,12 @@ ul {
     padding: 0px;
     margin: 0px;
 }
-ul a {
+header ul a {
     display:inline-flex;
     align-items: center;
     text-decoration: none;
 }
-ul a:not(.logo a) {
+header ul a:not(.logo a) {
     box-shadow: var(--two-color-outline);
     color: var(--nav-text-color);
     font-size: var(--nav-font-size);
@@ -116,7 +116,7 @@ nav a[aria-current="page"] {
     opacity: .67;
     font-weight: 600;
     
-  }
+}
 main {
     display: flex;
     flex-direction: column;
@@ -263,7 +263,7 @@ button[data-theme="dark"]:hover .icon-moon {
 
 
 @media (max-width: 760px){
-    ul a:not(.logo a){
+    header nav > ul a:not(.logo a){
         display: none;
     }
     header{
@@ -273,10 +273,10 @@ button[data-theme="dark"]:hover .icon-moon {
         padding-inline-end:var(--nav-padding);
         
     }
-    ul{
+    header nav > ul{
         gap:0;
     }
-    nav+button{
+    header nav+button{
         --bar-w: 25px;
         --bar-h: 5px;
         --bar-gap: 10px;
@@ -295,7 +295,7 @@ button[data-theme="dark"]:hover .icon-moon {
         cursor: pointer;
 
     }
-    nav+button::before, nav+button::after{
+    header nav+button::before, header nav+button::after{
         content:"";
         position:absolute; 
         left: 50%;
@@ -307,12 +307,12 @@ button[data-theme="dark"]:hover .icon-moon {
         transform: translate(-50%, -50%);
         transition: transform .25s ease, opacity .25s ease, top .25s ease;
     }
-    nav+button::before{
+    header nav+button::before{
         box-shadow:
             0 calc(-1 * (var(--bar-gap) + var(--bar-h))) 0 0 var(--bar-color),
             0 calc( 1 * (var(--bar-gap) + var(--bar-h))) 0 0 var(--bar-color);
     }
-    nav+button::after{ opacity:0;}
+    header nav+button::after{ opacity:0;}
     header > menu[popover]{
         display: none;   
         -position: fixed;           
@@ -321,7 +321,7 @@ button[data-theme="dark"]:hover .icon-moon {
         top:5rem;
         right:0%;
     }
-    menu[popover]:popover-open{
+    header menu[popover]:popover-open{
         display: flex;
         flex-direction:column;            
         margin: 0; 
@@ -333,13 +333,13 @@ button[data-theme="dark"]:hover .icon-moon {
         box-shadow: 0 10px 25px rgba(0,0,0,.25);
     }
    
-    menu[popover] > li > a{
+    header menu[popover] > li > a{
         display: block;
         padding: .65rem 1rem;
         color: var(--nav-text-color);
         text-decoration: none;
     }
-    menu > li > a:hover{
+    header menu > li > a:hover{
     background: hsl(0 0% 100% / .08);
     }
     header:has(menu[popover]:popover-open) > button[popovertarget]::before{

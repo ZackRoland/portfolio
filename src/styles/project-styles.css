@@ -16,6 +16,64 @@ h3 {
     text-decoration: underline;
 }
 project-card {
+    display: grid;
+    width: 400px;
+    height:max-content;
+    grid-template-columns: 2fr 1fr;
+    border-radius: 1rem;
+    border: 1px solid currentColor;
+}
+project-links {
+    grid-column: 2;
+}
+project-head {
+    grid-column:1;
+    grid-row:1
+}
+project-body {
+    grid-column:1;
+    grid-row:2;
+}
+/* project-head {
+    grid-column: 1 / -1; 
+}
+
+project-image figure {
+    margin: 0;
+}
+
+project-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+}
+
+project-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+project-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+project-links li + li {
+    margin-top: 0.5rem;
+}
+
+project-links a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid currentColor;
+} */
+
+/*
+project-card {
     display: block;
     margin: 2rem auto;              
 }
@@ -58,4 +116,4 @@ project-card > span {
 project-card > h3 { 
     text-align: center; 
 }
-  
+*/
