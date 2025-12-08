@@ -2,10 +2,13 @@
     /* Blues */
     --mint-cream: #F1FFFA;
     --light-cyan: #C4F5FC;
+    --lighter-cyan: #d2ebef;
     --light-blue: #93B7BE; 
     --cambridge-blue: #79AEA3;
     --delft-blue: #434371;
+    --muted-delft-blue: #75759f;
     --lapis-lazuli: #416788;
+    --radiant-lapis-lazuli: #35638b;
     --glaucous: #7389AE;
     --tiffany-blue: #81D2C7;
     --marian-blue: #414288;
@@ -28,6 +31,7 @@
     --crayola-red: #EF2D56;
     --cinnabar: #F4442E;
     --wine: #6A2E35;
+    --light-wine: #6e464b;
     --pale-red: #E5625E; 
     --light-coral: #F08080;
     --coral-pink: #F4978E;
@@ -38,11 +42,13 @@
     --bittersweet: #FF785A;
     --chocolate-cosmos: #561d25;
     /* Yellows */
-    --light-orange: #FFDAB9;
     --vanilla: #ECE4B7;
     --cream: #F4FEC1;
+    --lighter-cream: #f5fbd9;
     /* Oranges */
     --sunset: #FBD1A2;
+    --light-orange: #FFDAB9;
+    --lighter-orange: #fae3cf;
     /* Purples */
     --pink-lavender: #D4ADCF;
     --periwinkle: #D4C2FC;

@@ -25,9 +25,7 @@ main {
     padding: 1rem;
     display:block;
 }
-h1 {
-    margin: 0 0 1rem 0;
-}
+
 main > section {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 cards on large screens */

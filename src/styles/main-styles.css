@@ -1,36 +1,73 @@
 @import "colors.css";
+/* ========= Root Variables ========= */
 :root {
-    --logo-text-size:2rem;
-
-    --nav-border-color:white;
+   
+    --base-text-color-1: white;
+    --base-text-color-2: var(--chocolate-cosmos);
+    --base-text-color-3: var(--pistachio);
+    --base-text-color: var(--base-text-color-3);
     --nav-fill: var(--mossy-green);
     --nav-gradient: var(--dark-turqoise);
-    --nav-background-color:#2E2C2F;
-    --nav-background-color-2: #1c1c1c;
-    --nav-text-color:white;
+
+    --nav-bg-color-1: linear-gradient(to left,var(--nav-fill), var(--nav-gradient));
+    --nav-bg-color-2: #1c1c1c;
+    --nav-bg-color-3:#2E2C2F;
+    --nav-bg-color:var(--nav-bg-color-1);
+
+    --nav-text-color-1:white;
+    --nav-text-color-2:black;
+    --nav-text-color-3:var(--wine);
+    --nav-text-color-4:var(--light-wine);
+    --nav-text-color-5:  var(--pistachio);
+    --nav-text-color-6: var(--base-text-color);
+    --nav-text-color:var(--nav-text-color-6);
+
+    --nav-border-color-1: var(--nav-text-color);
+    --nav-border-color-2:white;
+    --nav-border-color:var(--nav-border-color-1);
+
     --nav-gap:75px;
     --nav-font-size:1rem;
     --nav-padding:2rem;
     --page-highlight:var(--light-cyan);
 
     --theme-svg-color: white;
+    --logo-text-size:2rem;
+
 
     --body-fill: var(--mossy-green);
     --body-gradient: var(--dark-turqoise);
+
+    --body-bg-color-1: linear-gradient(to left,var(--body-fill), var(--body-gradient));
+    --body-bg-color-2:  linear-gradient(to right,var(--light-orange), var(--cream));
+    --body-bg-color-3: linear-gradient(to right,var(--radiant-lapis-lazuli), var(--lapis-lazuli));
+    --body-bg-color:  var(--body-bg-color-2);
 
     --main-fill:var(--mint-green);
     --main-gradient: var(--dark-mint-green);
     --main-height: 40rem;
 
+    --main-bg-color-1: linear-gradient(to left,var(--main-fill), var(--main-gradient));
+    --main-bg-color-2: linear-gradient(to right,var(--lighter-orange),var(--lighter-cream));
+    --main-bg-color-3: linear-gradient(to right,var(--charcoal-black),var(--gunmetal), var(--dark-mint-green),var(--pale-green));
+    --main-bg-color-4: var(--body-bg-color-2);
+    --main-bg-color: var(--main-bg-color-2);
+
     --intro-text-color: white;
     --two-color-outline: var(--celadon) 5px 5px, var(--tiffany-blue) -5px -5px;
 
-    --header-height:5rem; 
+    --h1-color-1: var(--vanilla);
+    --h1-color-2: var(--wine);
+    --h1-color-3: color-mix(in srgb, var(--base-text-color), black 20%);
+    --h1-color: var(--h1-color-3);
 
+    --header-height:5rem; 
+    
     --footer-height:3.5rem;
 
     
 }
+/* ========= Root Variables Dark Mode ========= */
 :root.dark {
     --nav-border-color: var(--mint-cream);
     --nav-fill: var(--charcoal-black);
@@ -50,23 +87,39 @@
     --two-color-outline: var(--tiffany-blue) 5px 5px, var(--keppel) -5px -5px;
     
 }
-
+/* ========= Universal Tags ========= */
 * {
     margin: 0;
     padding: 0;
-    color:var(--olivine);
+    color:var(--base-text-color);
     font-family: Helvetica, Arial, sans-serif;
 }
-header menu, nav+button{
-    display: none;
+/* ========= Global Tags ========= */
+h1 {
+    display:flex;
+    justify-content: center;
+    color: var(--h1-color);
 }
+/* ========= Body Tags ========= */
 body {
     display: flex;
     flex-direction: column;
-    background: linear-gradient(to left,var(--body-fill), var(--body-gradient));
-    -background: linear-gradient(to right,var(--smokey-black), var(--charcoal));
-    -background: linear-gradient(to left,var(--body-fill), var(--body-gradient));
+    background: var(--body-bg-color);
    
+}
+/* ========= Main Tags ========= */
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: var(--main-height);
+    padding: 1rem;
+    background:  var(--main-bg-color);
+}
+/* ========= Header & Nav Tags ========= */
+header menu, nav+button{
+    display: none;
 }
 header {
     display:flex;
@@ -76,7 +129,7 @@ header {
 
 }
 header > nav {
-    -background: linear-gradient(to left,var(--nav-fill), var(--nav-gradient));
+    -background: var(--nav-bg-color);
     text-transform: uppercase;
     padding:var(--nav-padding);
     flex:1;
@@ -117,24 +170,7 @@ nav a[aria-current="page"] {
     font-weight: 600;
     
 }
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to left,var(--main-fill), var(--main-gradient));
-    -background: linear-gradient(to right,var(--charcoal-black),var(--gunmetal), var(--dark-mint-green),var(--pale-green));
-    height: var(--main-height);
-}
-footer {
-    -background: linear-gradient(to left,var(--nav-fill), var(--nav-gradient));
-    display:flex;
-    justify-content: center;
-    height: var(--footer-height);
-}
-small {
-    margin:auto;
-}
+/* ========= Theme ========= */
 #theme-menu-heading {
     color:var(--nav-text-color);
 
@@ -189,16 +225,25 @@ button[data-theme="dark"]:hover .icon-moon {
     transform: translateY(-1px);
     transition: transform 0.2s ease;
 }
+/* ========= Footer Tags ========= */
+
+footer {
+    display:flex;
+    justify-content: center;
+    height: var(--footer-height);
+}
+small {
+    margin:auto;
+}
+
   
 
-
-@view-transition {
+/* ========= View Transitions ========= */
+/*View transitions Disabled for now*/
+/* @view-transition {
     navigation: auto;
-}
-   
-   
+}     
 
-   
 ::view-transition-old(root),
 ::view-transition-new(root) {
     animation-duration: 1.2s;
@@ -211,7 +256,7 @@ button[data-theme="dark"]:hover .icon-moon {
 
 ::view-transition-new(root) {
     animation-name: crazy-in;
-}
+} */
 @keyframes fade-out-up {
     from {
       opacity: 1;
@@ -222,16 +267,16 @@ button[data-theme="dark"]:hover .icon-moon {
       transform: translateY(100%);
     }
    }
-   @keyframes fade-in-down {
+@keyframes fade-in-down {
     from {
-      opacity: 0;
-      transform: translateY(-100%);
+        opacity: 0;
+        transform: translateY(-100%);
     }
     to {
-      opacity: 1;
-      transform: translateY(0%);
+        opacity: 1;
+        transform: translateY(0%);
     }
-   }
+}
    
 @keyframes crazy-out {
     from {
@@ -259,8 +304,7 @@ button[data-theme="dark"]:hover .icon-moon {
     }
 }
 
-
-
+/*========== Sizing Adjustments for Nav Breakpoints========*/
 
 @media (max-width: 760px){
     header nav > ul a:not(.logo a){
