@@ -61,114 +61,118 @@
         </menu>
     </header>
     <main> 
-        <h2 id="project-heading" aria-labelledby="project-heading">Projects</h2>
-        <project-card>
-            <project-head>
-                <project-image>
-                    <picture>
-                        <source 
-                        srcset="/src/assets/.../club-triton-small.png"
-                        media="(max-width: 600px)">
-                        <!--NEED TO COMPRESS IMAGE-->
-                        <img src="/src/assets/imgs/original/club-triton/home-page/home-page.png"
-                        width="400"
-                        height="400"
-                        alt="Screenshot of The Club Triton project">
-                    </picture>
-                </project-image>    
-            </project-head>
-            <project-body>
-                <project-header>
-                    <project-name>
-                        <h2>The Club Triton</h2>
-                    </project-name>
-                    <project-date>
-                        <time datetime="2025-04-01">04/2025 - 06/2025</time>
-                    </project-date>
-                </project-header>
-                <project-main>
-                    <project-description>
-                        <p>
-                            A web based card game modeled after the Card-Jitsu minigame from 
-                            Disney's Club Penguin.
-                        </p>
-                    </project-description>
-                    <project-tech>
-                        <details open>
-                            <summary>Tech Stack</summary>
-                            <menu>
-                                <li>HTML5</li>
-                                <li>CSS</li>
-                                <li>Vanilla JS</li>
-                            </menu>
-                        </details>
-                    </project-tech>
-                </project-main>
-            </project-body>
-            <project-links aria-label="Project resources">
-                <ul>
-                    <li><a href="https://cse110-sp25-group13.github.io/The_club_triton/pages/home-page.html">Demo</a></li>
-                    <li><a href="https://github.com/cse110-sp25-group13/The_club_triton">Repo</a></li>
-                    <li><a href="placeholder">Blog</a></li>
-                </ul>
-            </project-links>
-        </project-card>
-        <project-card>
-            <project-head>
-                <project-image>
-                    <picture>
-                        <!-- Optional: add a smaller/mobile version later if you want -->
-                        <img
-                            src="../assets/imgs/original/corr-matrix/correlation-matrix.png"
+        <h1 id="project-heading" aria-labelledby="project-heading">Projects</h1>
+        <section aria-labelledby="web-projects-title">
+            <h2 id="web-projects-title">Web & Game Projects</h2>
+            <project-card>
+                <project-head>
+                    <project-image>
+                        <picture>
+                            <source 
+                            srcset="/src/assets/.../club-triton-small.png"
+                            media="(max-width: 600px)">
+                            <!--NEED TO COMPRESS IMAGE-->
+                            <img src="/src/assets/imgs/original/club-triton/home-page/home-page.png"
                             width="400"
                             height="400"
-                            alt="Correlation matrix heatmap for the UK car crash severity dataset">
-                    </picture>
-                </project-image>
-            </project-head>
+                            alt="Screenshot of The Club Triton project">
+                        </picture>
+                    </project-image>    
+                </project-head>
+                <project-body>
+                    <project-header>
+                        <project-name>
+                            <h2>The Club Triton</h2>
+                        </project-name>
+                        <project-date>
+                            <time datetime="2025-04-01">04/2025 - 06/2025</time>
+                        </project-date>
+                    </project-header>
+                    <project-main>
+                        <project-description>
+                            <p>
+                                A web based card game modeled after the Card-Jitsu minigame from 
+                                Disney's Club Penguin.
+                            </p>
+                        </project-description>
+                        <project-tech>
+                            <details open>
+                                <summary>Tech Stack</summary>
+                                <menu>
+                                    <li>HTML5</li>
+                                    <li>CSS</li>
+                                    <li>Vanilla JS</li>
+                                </menu>
+                            </details>
+                        </project-tech>
+                    </project-main>
+                </project-body>
+                <project-links aria-label="Project resources">
+                    <ul>
+                        <li><a href="https://cse110-sp25-group13.github.io/The_club_triton/pages/home-page.html">Demo</a></li>
+                        <li><a href="https://github.com/cse110-sp25-group13/The_club_triton">Repo</a></li>
+                        <li><a href="placeholder">Blog</a></li>
+                    </ul>
+                </project-links>
+            </project-card>
+        </section>
         
-            <project-body>
-                <project-header>
-                    <project-name>
-                        <h2>UK Car Crash Severity Classifier</h2>
-                    </project-name>
-                    <project-date>
-                        <time datetime="2024-03-01">03/2024 – 06/2024</time>
-                    </project-date>
-                </project-header>
-        
-                <project-main>
-                    <project-description>
-                        <p>
-                            A machine learning project that predicts UK car crash injury severity
-                            using scikit-learn models and exploratory data analysis on a large
-                            accident dataset.
-                        </p>
-                    </project-description>
-        
-                    <project-tech>
-                        <details>
-                            <summary>Tech Stack</summary>
-                            <menu>
-                                <li>Python</li>
-                                <li>scikit-learn</li>
-                                <li>Pandas</li>
-                                <li>NumPy</li>
-                            </menu>
-                        </details>
-                    </project-tech>
-                </project-main>
-            </project-body>
-        
-            <project-links aria-label="Project resources">
-                <ul>
-                    <!-- If you don’t have a live demo, you can drop this <li> or point to a notebook -->
-                    <li><a href="https://github.com/ZackRoland/UK_Car_Accident_Severity_Predictor">Repo</a></li>
-                    <!-- You can add a blog link later if you write one -->
-                    <!-- <li><a href="...">Blog</a></li> -->
-                </ul>
-            </project-links>
-        </project-card>
+        <section aria-labelledby="ml-projects-title">
+            <h2 id="ml-projects-title">Machine Learning & Data Science Projects</h2>
+            <project-card>
+                <project-head>
+                    <project-image>
+                        <picture>
+                            <!-- Optional: add a smaller/mobile version later if you want -->
+                            <img
+                                src="../assets/imgs/original/corr-matrix/correlation-matrix.png"
+                                width="400"
+                                height="400"
+                                alt="Correlation matrix heatmap for the UK car crash severity dataset">
+                        </picture>
+                    </project-image>
+                </project-head>
+            
+                <project-body>
+                    <project-header>
+                        <project-name>
+                            <h2>UK Car Crash Severity Classifier</h2>
+                        </project-name>
+                        <project-date>
+                            <time datetime="2024-03-01">03/2024 – 06/2024</time>
+                        </project-date>
+                    </project-header>
+            
+                    <project-main>
+                        <project-description>
+                            <p>
+                                A machine learning project that predicts UK car crash injury severity
+                                using scikit-learn models and exploratory data analysis on a large
+                                accident dataset.
+                            </p>
+                        </project-description>
+            
+                        <project-tech>
+                            <details>
+                                <summary>Tech Stack</summary>
+                                <menu>
+                                    <li>Python</li>
+                                    <li>scikit-learn</li>
+                                    <li>Pandas</li>
+                                    <li>NumPy</li>
+                                </menu>
+                            </details>
+                        </project-tech>
+                    </project-main>
+                </project-body>
+            
+                <project-links aria-label="Project resources">
+                    <ul>
+                        <li><a href="https://github.com/ZackRoland/UK_Car_Accident_Severity_Predictor">Repo</a></li>
+                    </ul>
+                </project-links>
+            </project-card>
+        </section>
     </main>
     <footer>
         <small id="copywright">&copy; 2025 Zack Roland </small>
