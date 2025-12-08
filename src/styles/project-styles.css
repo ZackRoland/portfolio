@@ -2,14 +2,19 @@
 :root {
     --cyan-1: #9AC7BF;
     --cyan-2: #89E3D4;
+    --project-border-style-1: 0.5rem solid black;
+    --project-body-color-1: linear-gradient(to left,var(--coral-pink), var(--melon));
+    
+    --project-tech-menu-color-1: linear-gradient(to bottom,#89E3D4, var(--tiffany-blue) );
 
-    --project-body-color-1: var(--glaucous);
-   
+
     --project-hub-background-1: linear-gradient(to left,var(--cyan-1), var(--cyan-2));
     --project-hub-font-color-1: white;
     --project-hub-border-color-1: white;
     --project-hub-border-style-1: 0.5rem ridge var(--project-hub-border-color-1);
     --project-hub-border-style-2: 0.5rem solid var(--project-hub-border-color-1);
+
+    --project-description-color-1:white;
 }
 /* =========== 2. Global Tags ============= */
 main {
@@ -20,25 +25,16 @@ main{
     flex-direction: column;
     justify-content: center;
 }
-h2 {
-    font-size:1rem;
-    color: var(--dark-turqoise);
-    text-transform: uppercase;
-    text-decoration: underline;
-}
-h3 {
-    text-decoration: underline;
-}
+
 /* ========= Project Card Core ========= */
 project-card {
     margin: 1rem;
     display: grid;
     gap:0;
     width: 400px;
-    height:max-content;
     grid-template-columns: 2fr 1fr;
-    border-radius: 0rem;
-    border: 0.5rem solid black;
+    border-radius: 0;
+    border: var(--project-border-style-1);
 }
 /* ========= Project Head ========= */
 project-head {
@@ -46,15 +42,31 @@ project-head {
     grid-row:1;
     border-bottom:0.5rem solid black;
 }
+project-image {
+    position: relative;   
+    display: block;
+}
+
+project-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;             
+    background: rgba(0, 0, 0, 0.35); 
+    pointer-events: none; 
+}
+project-head img {
+    display: block;
+}
 project-head picture {
     margin:0;
 }
 /* ========= Project Body ========= */
 project-body {
+    padding: 0.5rem;
     height:10rem;
     grid-column:1;
     grid-row:2;
-    background-color: var(--project-body-color-1);
+    background: var(--project-body-color-1);
     
 }
 
@@ -62,12 +74,15 @@ project-body {
 /* ========= Project Header ========= */
 project-header {
     display: grid;
-    grid-template-columns: 2fr 1fr; 
+    grid-template-columns: 2fr auto; 
     align-items: center;
-    margin: 0.5rem 0.25rem 1rem;
 }
 project-header h2 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
+    text-decoration: underline;
+}
+project-header time {
+    font-size: 1.25rem;
 }
 project-header h2, project-header time {
     color: white;
@@ -81,28 +96,45 @@ project-main {
     align-items: start;
 }
 project-main project-description{
+    color: var(--project-description-color-1);
     grid-column:1;
     grid-row:2;
 }
-
 project-main project-tech{
     grid-column:2;
     grid-row:2;
     overflow-y: auto;
     overflow-x: visible;
 }
+/* ========= Project Description ========= */
+
+project-description p {
+    color: var(--project-description-color-1);
+
+}
+
 /* ========= Project Tech Dropdown ========= */
 project-tech details {
     max-height: 100%; 
+    background: linear-gradient(to left, var(--columbia-blue),var(--celadon));
+
 }
-project-tech details summary {
+project-tech > details > summary {
     cursor: pointer;
+    color: white;
     font-weight: bold;
 }
 
-project-tech details > menu {
+project-tech > details > menu {
     overflow-y:auto;
     display:block;
+}
+project-tech > details > menu > li {
+    display:flex;
+    justify-content: center;
+    color:white;
+    background: var(--project-tech-menu-color-1);
+    background-color: #89E3D4;
 }
 
 /* ========= Project Link Hub ========= */
@@ -126,6 +158,10 @@ project-links ul li {
     background-clip: padding-box;
     border: var(--project-hub-border-style-1);
     border-radius: 10.5%;
+}
+project-links ul li:hover{
+    opacity: 75%;
+
 }
 project-links ul li a {
     color: var(--project-hub-font-color-1);
