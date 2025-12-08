@@ -101,7 +101,6 @@ project-body {
     
 }
 
-
 /* ========= Project Header ========= */
 project-header {
     display: grid;
@@ -202,10 +201,21 @@ project-links ul li {
     border-radius: 0.5rem;
 }
 project-links ul li:hover{
-    opacity: 0.75;
-
+    background: rgb(133, 123, 183); 
 }
 project-links ul li a {
     color: var(--project-hub-font-color-1);
     text-decoration: none;
+}
+.project-template {
+    position: relative;
+}
+
+.project-template::after {
+    content: "";
+    position: absolute;
+    inset: 0;             
+    background: rgba(0, 0, 0, 0.5); 
+    pointer-events: auto;
+    z-index:2; 
 }
