@@ -4,7 +4,9 @@
     --cyan-2: #89E3D4;
     --project-border-style-1: 0.5rem solid black;
     --project-body-color-1: linear-gradient(to left,var(--coral-pink), var(--melon));
-    
+    --project-body-color-2: linear-gradient(to left,var(--pink-lavender), var(--tropical-indigo));
+    --project-body-color-3: linear-gradient(to left,var(--coral-pink), var(--muted-rose));
+
     --project-tech-menu-color-1: linear-gradient(to bottom,#89E3D4, var(--tiffany-blue) );
 
 
@@ -96,7 +98,7 @@ project-head picture {
 /* ========= Project Body ========= */
 project-body {
     padding: 0.75rem;
-    background: var(--project-body-color-1);
+    background: var(--project-body-color-3);
     min-height: 10rem;  
     
 }
@@ -150,6 +152,7 @@ project-tech details {
     border-radius: 0.5rem;
 }
 project-tech > details > summary {
+    text-align: center;
     cursor: pointer;
     color: white;
     font-weight: bold;
@@ -218,4 +221,8 @@ project-links ul li a {
     background: rgba(0, 0, 0, 0.5); 
     pointer-events: auto;
     z-index:2; 
+}
+
+#ml-projects project-body {
+    background: var(--project-body-color-2);
 }
