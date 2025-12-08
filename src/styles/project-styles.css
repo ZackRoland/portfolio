@@ -1,7 +1,9 @@
+/* ========= Root Variables ========= */
 :root {
     --cyan-1: #9AC7BF;
     --cyan-2: #89E3D4;
 
+    --project-body-color-1: var(--glaucous);
    
     --project-hub-background-1: linear-gradient(to left,var(--cyan-1), var(--cyan-2));
     --project-hub-font-color-1: white;
@@ -9,6 +11,7 @@
     --project-hub-border-style-1: 0.5rem ridge var(--project-hub-border-color-1);
     --project-hub-border-style-2: 0.5rem solid var(--project-hub-border-color-1);
 }
+/* =========== 2. Global Tags ============= */
 main {
     height:max-content;
 }
@@ -18,7 +21,7 @@ main{
     justify-content: center;
 }
 h2 {
-    font-size:xx-large;
+    font-size:1rem;
     color: var(--dark-turqoise);
     text-transform: uppercase;
     text-decoration: underline;
@@ -26,15 +29,83 @@ h2 {
 h3 {
     text-decoration: underline;
 }
+/* ========= Project Card Core ========= */
 project-card {
+    margin: 1rem;
     display: grid;
-    -gap:1rem;
+    gap:0;
     width: 400px;
     height:max-content;
     grid-template-columns: 2fr 1fr;
-    border-radius: 1rem;
-    border: 1px solid currentColor;
+    border-radius: 0rem;
+    border: 0.5rem solid black;
 }
+/* ========= Project Head ========= */
+project-head {
+    grid-column:1;
+    grid-row:1;
+    border-bottom:0.5rem solid black;
+}
+project-head picture {
+    margin:0;
+}
+/* ========= Project Body ========= */
+project-body {
+    height:10rem;
+    grid-column:1;
+    grid-row:2;
+    background-color: var(--project-body-color-1);
+    
+}
+
+
+/* ========= Project Header ========= */
+project-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr; 
+    align-items: center;
+    margin: 0.5rem 0.25rem 1rem;
+}
+project-header h2 {
+    font-size: 1.5rem;
+}
+project-header h2, project-header time {
+    color: white;
+}
+/* ========= Project Main ========= */
+project-main {
+    display: grid;
+    grid-template-columns: 2fr  1fr;
+    grid-template-rows: auto 5rem;
+    gap:1rem;
+    align-items: start;
+}
+project-main project-description{
+    grid-column:1;
+    grid-row:2;
+}
+
+project-main project-tech{
+    grid-column:2;
+    grid-row:2;
+    overflow-y: auto;
+    overflow-x: visible;
+}
+/* ========= Project Tech Dropdown ========= */
+project-tech details {
+    max-height: 100%; 
+}
+project-tech details summary {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+project-tech details > menu {
+    overflow-y:auto;
+    display:block;
+}
+
+/* ========= Project Link Hub ========= */
 project-links {
     grid-column: 2;
     grid-row:1;
@@ -59,96 +130,3 @@ project-links ul li {
 project-links ul li a {
     color: var(--project-hub-font-color-1);
 }
-project-head {
-    grid-column:1;
-    grid-row:1
-}
-project-body {
-    grid-column:1;
-    grid-row:2;
-    background-color: aliceblue;
-
-}
-/* project-head {
-    grid-column: 1 / -1; 
-}
-
-project-image figure {
-    margin: 0;
-}
-
-project-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 0.75rem;
-}
-
-project-body {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-project-links ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-project-links li + li {
-    margin-top: 0.5rem;
-}
-
-project-links a {
-    display: inline-block;
-    padding: 0.4rem 0.8rem;
-    border-radius: 999px;
-    text-decoration: none;
-    border: 1px solid currentColor;
-} */
-
-/*
-project-card {
-    display: block;
-    margin: 2rem auto;              
-}
-  
-project-card > figure {
-    display: grid;
-    justify-items: center;          
-    text-align: center;             
-}
-  
-project-card figure > :is(img, iframe) { 
-    display: block; 
-}
-  
-project-card figure :is(img, iframe) + figcaption {
-    display: block;                 
-    margin-top: .5rem;
-    max-width: min(60ch, 100%);     
-    text-align: center;
-}
-  
-project-card figure > figcaption > a {
-    display: inline-block;
-    text-align: center;
-}
-  
-project-card figure > figcaption > svg {
-    display: block;
-    width: 100px;                    
-    height: 100px;
-    margin: .5rem auto 0;           
-}
-  
-project-card > span {
-    display: block;
-    margin-top: .5rem;
-    text-align: center;
-}
-  
-project-card > h3 { 
-    text-align: center; 
-}
-*/

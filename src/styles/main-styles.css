@@ -57,7 +57,7 @@
     color:var(--olivine);
     font-family: Helvetica, Arial, sans-serif;
 }
-menu, nav+button{
+header menu, nav+button{
     display: none;
 }
 body {
