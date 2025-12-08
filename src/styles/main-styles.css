@@ -5,7 +5,8 @@
     --base-text-color-1: white;
     --base-text-color-2: var(--chocolate-cosmos);
     --base-text-color-3: var(--pistachio);
-    --base-text-color: var(--base-text-color-3);
+    --base-text-color-4: var(--mint-green);
+    --base-text-color: var(--base-text-color-4);
     --nav-fill: var(--mossy-green);
     --nav-gradient: var(--dark-turqoise);
 
@@ -32,7 +33,14 @@
     --page-highlight:var(--light-cyan);
 
     --theme-svg-color: white;
-    --logo-text-size:2rem;
+    
+    --logo-size-1:2rem;
+    --logo-size-2:2.5rem;
+    --logo-size:var(--logo-size-2);
+    --logo-color-1: var(--base-text-color);
+    --logo-color-2: var(--mint-green);
+    --logo-color-3: color-mix(in srgb, var(--base-text-color), black 40%);
+    --logo-color:var(--logo-color-3);
 
 
     --body-fill: var(--mossy-green);
@@ -160,7 +168,8 @@ li.logo {
     margin-right: auto;
 }
 .logo a {
-    font-size: var(--logo-text-size);
+    font-size: var(--logo-size);
+    color: var(--logo-color);
     font-weight: bold;
     -letter-spacing: -0.5;
 }
