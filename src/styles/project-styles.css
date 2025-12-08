@@ -11,8 +11,8 @@
     --project-hub-background-1: linear-gradient(to left,var(--cyan-1), var(--cyan-2));
     --project-hub-font-color-1: white;
     --project-hub-border-color-1: white;
-    --project-hub-border-style-1: 0.5rem ridge var(--project-hub-border-color-1);
-    --project-hub-border-style-2: 0.5rem solid var(--project-hub-border-color-1);
+    --project-hub-border-style-1: 0.35rem ridge var(--project-hub-border-color-1);
+    --project-hub-border-style-2: 0.35rem solid var(--project-hub-border-color-1);
 
     --project-description-color-1:white;
 }
@@ -32,12 +32,13 @@ project-card {
     display: grid;
     gap:0;
     width: 400px;
-    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
     border-radius: 0;
     border: var(--project-border-style-1);
 }
 /* ========= Project Head ========= */
 project-head {
+    position:relative;
     grid-column:1;
     grid-row:1;
     border-bottom:0.5rem solid black;
@@ -139,24 +140,33 @@ project-tech > details > menu > li {
 
 /* ========= Project Link Hub ========= */
 project-links {
-    grid-column: 2;
-    grid-row:1;
+    position: absolute;
+    inset-inline: 0;  
+    top: 0;
+    z-index: 2;       
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;  
 }
+
 project-links ul {
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    margin: 0.5rem 0.5rem 0 0;
+    padding: 0;
 }
 project-links ul li {
-    display:flex;
     justify-content:center; 
-    align-items: center;
     text-transform: uppercase;
-    font-size: 1.5rem;
-    gap:1rem;
-    margin: 0 0 2rem 1rem;
-    padding: 1rem;
+    font-size: 1rem;
+    -gap:1rem;
+    -margin: 0 0 2rem 1rem;
+    padding: 0.5rem;
     background: var(--project-hub-background-1);
     background-clip: padding-box;
-    border: var(--project-hub-border-style-1);
+    border: var(--project-hub-border-style-2);
     border-radius: 10.5%;
 }
 project-links ul li:hover{
