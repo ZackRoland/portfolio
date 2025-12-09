@@ -139,7 +139,7 @@ function seedLocalStorageIfEmpty() {
             dateLabel: "04/2025 - 06/2025",
             description:
                 "A web-based card game modeled after the Card-Jitsu minigame from Disney's Club Penguin.",
-            imageSrc: "/src/assets/imgs/original/club-triton/home-page/home-page.png",
+            imageSrc: "../assets/imgs/original/club-triton/home-page/home-page.png",
             imageSmallSrc: "/src/assets/.../club-triton-small.png",
             imageAlt: "Screenshot of The Club Triton project",
             demoUrl: "https://cse110-sp25-group13.github.io/The_club_triton/pages/home-page.html",
