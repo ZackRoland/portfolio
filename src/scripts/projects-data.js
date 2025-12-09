@@ -8,18 +8,15 @@ const mlContainer = document.getElementById("ml-projects-container");
 const loadLocalBtn = document.getElementById("load-local");
 const loadRemoteBtn = document.getElementById("load-remote");
 
-// ---------- 1. HELPER: Clear existing cards ----------
 function clearCards() {
     webContainer.innerHTML = "";
     mlContainer.innerHTML = "";
 }
 
-// ---------- 2. HELPER: Render one project-card ----------
 function renderCard(project) {
     const card = document.createElement("project-card");
 
-    // Build inner HTML using your existing structure
-    // Fall back if some fields are missing
+  
     const demoLink = project.demoUrl ? `<li><a href="${project.demoUrl}">Demo</a></li>` : "";
     const blogLink = project.blogUrl ? `<li><a href="${project.blogUrl}">Blog</a></li>` : "";
     const repoLink = project.repoUrl ? `<li><a href="${project.repoUrl}">Repo</a></li>` : "";
@@ -90,7 +87,6 @@ function renderCard(project) {
     }
 }
 
-// ---------- 3. LOCAL DATA: Seed localStorage once ----------
 const LOCAL_STORAGE_KEY = "portfolio-projects";
 const SOURCE_KEY = "portfolio-projects-source";
 

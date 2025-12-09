@@ -53,8 +53,35 @@ main > section {
     color: #d4cfcf;
     padding: 0 0.35rem;
 }
+/*======= Project Buttons =======*/
+.project-controls {
+    margin: 1rem 0;
+    display: flex;
+    gap: 0.75rem;
+}
 
-/* Cards live inside this container div */
+.project-controls button {
+    color: var(--violet);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: 2px solid black;
+    border-radius: 0.4rem;
+    cursor: pointer;
+}
+
+#load-local {
+    background: #e8f5e9;       
+}
+
+#load-remote {
+    background: #e3f2fd;       
+}
+
+.project-controls button:hover {
+    opacity: 0.85;
+}
+
+/*========= Project Grid Styling ==========*/
 .project-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
