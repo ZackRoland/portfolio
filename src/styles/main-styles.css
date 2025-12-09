@@ -445,3 +445,27 @@ small {
     }
     
 }
+
+/* Enable default cross-fade for all content */
+html.view-transition {
+    view-transition-name: default;
+}
+
+/* Make content fade smoothly when DOM changes */
+::view-transition-old(default) {
+    animation: fadeOut 200ms ease forwards;
+}
+
+::view-transition-new(default) {
+    animation: fadeIn 250ms ease forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

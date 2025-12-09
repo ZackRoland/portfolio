@@ -1,0 +1,110 @@
+/* ===== CRUD Page Layout ===== */
+#crud-section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--project-body-color-3);
+    border: var(--project-border-style-1);
+    border-radius: 0.5rem;
+    max-width: 800px;
+    margin:auto;
+    width:50%;
+
+}
+
+#project-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin:auto;
+}
+
+#project-form fieldset {
+
+    border: 2px solid white;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding:1rem;
+}
+
+#project-form legend {
+    padding: 0 0.5rem;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold;
+}
+
+#project-form label {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: white;
+    font-weight: 600;
+}
+
+#project-form input,
+#project-form textarea,
+#project-form select {
+    width: 95%;
+    padding: 0.5rem 0.5rem;
+    border-radius: 0.4rem;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    background: rgba(0, 0, 0, 0.25);
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+#project-form input:focus,
+#project-form textarea:focus,
+#project-form select:focus {
+    border-color: var(--cyan-2);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Checkbox alignment */
+#project-form input[type="checkbox"] {
+    width: auto;
+    margin-right: 0.5rem;
+}
+
+/* ==== CRUD Buttons row ==== */
+.crud-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.crud-buttons button {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    cursor: pointer;
+
+    background: var(--project-hub-background-1);
+    border: var(--project-hub-border-style-2);
+    color: white;
+    text-transform: uppercase;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.crud-buttons button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.03);
+}
+
+.crud-buttons button:active {
+    transform: scale(0.98);
+}
+
+/* ===== JSON preview box ===== */
+#projects-json {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #111;
+    border-radius: 0.5rem;
+    border: 2px solid white;
+    color: #eee;
+    font-size: 0.9rem;
+}
