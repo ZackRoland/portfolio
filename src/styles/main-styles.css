@@ -32,7 +32,9 @@
     --nav-padding:2rem;
     --page-highlight:var(--light-cyan);
 
-    --theme-svg-color: white;
+    --theme-svg-color-1: white;
+    --theme-svg-color-2: var(--base-text-color);
+    --theme-svg-color: var(--theme-svg-color-2);
     
     --logo-size-1:2rem;
     --logo-size-2:2.5rem;
@@ -76,7 +78,7 @@
     
 }
 /* ========= Root Variables Dark Mode ========= */
-:root.dark {
+/* :root.dark {
     --nav-border-color: var(--mint-cream);
     --nav-fill: var(--charcoal-black);
     --nav-gradient: var(--smokey-black);
@@ -94,6 +96,63 @@
     --intro-text-color: var(--mint-cream);
     --two-color-outline: var(--tiffany-blue) 5px 5px, var(--keppel) -5px -5px;
     
+} */
+:root.dark {
+    --base-text-color-1: white;
+    --base-text-color: var(--base-text-color-1);
+
+    --nav-fill: var(--mossy-green);
+    --nav-gradient: var(--dark-turqoise);
+
+    --nav-bg-color-1: linear-gradient(to left,var(--nav-fill), var(--nav-gradient));
+    --nav-bg-color:var(--nav-bg-color-1);
+
+    --nav-text-color-1:white;
+    --nav-text-color-2: var(--base-text-color);
+    --nav-text-color:var(--nav-text-color-2);
+
+    --nav-border-color-1: var(--nav-text-color);
+    --nav-border-color-2:white;
+    --nav-border-color:var(--nav-border-color-1);
+
+    --page-highlight-1: var(--light-cyan);
+    --page-highlight:var(--page-highlight-1);
+
+    --theme-svg-color-1: white;
+    --theme-svg-color-2: var(--base-text-color);
+    --theme-svg-color: var(--theme-svg-color-2);
+    
+    --logo-color-1: var(--base-text-color);
+    --logo-color-2: var(--mint-green);
+    --logo-color-3: color-mix(in srgb, var(--base-text-color), black 40%);
+    --logo-color:var(--logo-color-3);
+
+
+    --body-fill: var(--mossy-green);
+    --body-gradient: var(--dark-turqoise);
+
+    --body-bg-color-1: linear-gradient(to left,var(--body-fill), var(--body-gradient));
+    --body-bg-color-3: linear-gradient(to right,var(--radiant-lapis-lazuli), var(--lapis-lazuli));
+    --body-bg-color-4: linear-gradient(to right,
+        color-mix(in srgb, var(--light-orange), var(--dark-turqoise) 10%), 
+        color-mix(in srgb, var(--cream),var(--dark-turqoise) 10%));
+    --body-bg-color-5: linear-gradient(to right,var(--violet),var(--wine), var(--chocolate-cosmos));
+    --body-bg-color:  var(--body-bg-color-5);
+
+    --main-fill:var(--mint-green);
+    --main-gradient: var(--dark-mint-green);
+
+    --main-bg-color-1: linear-gradient(to right,var(--charcoal-black),var(--gunmetal), var(--dark-mint-green),var(--pale-green));
+    --main-bg-color-2: var(--body-bg-color-2);
+    --main-bg-color-3: linear-gradient(to right,var(--light-violet),var(--light-wine), var(--light-chocolate-cosmos));
+    --main-bg-color: var(--main-bg-color-3);
+
+    --intro-text-color: white;
+    --two-color-outline: var(--celadon) 5px 5px, var(--tiffany-blue) -5px -5px;
+
+    --h1-color-1: var(--vanilla);
+    --h1-color-3: color-mix(in srgb, var(--base-text-color), black 20%);
+    --h1-color: var(--h1-color-1);
 }
 /* ========= Universal Tags ========= */
 * {
@@ -184,36 +243,17 @@ nav a[aria-current="page"] {
     color:var(--nav-text-color);
 
 }
-.theme-menu details {
-    cursor: pointer;
 
-}
-
-.theme-options {
-
+.theme-menu details summary{
     list-style: none;
-    padding-left: 0;
-    margin: 0.5rem 0 0 0;
+}
+.theme-menu ul {
+    gap:1.5rem;
 }
 
-.theme-options li button {
-    background: none;
-    border: none;
-    color: inherit;
-    padding: 0.25rem 0;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.theme-options li button {
-    background: none;
-    border: none;
-    padding: 0.25rem;
-    cursor: pointer;
-  }
- 
 li > button {
     background-color: transparent;
+    cursor:pointer;
     border: none;
 }  
 .icon-sun,
@@ -222,11 +262,11 @@ li > button {
     height: 1.5rem;
     stroke: var(--theme-svg-color);
     fill: none;
-    stroke-width: 1.8;
+    stroke-width: 2;
 }
   
 button[data-theme="light"]:hover .icon-sun {
-    transform: rotate(20deg);
+    transform: rotate(90deg);
     transition: transform 0.2s ease;
 }
 

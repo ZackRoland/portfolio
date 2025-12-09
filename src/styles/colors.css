@@ -31,6 +31,7 @@
     --crayola-red: #EF2D56;
     --cinnabar: #F4442E;
     --wine: #6A2E35;
+    --light-wine: #904a52;
     --light-wine: #6e464b;
     --pale-red: #E5625E; 
     --light-coral: #F08080;
@@ -41,6 +42,7 @@
     --melon: #F8AD9D;
     --bittersweet: #FF785A;
     --chocolate-cosmos: #561d25;
+    --light-chocolate-cosmos: #853b45;
     /* Yellows */
     --vanilla: #ECE4B7;
     --cream: #F4FEC1;
@@ -48,11 +50,13 @@
     /* Oranges */
     --sunset: #FBD1A2;
     --light-orange: #FFDAB9;
+    --dark-orange: #885528;
     --lighter-orange: #fae3cf;
     /* Purples */
     --pink-lavender: #D4ADCF;
     --periwinkle: #D4C2FC;
     --violet: #4B2840;
+    --light-violet: #8d5d7e;
     --dark-magenta: #861388;
     --rose-taupe: #785964;
     --tropical-indigo: #998FC7;
