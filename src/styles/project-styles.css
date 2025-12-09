@@ -26,30 +26,38 @@ main {
     display:block;
 }
 
+/* Section itself is just a block with spacing */
 main > section {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 cards on large screens */
-    gap: 1.5rem;
-    align-items: stretch;
     margin: 1.5rem 0 0 0;
 }
 
+/* Cards live inside this container div */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    align-items: stretch;
+    margin-top: 1rem;
+}
+
+/* Heading sits above the grid */
 main > section > h2 {
-    grid-column: 1 / -1;
     margin: 0 0 0.5rem 0;
 }
 
+/* Responsive breakpoints now target .project-grid */
 @media (max-width: 900px) {
-    main > section {
-        grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 cards */
+    .project-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
 @media (max-width: 600px) {
-    main > section {
-        grid-template-columns: 1fr; 
+    .project-grid {
+        grid-template-columns: 1fr;
     }
 }
+
 
 /* ========= Project Card Core ========= */
 project-card {
