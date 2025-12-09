@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" class="view-transition">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manage Projects (CRUD)</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Projects (CRUD)</title>
 
-  <link rel="stylesheet" href="../styles/main-styles.css">
-  <link rel="stylesheet" href="../styles/project-styles.css">
+    <link rel="stylesheet" href="../styles/main-styles.css">
+    <link rel="stylesheet" href="../styles/project-styles.css">
+    <link rel="stylesheet" href="../styles/project-crud-styles.css">
 
-  <script src="../scripts/theme-toggle.js" defer></script>
-  <script src="../scripts/view-transitions.js" defer></script>
 
-  <script src="../scripts/projects-crud.js" defer></script>
-</head>
+    <script src="../scripts/theme-toggle.js" defer></script>
+    <script src="../scripts/view-transitions.js" defer></script>
+
+    <script src="../scripts/projects-crud.js" defer></script>
+    </head>
 <body>
   <header>
     <nav id="navigation">
@@ -22,6 +24,41 @@
         <li><a href="./about.html">About</a></li>
         <li><a href="./projects.html" aria-current="page">Projects</a></li>
         <li><a href="./contact.html">Contact Me</a></li>
+        <li class="theme-menu">
+            <details open>
+                <summary hidden>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" focusable="false" aria-hidden="true" data-icon="settings">
+                        <path d="M10.675 21V15.375H12.175V17.45H21V18.95H12.175V21H10.675ZM3 18.95V17.45H9.175V18.95H3ZM7.675 14.8V12.75H3V11.25H7.675V9.15H9.175V14.8H7.675ZM10.675 12.75V11.25H21V12.75H10.675ZM14.825 8.625V3H16.325V5.05H21V6.55H16.325V8.625H14.825ZM3 6.55V5.05H13.325V6.55H3Z" fill="currentColor" style="fill: currentColor;"></path>
+                    </svg>
+                    <span id="theme-menu-heading" hidden>Theme</span>
+                </summary>
+                <ul>
+                    <li>
+                        <button type="button" data-theme="light" aria-label="Use light theme">
+                            <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                              <circle cx="12" cy="12" r="4" />
+                              <line x1="12" y1="1"  x2="12" y2="4"  />
+                              <line x1="12" y1="20" x2="12" y2="23" />
+                              <line x1="1"  y1="12" x2="4"  y2="12" />
+                              <line x1="20" y1="12" x2="23" y2="12" />
+                              <line x1="4.2"  y1="4.2"  x2="6.3"  y2="6.3"  />
+                              <line x1="17.7" y1="17.7" x2="19.8" y2="19.8" />
+                              <line x1="4.2"  y1="19.8" x2="6.3"  y2="17.7" />
+                              <line x1="17.7" y1="6.3"  x2="19.8" y2="4.2"  />
+                            </svg>
+                          </button>
+                    </li>
+                    <li>
+                        <button type="button" data-theme="dark" aria-label="Use dark theme">
+                            <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                              <path d="M18.5 15.5A7 7 0 0 1 9 5.5
+                                       A6 6 0 1 0 18.5 15.5Z" />
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </details>
+        </li>
       </ul>
     </nav>
   </header>
