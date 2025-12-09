@@ -26,9 +26,32 @@ main {
     display:block;
 }
 
-/* Section itself is just a block with spacing */
 main > section {
     margin: 1.5rem 0 0 0;
+}
+/*============ Project Nav ============*/
+#projects-breadcrumb {
+    margin: 0.75rem 0 2rem 0;
+    padding: 0;
+    font-size: 1.1rem;
+    text-align: left;  
+    color: var(--nav-text-color, #fff);
+}
+
+#projects-breadcrumb a {
+    color: #e3b6d7; 
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 500;
+}
+
+#projects-breadcrumb a:hover {
+    color: #ffffff;  
+}
+
+#projects-breadcrumb span {
+    color: #d4cfcf;
+    padding: 0 0.35rem;
 }
 
 /* Cards live inside this container div */

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" class="view-transition">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Projects (CRUD)</title>
+
+  <link rel="stylesheet" href="../styles/main-styles.css">
+  <link rel="stylesheet" href="../styles/project-styles.css">
+
+  <script src="../scripts/theme-toggle.js" defer></script>
+  <script src="../scripts/view-transitions.js" defer></script>
+
+  <script src="../scripts/projects-crud.js" defer></script>
+</head>
+<body>
+  <header>
+    <nav id="navigation">
+      <ul>
+        <li class="logo"><a href="./index.html">ZR</a></li>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./projects.html" aria-current="page">Projects</a></li>
+        <li><a href="./contact.html">Contact Me</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Manage Projects (CRUD)</h1>
+    <nav id="projects-breadcrumb" aria-label="Projects breadcrumb">
+        <a href="./index.html">Home</a>
+        <span>›</span>
+        <a href="./projects.html">Projects</a>
+        <span>››</span>
+        <span class="breadcrumb-current" aria-current="page">Manage Projects</span>
+    </nav>
+    <p>
+      Use this form to <strong>create</strong>, <strong>update</strong>, or <strong>delete</strong> projects
+      stored in <code>localStorage</code>. Changes will appear the next time you use
+      <em>Load Local</em> on the Projects page.
+    </p>
+
+    <section id="crud-section" aria-label="Project CRUD form">
+      <form id="project-form">
+        <fieldset>
+          <legend>Project Data</legend>
+
+          <label for="proj-id">Project ID (unique, no spaces)</label>
+          <input id="proj-id" name="proj-id" required>
+
+          <label for="proj-category">Category</label>
+          <select id="proj-category" name="proj-category">
+            <option value="web">Web &amp; Game</option>
+            <option value="ml">ML &amp; Data</option>
+          </select>
+
+          <label for="proj-title">Title</label>
+          <input id="proj-title" name="proj-title" required>
+
+          <label for="proj-date-iso">Date (ISO, e.g. 2025-06-01)</label>
+          <input id="proj-date-iso" name="proj-date-iso" type="date">
+
+          <label for="proj-date-label">Date Label (e.g. 06/2025)</label>
+          <input id="proj-date-label" name="proj-date-label">
+
+          <label for="proj-description">Description</label>
+          <textarea id="proj-description" name="proj-description" rows="3"></textarea>
+
+          <label for="proj-image-src">Image URL</label>
+          <input id="proj-image-src" name="proj-image-src" placeholder="https://...">
+
+          <label for="proj-demo-url">Demo URL</label>
+          <input id="proj-demo-url" name="proj-demo-url" placeholder="https://...">
+
+          <label for="proj-repo-url">Repo URL</label>
+          <input id="proj-repo-url" name="proj-repo-url" placeholder="https://...">
+
+          <label for="proj-blog-url">Blog URL</label>
+          <input id="proj-blog-url" name="proj-blog-url" placeholder="https://...">
+
+          <label for="proj-tech-stack">Tech Stack (comma-separated)</label>
+          <input id="proj-tech-stack" name="proj-tech-stack" placeholder="HTML, CSS, JS">
+
+          <label>
+            <input type="checkbox" id="proj-template">
+            Is template card (apply overlay)?
+          </label>
+        </fieldset>
+
+        <div class="crud-buttons">
+          <button type="button" id="create-btn">Create</button>
+          <button type="button" id="update-btn">Update</button>
+          <button type="button" id="delete-btn">Delete</button>
+        </div>
+      </form>
+    </section>
+
+    <section aria-label="Current local projects">
+      <h2>Current Local Projects</h2>
+      <p>This is what is currently stored under <code>portfolio-projects</code> in localStorage.</p>
+      <pre id="projects-json" style="max-height: 20rem; overflow:auto; background: #111; color:#eee; padding:0.5rem;"></pre>
+    </section>
+  </main>
+
+  <footer>
+    <small>&copy; 2025 Zack Roland</small>
+  </footer>
+</body>
+</html>

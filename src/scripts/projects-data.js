@@ -92,6 +92,39 @@ function renderCard(project) {
 
 // ---------- 3. LOCAL DATA: Seed localStorage once ----------
 const LOCAL_STORAGE_KEY = "portfolio-projects";
+const SOURCE_KEY = "portfolio-projects-source";
+
+async function loadLocalProjects() {
+    clearCards();
+    seedLocalStorageIfEmpty();
+
+    const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
+    const projects = stored ? JSON.parse(stored) : [];
+    projects.forEach(renderCard);
+
+    localStorage.setItem(SOURCE_KEY, "local");
+}
+
+async function loadRemoteProjects() {
+    clearCards();
+
+    try {
+        const res = await fetch("https://my-json-server.typicode.com/ZackRoland/portfolio-remote-projects/projects");
+
+        if (!res.ok) {
+            console.error("Failed to load remote data:", res.status, res.statusText);
+            return;
+        }
+
+        const projects = await res.json();
+        projects.forEach(renderCard);
+
+        localStorage.setItem(SOURCE_KEY, "remote");
+    } catch (err) {
+        console.error("Error loading remote projects:", err);
+    }
+}
+
 
 function seedLocalStorageIfEmpty() {
     if (localStorage.getItem(LOCAL_STORAGE_KEY)) return;
@@ -193,34 +226,24 @@ function seedLocalStorageIfEmpty() {
 
 // ---------- 4. BUTTON HANDLERS ----------
 
-// Load Local
+
+
 loadLocalBtn?.addEventListener("click", () => {
-    clearCards();
+    loadLocalProjects();
+});
+
+loadRemoteBtn?.addEventListener("click", () => {
+    loadRemoteProjects();
+});
+window.addEventListener("DOMContentLoaded", () => {
     seedLocalStorageIfEmpty();
 
-    const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
-    const projects = stored ? JSON.parse(stored) : [];
+    const source = localStorage.getItem(SOURCE_KEY) || "local";
 
-    projects.forEach(renderCard);
-});
-
-// Load Remote
-loadRemoteBtn?.addEventListener("click", async () => {
-    clearCards();
-
-    try {
-        const res = await fetch("https://my-json-server.typicode.com/ZackRoland/portfolio-remote-projects/projects");
-
-        if (!res.ok) {
-            console.error("Failed to load remote data:", res.status, res.statusText);
-            return;
-        }
-
-        const projects = await res.json();
-
-        projects.forEach(renderCard);
-
-    } catch (err) {
-        console.error("Error loading remote projects:", err);
+    if (source === "remote") {
+        loadRemoteProjects();
+    } else {
+        loadLocalProjects();
     }
 });
+
