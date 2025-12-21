@@ -1,6 +1,8 @@
 :root {
-    --form-background-color-1:var(--gunmetal-light);
-    
+    --form-bg-color-1:var(--gunmetal-light);
+    --form-bg-color-2: none;
+    --form-bg-color: var(--form-bg-color-2);
+
     --fieldset-border-color-1: black;
     --legend-font-size-1:1.5rem;
     --label-color-1: white;
@@ -14,20 +16,45 @@
 
 }
 main {
-    -height: max-content;
-    min-height: 75vh;
+    height: max-content;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding:2rem;     
 }
+h1 { 
+   align-self: center;
+}
+section[id="contact-head"] > * {
+    margin: 1rem 0;
+    font-size: 1.125rem;
+}
+hgroup[id="contact-greeting"] > h2{
+    font-style: italic;
+    font-weight: 550;
+    margin: 0 0 1rem 0;
+}
+p[id="contact-cta"] {
+    display:flex;
+    flex-direction:column;
+    justify-content: flex-start;
+}
+p[id="contact-cta"] > a {
+    font-size: 1.25rem;
+    margin: 1rem 0 0 0;
 
+}
+p[id="contact-desc"] {
+    width:60ch;
+}
 form {
     max-width:80%;
-    -background-color: var(--form-background-color-1);
+    background-color: var(--form-bg-color);
 }
 fieldset {
     display: flex;
     flex-direction: column;
-    -border: 0.25rem solid var(--fieldset-border-color-1);
     border:none;
-    padding:1rem;
 }
 legend {
     font-size: var(--legend-font-size-1);
@@ -70,6 +97,10 @@ select{
 }
 input, textarea {
     color: var(--input-field-text-color-1);
+}
+
+input[id="first-name"],input[id="last-name"]{
+    width:50%;
 }
 textarea {
     resize: vertical;

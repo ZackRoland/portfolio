@@ -71,6 +71,10 @@
     --h1-color-3: color-mix(in srgb, var(--base-text-color), black 20%);
     --h1-color: var(--h1-color-3);
 
+    --h1-font-size-1: 2rem;
+    --h1-font-size-2: 3rem;
+    --h1-font-size: var(--h1-font-size-2);
+
     --header-height:5rem; 
     
     --footer-height:3.5rem;
@@ -78,25 +82,6 @@
     
 }
 /* ========= Root Variables Dark Mode ========= */
-/* :root.dark {
-    --nav-border-color: var(--mint-cream);
-    --nav-fill: var(--charcoal-black);
-    --nav-gradient: var(--smokey-black);
-    --nav-background-color: var(--charcoal-black);
-    --nav-background-color-2: var(--smokey-black);
-    --nav-text-color: var(--mint-cream);
-    --page-highlight: var(--tiffany-blue);
-
-    --body-fill: var(--charcoal-black);
-    --body-gradient: var(--gunmetal);
-
-    --main-fill: var(--dark-turqoise);
-    --main-gradient: var(--charcoal);
-
-    --intro-text-color: var(--mint-cream);
-    --two-color-outline: var(--tiffany-blue) 5px 5px, var(--keppel) -5px -5px;
-    
-} */
 :root.dark {
     --base-text-color-1: white;
     --base-text-color: var(--base-text-color-1);
@@ -166,6 +151,7 @@ h1 {
     display:flex;
     justify-content: center;
     color: var(--h1-color);
+    font-size: var(--h1-font-size)
 }
 /* ========= Body Tags ========= */
 body {
