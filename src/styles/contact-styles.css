@@ -1,20 +1,52 @@
+/* ========= Root Variables ========= */
+
 :root {
+    --h2-font-color-1:var(--muted-rose);
+    --h2-font-color-2:inherit;
+    --h2-font-color: var(--h2-font-color-1);
+
+    --contact-head-font-size-1:1.125rem;
+    --contact-head-font-size: var(--contact-head-font-size-1);
+
+
     --form-bg-color-1:var(--gunmetal-light);
     --form-bg-color-2: none;
     --form-bg-color: var(--form-bg-color-2);
 
     --fieldset-border-color-1: black;
+    
     --legend-font-size-1:1.5rem;
-    --label-color-1: white;
+    --legend-font-size-2:2rem;
+    --legend-font-size: var(--legend-font-size-2);
+    --legend-font-color-1:  var(--dark-turqoise);
+    --legend-font-color-2: inherit;
+    --legend-font-color: var(--legend-font-color-2);
+   
+    --label-font-size-1:1.5rem;
+    --label-font-size-2:var(--contact-head-font-size);
+    --label-font-color-1: white;
+    --label-font-color-2: inherit;
+    --label-font-color-3: var(--h2-font-color);
+    --label-font-size: var(--label-font-size-2);
+    --label-font-color: var(--label-font-color-3);
+
 
     --input-field-text-color-1: black;
     --field-width: 20rem;
     --field-text-size-1: 1rem;
     --select-text-color-1: black;
 
+    --info-font-color-1: var(--light-orange);
+    --info-font-color-2: inherit;
+    --info-font-color-3: var(--mildsweet);
+    --info-font-color: var(--info-font-color-3);
+
     --required-color: var(--crayola-red);
 
 }
+
+/* ========= Global Vars ========= */
+
 main {
     height: max-content;
     display:flex;
@@ -25,14 +57,17 @@ main {
 h1 { 
    align-self: center;
 }
+/* ========= Contact Heading ========= */
+
 section[id="contact-head"] > * {
     margin: 1rem 0;
-    font-size: 1.125rem;
+    font-size: var(--contact-head-font-size);
 }
 hgroup[id="contact-greeting"] > h2{
     font-style: italic;
     font-weight: 550;
     margin: 0 0 1rem 0;
+    color:var(--h2-font-color);
 }
 p[id="contact-cta"] {
     display:flex;
@@ -47,6 +82,8 @@ p[id="contact-cta"] > a {
 p[id="contact-desc"] {
     width:60ch;
 }
+/* ========= General Form Styling ========= */
+
 form {
     max-width:80%;
     background-color: var(--form-bg-color);
@@ -56,38 +93,58 @@ fieldset {
     flex-direction: column;
     border:none;
 }
-legend {
-    font-size: var(--legend-font-size-1);
-    font-weight: bold;
-    color: var(--dark-turqoise);
-    text-align: left;
-    margin:0 0 1rem 0;
+fieldset > *{
+    margin:1rem 0 0 0;
 }
-fieldset label {
-    color: var(--label-color-1);
-}
+/* ========= Legend Styling ========= */
 
-select {
-    cursor: pointer;
+legend[id="form-heading"] {
+    -margin:0 0 1rem 0;
+    font-size: var(--legend-font-size);
+    font-weight: bold;
+    color: var(--legend-font-color);
+    text-align: left;
+    text-decoration: underline;
+
 }
+/* ========= Form-field Styling ========= */
 form-field {
     display:flex;
     flex-direction: column;
     justify-items: flex-start;
 }
-input, select, textarea {
+
+form-field > label {
+    color: var(--label-font-color);
+    font-size: var(--label-font-size);
+}
+
+form-field > select {
+    cursor: pointer;
+}
+
+.field {
     width:var(--field-width);
     padding: 0.3rem 0.4rem;
-    border: 2px solid transparent;
+    border: 2.5px solid transparent;
     border-radius: 0.5rem;
     font-size: var(--field-text-size-1);
     background-color: hsl(0 0% 110% / .5);
     font-family: inherit;
-    border:none;
+    margin: 0.5rem 0;
+    background-image: linear-gradient(
+        135deg,
+        var(--mint-cream), 
+        var(--lighter-cyan)), 
+        linear-gradient(135deg, var(--keppel), 
+        var(--tiffany-blue));
+    background-origin: border-box; 
+    background-clip: padding-box, border-box;
+    box-shadow: 2px 2px oklch(0% 0 0 / .1);
 }
-.info {
+output[class="info"] {
     font-size:calc(var(--field-text-size-1)*0.9);
-    color: var(--light-orange);
+    color: var(--info-font-color);
 }
 
 select{
@@ -99,9 +156,6 @@ input, textarea {
     color: var(--input-field-text-color-1);
 }
 
-input[id="first-name"],input[id="last-name"]{
-    width:50%;
-}
 textarea {
     resize: vertical;
     min-height: 8rem;
