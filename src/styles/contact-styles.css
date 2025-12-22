@@ -6,7 +6,8 @@
     --h2-font-color: var(--h2-font-color-1);
 
     --contact-head-font-size-1:1.125rem;
-    --contact-head-font-size: var(--contact-head-font-size-1);
+    --contact-head-font-size-2:1.25rem;
+    --contact-head-font-size: var(--contact-head-font-size-2);
 
 
     --form-bg-color-1:var(--gunmetal-light);
@@ -51,13 +52,28 @@
 
 main {
     height: max-content;
-    display:flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding:2rem;     
+    display:grid;
+    grid-template-columns:1.5fr 1fr;
+    grid-template-rows:auto 1fr;
+
+    padding: 2rem 4rem;
+     
 }
-h1 { 
-   align-self: center;
+h1 {
+    grid-row:1;
+    grid-column: 1 / -1;
+
+}
+div[class="layout"] {
+    grid-row:2;
+    grid-column:1;
+}
+aside {
+    grid-row:2;
+    grid-column:2;
+    border-left: 2px solid black;
+    height:100%;
+    margin:1rem 0 0 0;
 }
 /* ========= Contact Heading ========= */
 
