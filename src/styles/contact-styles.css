@@ -9,12 +9,18 @@
     --contact-head-font-size-2: 1.25rem;
     --contact-head-font-size: var(--contact-head-font-size-2);
 
+    --contact-cta-font-size-1: 1.5rem;
+    --contact-cta-font-size:var(--contact-cta-font-size-1);
+
 
     --form-bg-color-1:var(--gunmetal-light);
     --form-bg-color-2: none;
     --form-bg-color-3: var(--mint-cream);
     --form-bg-color-4: var(--light-orange);
     --form-bg-color: var(--form-bg-color-2);
+
+    --form-width-1: 40rem;
+    --form-width: var(--form-width-1);
 
     --fieldset-border-color-1: black;
     
@@ -28,7 +34,8 @@
     --legend-font-color: var(--legend-font-color-3);
    
     --label-font-size-1:1.5rem;
-    --label-font-size-2:var(--contact-head-font-size);
+    --label-font-size-2:1.35rem;
+    --label-font-size-3:var(--contact-head-font-size);
     --label-font-color-1: white;
     --label-font-color-2: inherit;
     --label-font-color-3: var(--h2-font-color);
@@ -36,9 +43,15 @@
     --label-font-color: var(--label-font-color-3);
 
 
-    --input-field-text-color-1: black;
+    --field-text-color-1: black;
+    --field-text-color: var(--field-text-color-1);
     --field-width: 20rem;
-    --field-text-size-1: 1rem;
+    --field-font-size-1: 1rem;
+    --field-font-size-2: var(--contact-head-font-size);
+    --field-font-size: var(--field-font-size-2);
+
+    --output-info-font-size-1: calc(var(--field-text-size-1)*0.9);
+    --output-info-font-size: var(--output-info-font-size-1);
     --select-text-color-1: black;
 
     --info-font-color-1: var(--light-orange);
@@ -47,6 +60,8 @@
     --info-font-color: var(--info-font-color-3);
 
     --required-color: var(--crayola-red);
+
+    --contact-btn-width: 15rem;
 
 }
 
@@ -57,6 +72,7 @@ main {
     display:grid;
     grid-template-columns:1.75fr 1fr;
     grid-template-rows:auto 1fr;
+    gap:1rem;
     padding: 2rem 4rem;
      
 }
@@ -65,7 +81,7 @@ h1 {
     grid-column: 1 / -1;
 
 }
-div[class="layout"] {
+div.layout {
     height:100%;
     grid-row:2;
     grid-column:1;
@@ -75,49 +91,46 @@ aside {
     grid-column:2;
     -border-left: 2px solid black;
     height:100%;
-    margin:1rem 0 0 0;
 }
 /* ========= Contact Heading ========= */
 
-section[id="contact-head"] > * {
-    margin: 1rem 0;
+section#contact-head > * {
+    margin: 0 0 1rem 0;
     font-size: var(--contact-head-font-size);
 }
-hgroup[id="contact-greeting"] > h2{
+hgroup#contact-greeting > h2{
     font-style: italic;
     font-weight: 550;
     margin: 0 0 1rem 0;
     color:var(--h2-font-color);
 }
-p[id="contact-cta"] {
+p#contact-cta {
     display:flex;
     flex-direction:column;
     justify-content: flex-start;
 }
-p[id="contact-cta"] > a {
-    font-size: 1.25rem;
+p#contact-cta > a {
+    font-size: var(--contact-cta-font-size);
     margin: 1rem 0 0 0;
     color: var(--legend-font-color);
     font-weight: bold;
 
 }
 p[id="contact-desc"] {
-    width:60ch;
+    max-width:60ch;
 }
 /* ========= General Form Styling ========= */
 
 form {
     background-color: var(--form-bg-color);
-    width:23rem;
-    -padding:2rem;
+    width:var(--form-width);
 }
 fieldset {
-    display: flex;
-    flex-direction: column;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
     border:none;
-    
+    gap:1rem;
     margin:auto;
-    
 }
 fieldset > *{
     margin:1rem 0 0 0;
@@ -134,12 +147,24 @@ legend[id="form-heading"] {
 
 }
 /* ========= Form-field Styling ========= */
-form-field {
-    display:flex;
-    flex-direction: column;
-    justify-items: flex-start;
+form-field.full-name, form-field.email {
+    grid-row:1;
 }
+form-field.full-name,form-field.job-title {
+    grid-column:1;
+}
+form-field.job-title, form-field.contact-reason {
+    grid-row:2;
+}
+form-field.msg {
+    grid-row:3;
+    grid-column:1/-1;
 
+}
+form-field.contact-submit {
+    grid-row:4;
+    grid-column:1/-1;
+}
 form-field > label {
     color: var(--label-font-color);
     font-size: var(--label-font-size);
@@ -155,50 +180,46 @@ form-field > select {
     display: block;
     padding: 0.3rem 0.4rem;
     border: 2.5px solid transparent;
+    color: var(--field-text-color);
     border-radius: 0.5rem;
-    font-size: var(--field-text-size-1);
+    font-size: var(--field-font-size);
     background-color: hsl(0 0% 110% / .5);
     font-family: inherit;
     margin: 0.5rem 0;
     background-image: linear-gradient(
-        135deg,
+        to left,
         var(--mint-cream), 
         var(--lighter-cyan)), 
         linear-gradient(135deg, var(--keppel), 
         var(--tiffany-blue));
     background-origin: border-box; 
     background-clip: padding-box, border-box;
-    box-shadow: 2px 2px oklch(0% 0 0 / .1);
+    box-shadow: 4px 4px oklch(0% 0 0 / .1);
 }
-output[class="info"] {
-    font-size:calc(var(--field-text-size-1)*0.9);
+output.info {
+    font-size:var(--output-info-font-size);
     color: var(--info-font-color);
 }
 
 select{
-    color: var(--select-text-color-1);
     text-align: center;
-}
-input, textarea {
-    color: var(--input-field-text-color-1);
 }
 
 textarea {
-    resize: vertical;
     min-height: 8rem;
 }
 .req {
     color: var(--required-color);
 }  
-button[type="submit"] {
-    margin: 1rem 0 0 0;
-    width: 20rem;
+button#submit {
+    margin: 0 auto;
+    width: var(--contact-btn-width);
     padding: 0.5rem 0.5rem;
     border: none;
     border-radius: 0.5rem;
     background: var(--wine);
     color: white;
-    font-size: 1rem;
+    font-size: var(--field-font-size);
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
 }
@@ -228,27 +249,28 @@ input:user-invalid, select:user-invalid, textarea:user-invalid {
 }
 /*============ Aside Styling============*/
 :root {
+    --feature-font-size-1: 1.25rem;
+    --feature-font-size-2: var(--contact-head-font-size);
+    --feature-font-size: var(--feature-font-size-1);
     --feature-h2-font-size-1: 2rem;
     --feature-h2-font-size: var(--feature-h2-font-size-1);
 
     --feature-h3-font-color-1: var(--marian-blue);
     --feature-h3-font-color-2: var(--keppel);
     --feature-h3-font-color-3: var(--mossy-green);
-
-
     --feature-h3-font-color: var(--feature-h3-font-color-3);
 } 
-aside[id="portfolio-snapshot"] {
+aside#portfolio-snapshot {
     display:flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    font-size: 1.125rem;
+    font-size: var(--feature-font-size)
 }
-aside[id="portfolio-snapshot"] > * {
+aside#portfolio-snapshot > * {
     margin: 0 0 1rem 0;
 }
-aside[id="portfolio-snapshot"] > h2 {
+aside#portfolio-snapshot > h2 {
     font-size: var(--feature-h2-font-size);
     color: var(--h2-font-color);
     align-content: center;
@@ -322,8 +344,9 @@ ul.diamond-bullets li::before{
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 3l9 9-9 9-9-9 9-9z'/%3E%3C/svg%3E") center/contain no-repeat;
             mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 3l9 9-9 9-9-9 9-9z'/%3E%3C/svg%3E") center/contain no-repeat;
 }  
-feature-card[id="about-feature-card"] > ul {
+feature-card#about-feature-card > ul {
     display:flex;
     list-style: none;
     justify-content: space-around;
+    margin:none;
 } 

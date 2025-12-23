@@ -89,7 +89,7 @@
             <form id="contact-form" action="https://httpbin.org/post" method="post" novalidate>
                 <fieldset>
                     <legend id="form-heading">Contact Form</legend>
-                    <form-field>
+                    <form-field class="full-name">
                         <label for="full-name">
                             <span class="req">*</span>
                             Name:
@@ -109,7 +109,7 @@
                         <output class="info" id="full-name-info">Enter your full name. 
                             Diacritical marks are supported.</output>
                     </form-field>
-                    <form-field>
+                    <form-field class="email">
                         <label for="email">
                             <span class="req">*</span>
                             Email:
@@ -125,7 +125,7 @@
                         <output class="error" id="email-error"></output>
                         <output class="info" id="email-info">Enter your email.</output>
                     </form-field>
-                    <form-field>
+                    <form-field class="job-title">
                         <label for="job-title">
                             <span class="req">*</span>
                             Job title:
@@ -142,10 +142,10 @@
                         <output class="error" id="job-title-error"></output>
                         <output class="info" id="job-title-info">Enter your current job title.</output>
                     </form-field>
-                    <form-field>
+                    <form-field class="contact-reason">
                         <label for="contact-reason">
                             <span class="req">*</span>
-                            Please select a reason for contacting
+                            Select a contact reason
                         </label>
                         <select name="contact-reason" class="field" id="contact-reason" required>
                             <option value="" selected disabled hidden>-- Select Reason --</option>
@@ -157,7 +157,7 @@
                         <output class="info" id="contact-info"></output>
                     </form-field>
                     <input type="hidden" name="possible_bot" id="possible_bot" value="true">
-                    <form-field>
+                    <form-field class="msg">
                         <label for="message" >Enquiry</label>
                         <textarea 
                         class="field"
@@ -174,7 +174,7 @@
                         <output class="error" id="msg-error"></output>
                         <output class="info" id="msg-info"></output>
                     </form-field>
-                    <form-field>
+                    <form-field class="contact-submit">
                         <label for="submit" hidden>Form Submission</label>
                         <input type="hidden" name="form-errors" class="field" id="form-errors" value="[]">
                         <button type="submit" name="submit" id="submit">Send</button>
