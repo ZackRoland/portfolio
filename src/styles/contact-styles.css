@@ -12,6 +12,8 @@
     --contact-cta-font-size-1: 1.5rem;
     --contact-cta-font-size:var(--contact-cta-font-size-1);
 
+    --contact-border-color-1: var(--mossy-green);
+    --contact-border-color: var(--contact-border-color-1);
 
     --form-bg-color-1:var(--gunmetal-light);
     --form-bg-color-2: none;
@@ -73,7 +75,8 @@ main {
     grid-template-columns:1.75fr 1fr;
     grid-template-rows:auto 1fr;
     gap:1rem;
-    padding: 2rem 4rem;
+    padding-block: clamp(1rem, calc(1rem + 0.8vw), 2.5rem);
+    padding-inline: clamp(2rem, calc(2rem + 2vw), 6rem);
      
 }
 h1 {
@@ -89,8 +92,9 @@ div.layout {
 aside {
     grid-row:2;
     grid-column:2;
-    -border-left: 2px solid black;
+    border-left: 1.5px solid var(--contact-border-color);
     height:100%;
+    padding: 0 0 0 1rem;
 }
 /* ========= Contact Heading ========= */
 
@@ -118,12 +122,14 @@ p#contact-cta > a {
 }
 p[id="contact-desc"] {
     max-width:60ch;
+    width:100%;
 }
 /* ========= General Form Styling ========= */
 
 form {
     background-color: var(--form-bg-color);
-    width:var(--form-width);
+    max-width:var(--form-width);
+    width:100%;
 }
 fieldset {
     display:grid;
@@ -269,6 +275,8 @@ aside#portfolio-snapshot {
 }
 aside#portfolio-snapshot > * {
     margin: 0 0 1rem 0;
+    border-bottom: 1.5px solid var(--contact-border-color);
+
 }
 aside#portfolio-snapshot > h2 {
     font-size: var(--feature-h2-font-size);
@@ -350,3 +358,31 @@ feature-card#about-feature-card > ul {
     justify-content: space-around;
     margin:none;
 } 
+
+/*============ Layout Change Breakpoint =============*/
+@media (max-width: 900px) {
+    main {
+        grid-template-columns: 1fr;
+        gap:2rem;
+    }
+    div.layout, aside#portfolio-snapshot {
+        grid-column:1;
+    }
+    div.layout {
+        grid-row: 2;
+    }
+    aside#portfolio-snapshot {
+        grid-row:3;
+        border-top: 2px solid var(--contact-border-color);
+        padding: 2rem 0 0 0;
+        border-left: none;
+    }
+    fieldset {
+        display:flex;
+        flex-direction: column;
+    }
+    fieldset > * {
+        margin:0.25rem 0;
+    }
+
+}
