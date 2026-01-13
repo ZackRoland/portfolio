@@ -55,7 +55,7 @@
 
     --main-fill:var(--mint-green);
     --main-gradient: var(--dark-mint-green);
-    --main-height: 40rem;
+    --main-height: 80vh;
 
     --main-bg-color-1: linear-gradient(to left,var(--main-fill), var(--main-gradient));
     --main-bg-color-2: linear-gradient(to right,var(--lighter-orange),var(--lighter-cream));
@@ -166,7 +166,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: var(--main-height);
+    min-height: var(--main-height);
     padding: 1rem;
     background:  var(--main-bg-color);
 }
