@@ -36,23 +36,23 @@ main > section {
     font-size: 1.1rem;
     text-align: left;  
     color: var(--nav-text-color, #fff);
+    a {
+        color: #e3b6d7; 
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        font-weight: 500;
+        &:hover {
+            color: #ffffff;  
+        }
+    }
+    span {
+        color: #d4cfcf;
+        padding: 0 0.35rem;
+    }
 }
 
-#projects-breadcrumb a {
-    color: #e3b6d7; 
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    font-weight: 500;
-}
 
-#projects-breadcrumb a:hover {
-    color: #ffffff;  
-}
 
-#projects-breadcrumb span {
-    color: #d4cfcf;
-    padding: 0 0.35rem;
-}
 /*======= Project Buttons =======*/
 .project-controls {
     margin: 1rem 0;
@@ -90,12 +90,10 @@ main > section {
     margin-top: 1rem;
 }
 
-/* Heading sits above the grid */
 main > section > h2 {
     margin: 0 0 0.5rem 0;
 }
 
-/* Responsive breakpoints now target .project-grid */
 @media (max-width: 900px) {
     .project-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -124,33 +122,38 @@ project-card {
 project-head {
     position:relative;
     border-bottom:0.5rem solid black;
+    img {
+        display:block;
+    }
+    picture {
+        margin: 0;
+    }
 }
 project-image {
     position: relative;
     aspect-ratio: 4/3;   
     display: block;
     overflow: hidden;
-}
-project-image img {
-    display:block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    img {
+        display:block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;             
+        background: rgba(0, 0, 0, 0.35); 
+        pointer-events: none; 
+    }
 }
 
-project-image::after {
-    content: "";
-    position: absolute;
-    inset: 0;             
-    background: rgba(0, 0, 0, 0.35); 
-    pointer-events: none; 
-}
-project-head img {
-    display: block;
-}
-project-head picture {
-    margin:0;
-}
+
+
+
+
 /* ========= Project Body ========= */
 project-body {
     padding: 0.75rem;
@@ -165,17 +168,21 @@ project-header {
     grid-template-columns: 2fr auto; 
     align-items: center;
     gap:0.5rem;
+
+    h2, h3 {
+        font-size: 1.75rem;
+        text-decoration: underline;
+    }
+
+    time {
+        font-size: 1.25rem;
+    }
+
+    h2, h3, time {
+        color: white;
+    }
 }
-project-header h2, project-header h3 {
-    font-size: 1.75rem;
-    text-decoration: underline;
-}
-project-header time {
-    font-size: 1.25rem;
-}
-project-header h2,project-header h3, project-header time {
-    color: white;
-}
+
 /* ========= Project Main ========= */
 project-main {
     display: grid;
@@ -183,51 +190,51 @@ project-main {
     margin: 0.5rem 0 0 0;
     gap:1rem;
     align-items: start;
-}
-project-main project-description{
-    color: var(--project-description-color-1);
-    grid-column:1;
-}
-project-main project-tech{
-    grid-column:2;
-    align-self: start;
-
-}
-/* ========= Project Description ========= */
-
-project-description p {
-    color: var(--project-description-color-1);
-
+    project-description{
+        grid-column:1;
+        p {
+            color: var(--project-description-color-1);
+        
+        }
+    }
+    project-tech{
+        grid-column:2;
+        align-self: start;
+    
+    }
 }
 
 /* ========= Project Tech Dropdown ========= */
-project-tech details {
-    max-height: 100%; 
-    background: linear-gradient(to left, var(--columbia-blue),var(--celadon));
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.5rem;
-}
-project-tech > details > summary {
-    text-align: center;
-    cursor: pointer;
-    color: white;
-    font-weight: bold;
-    list-style:none;
+project-tech {
+    details {
+        max-height: 100%; 
+        background: linear-gradient(to left, var(--columbia-blue),var(--celadon));
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.5rem;
+        summary {
+            text-align: center;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            list-style:none;
+        }
+        menu {
+            overflow-y: auto;
+            display: block;
+            margin: 0.25rem 0 0;
+            padding: 0;
+            li {
+                display:flex;
+                justify-content: center;
+                color:white;
+                background: var(--project-tech-menu-color-1);
+                background-color: #89E3D4;
+            }
+        }
+    }
 }
 
-project-tech > details > menu {
-    overflow-y: auto;
-    display: block;
-    margin: 0.25rem 0 0;
-    padding: 0;
-}
-project-tech > details > menu > li {
-    display:flex;
-    justify-content: center;
-    color:white;
-    background: var(--project-tech-menu-color-1);
-    background-color: #89E3D4;
-}
+
 
 /* ========= Project Link Hub ========= */
 project-links {
@@ -239,33 +246,34 @@ project-links {
     flex-direction: row;
     justify-content: flex-end;
     padding: 0.5rem 0.5rem 0 0;  
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: .75rem;
+        margin: 0.5rem 0.5rem 0 0;
+        padding: 0;
+        li {
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            
+            padding: 0.35rem 0.75rem;
+            background: var(--project-hub-background-1);
+            background-clip: padding-box;
+            border: var(--project-hub-border-style-2);
+            border-radius: 0.5rem;
+            &:hover{
+                background: rgb(133, 123, 183); 
+            }
+            a {
+                color: var(--project-hub-font-color-1);
+                text-decoration: none;
+            }
+        }
+    }
 }
 
-project-links ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: .75rem;
-    margin: 0.5rem 0.5rem 0 0;
-    padding: 0;
-}
-project-links ul li {
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    
-    padding: 0.35rem 0.75rem;
-    background: var(--project-hub-background-1);
-    background-clip: padding-box;
-    border: var(--project-hub-border-style-2);
-    border-radius: 0.5rem;
-}
-project-links ul li:hover{
-    background: rgb(133, 123, 183); 
-}
-project-links ul li a {
-    color: var(--project-hub-font-color-1);
-    text-decoration: none;
-}
+
 .project-template {
     position: relative;
 }
