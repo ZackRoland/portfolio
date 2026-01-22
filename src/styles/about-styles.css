@@ -4,11 +4,16 @@
 main {
     height:max-content;
 }
+hgroup {
+    
+}
 hgroup > p {
+    margin: 1rem 0 0 0;
     max-width: var(--max-paragraph-size);
 }
 h3 {
     text-decoration: underline;
+    font-size: clamp(1.25rem,calc(1rem + 0.8vw), 1.5rem);
 }
 hgroup, hgroup+section {
     margin: 2em ;
@@ -19,3 +24,4 @@ hgroup:nth-of-type(odd) {
 hgroup:nth-of-type(even) {
     text-align: right;
 }
+

@@ -145,6 +145,8 @@
     padding: 0;
     color:var(--base-text-color);
     font-family: Helvetica, Arial, sans-serif;
+    font-size: clamp(1rem,calc(1rem + 0.4vw), 1.15rem);
+
 }
 /* ========= Global Tags ========= */
 h1 {
@@ -179,36 +181,40 @@ header {
     flex-direction: row;  
     height: var(--header-height);
     align-items: center;
-
-}
-header > nav {
-    -background: var(--nav-bg-color);
-    text-transform: uppercase;
-    padding:var(--nav-padding);
-    flex:1;
     
+    > nav {
+        -background: var(--nav-bg-color);
+        text-transform: uppercase;
+        padding:var(--nav-padding);
+        flex:1;
+    }
+    ul {
+        display:flex;
+        list-style-type: none;
+        align-items: center;
+        justify-content: flex-start;
+        gap: var(--nav-gap);
+        padding: 0px;
+        margin: 0px;
+        a {
+            display:inline-flex;
+            align-items: center;
+            text-decoration: none;
+            &:not(.logo a) {
+                box-shadow: var(--two-color-outline);
+                color: var(--nav-text-color);
+                font-size: var(--nav-font-size);
+                -background-color: var(--pale-red);
+                padding: calc(var(--nav-font-size)/4);
+            }
+        }
+
+    }
 }
-header ul {
-    display:flex;
-    list-style-type: none;
-    align-items: center;
-    justify-content: flex-start;
-    gap: var(--nav-gap);
-    padding: 0px;
-    margin: 0px;
-}
-header ul a {
-    display:inline-flex;
-    align-items: center;
-    text-decoration: none;
-}
-header ul a:not(.logo a) {
-    box-shadow: var(--two-color-outline);
-    color: var(--nav-text-color);
-    font-size: var(--nav-font-size);
-    -background-color: var(--pale-red);
-    padding: calc(var(--nav-font-size)/4);
-}
+
+
+
+
 li.logo {
     margin-right: auto;
 }
@@ -230,7 +236,7 @@ nav a[aria-current="page"] {
 
 }
 
-.theme-menu details summary{
+.theme-menu summary{
     list-style: none;
 }
 .theme-menu ul {
@@ -351,85 +357,86 @@ small {
         justify-content: space-between;
         padding-inline-end:var(--nav-padding);
         
+        nav > ul{
+            gap:0;
+        }
+        nav+button{
+            --bar-w: 25px;
+            --bar-h: 5px;
+            --bar-gap: 10px;
+            --bar-color: var(--nav-text-color);
+            --menu-width: calc(var(--bar-w) + 16px);
+            --menu-height: calc(3 * var(--bar-h) + 2 * var(--bar-gap) + 16px);
+            position: relative;
+            display: inline-block;
+            width: var(--menu-width);
+            height: var(--menu-height);
+            -border: 1px solid hsl(0 0% 100% / .2);
+            -border-radius: .5rem;
+            border:none;
+            box-shadow: var(--two-color-outline);
+            background: transparent;
+            cursor: pointer;
+            &::before, &::after {
+                content:"";
+                position:absolute; 
+                left: 50%;
+                top: 50%;
+                height:3px;
+                width: var(--bar-w);
+                height: var(--bar-h);
+                background: var(--bar-color);
+                transform: translate(-50%, -50%);
+                transition: transform .25s ease, opacity .25s ease, top .25s ease;
+            }
+            &::before{
+                box-shadow:
+                    0 calc(-1 * (var(--bar-gap) + var(--bar-h))) 0 0 var(--bar-color),
+                    0 calc( 1 * (var(--bar-gap) + var(--bar-h))) 0 0 var(--bar-color);
+            }
+            &::after {
+                opacity:0;
+            }
+        }
+        > menu[popover]{
+            display: none;   
+            -position: fixed;           
+            inset: auto 1rem auto auto; 
+            -translate: 0 50%;
+            top:5rem;
+            right:0%;
+            &:popover-open{
+                display: flex;
+                flex-direction:column;            
+                margin: 0; 
+                padding: 0.5rem 0;
+                list-style: none;
+                background: linear-gradient(to left,var(--nav-fill), var(--nav-gradient));
+                border: 1px solid var(--nav-border-color);
+                -border-radius: .6rem;
+                box-shadow: 0 10px 25px rgba(0,0,0,.25);
+            }
+            a {
+                display: block;
+                padding: .65rem 1rem;
+                color: var(--nav-text-color);
+                text-decoration: none;
+                &:hover {
+                    background: hsl(0 0% 100% / .08);
+                }
+            }
+        }
+        &:has(menu[popover]:popover-open) > button[popovertarget]{
+            &::before {
+                box-shadow: none;
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+            &::after {
+                opacity: 1;
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
+        }
     }
-    header nav > ul{
-        gap:0;
-    }
-    header nav+button{
-        --bar-w: 25px;
-        --bar-h: 5px;
-        --bar-gap: 10px;
-        --bar-color: var(--nav-text-color);
-        --menu-width: calc(var(--bar-w) + 16px);
-        --menu-height: calc(3 * var(--bar-h) + 2 * var(--bar-gap) + 16px);
-        position: relative;
-        display: inline-block;
-        width: var(--menu-width);
-        height: var(--menu-height);
-        -border: 1px solid hsl(0 0% 100% / .2);
-        -border-radius: .5rem;
-        border:none;
-        box-shadow: var(--two-color-outline);
-        background: transparent;
-        cursor: pointer;
-
-    }
-    header nav+button::before, header nav+button::after{
-        content:"";
-        position:absolute; 
-        left: 50%;
-        top: 50%;
-        height:3px;
-        width: var(--bar-w);
-        height: var(--bar-h);
-        background: var(--bar-color);
-        transform: translate(-50%, -50%);
-        transition: transform .25s ease, opacity .25s ease, top .25s ease;
-    }
-    header nav+button::before{
-        box-shadow:
-            0 calc(-1 * (var(--bar-gap) + var(--bar-h))) 0 0 var(--bar-color),
-            0 calc( 1 * (var(--bar-gap) + var(--bar-h))) 0 0 var(--bar-color);
-    }
-    header nav+button::after{ opacity:0;}
-    header > menu[popover]{
-        display: none;   
-        -position: fixed;           
-        inset: auto 1rem auto auto; 
-        -translate: 0 50%;
-        top:5rem;
-        right:0%;
-    }
-    header menu[popover]:popover-open{
-        display: flex;
-        flex-direction:column;            
-        margin: 0; 
-        padding: 0.5rem 0;
-        list-style: none;
-        background: linear-gradient(to left,var(--nav-fill), var(--nav-gradient));
-        border: 1px solid var(--nav-border-color);
-        -border-radius: .6rem;
-        box-shadow: 0 10px 25px rgba(0,0,0,.25);
-    }
-   
-    header menu[popover] > li > a{
-        display: block;
-        padding: .65rem 1rem;
-        color: var(--nav-text-color);
-        text-decoration: none;
-    }
-    header menu > li > a:hover{
-    background: hsl(0 0% 100% / .08);
-    }
-    header:has(menu[popover]:popover-open) > button[popovertarget]::before{
-        box-shadow: none;
-        transform: translate(-50%, -50%) rotate(45deg);
-    }
-    header:has(menu[popover]:popover-open) > button[popovertarget]::after{
-        opacity: 1;
-        transform: translate(-50%, -50%) rotate(-45deg);
-    }
-    
 }
 
 /* Enable default cross-fade for all content */
