@@ -165,6 +165,7 @@ form-field.job-title, form-field.contact-reason {
 form-field.msg {
     grid-row:3;
     grid-column:1/-1;
+    max-width: 100%;
 
 }
 form-field.contact-submit {
