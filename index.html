@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="src/styles/index-styles.css">
     <script src="src/scripts/theme-toggle.js" defer></script>
     <script src="src/scripts/view-transitions.js" defer></script>
-
+    <script src="src/scripts/minecraft-skin.js" defer></script>
 </head>
 <body>
     <header>
-        <nav id = "navigation">
+        <nav id="navigation">
             <ul>
                 <li class="logo"><a href="./index.html">ZR</a></li>
                 <li><a href="./index.html" aria-current="page">Home</a></li>
@@ -32,22 +32,21 @@
                                 <button type="button" data-theme="light" aria-label="Use light theme">
                                     <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
                                       <circle cx="12" cy="12" r="4" />
-                                      <line x1="12" y1="1"  x2="12" y2="4"  />
+                                      <line x1="12" y1="1" x2="12" y2="4" />
                                       <line x1="12" y1="20" x2="12" y2="23" />
-                                      <line x1="1"  y1="12" x2="4"  y2="12" />
+                                      <line x1="1" y1="12" x2="4" y2="12" />
                                       <line x1="20" y1="12" x2="23" y2="12" />
-                                      <line x1="4.2"  y1="4.2"  x2="6.3"  y2="6.3"  />
+                                      <line x1="4.2" y1="4.2" x2="6.3" y2="6.3" />
                                       <line x1="17.7" y1="17.7" x2="19.8" y2="19.8" />
-                                      <line x1="4.2"  y1="19.8" x2="6.3"  y2="17.7" />
-                                      <line x1="17.7" y1="6.3"  x2="19.8" y2="4.2"  />
+                                      <line x1="4.2" y1="19.8" x2="6.3" y2="17.7" />
+                                      <line x1="17.7" y1="6.3" x2="19.8" y2="4.2" />
                                     </svg>
-                                  </button>
+                                </button>
                             </li>
                             <li>
                                 <button type="button" data-theme="dark" aria-label="Use dark theme">
                                     <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
-                                      <path d="M18.5 15.5A7 7 0 0 1 9 5.5
-                                               A6 6 0 1 0 18.5 15.5Z" />
+                                      <path d="M18.5 15.5A7 7 0 0 1 9 5.5 A6 6 0 1 0 18.5 15.5Z" />
                                     </svg>
                                 </button>
                             </li>
@@ -64,38 +63,55 @@
             <li><a href="src/pages/contact.html">Contact Me</a></li>
         </menu>
     </header>
+
     <main>
-        <picture>
-            <source srcset="src/assets/imgs/original/head-shot/headshot.jpeg" media="(orientation: portrait)">
-            <img src="src/assets/imgs/original/head-shot/headshot.jpeg" alt="Zack's headshot">
-        </picture>
-        <hgroup id="introduction" aria-labelledby="introduction">
-            <h1 id="name" aria-labelledby="name">Hi, I'm Zack</h1>
-            <p id="job-specialization" aria-labelledby="job-specialization">
-                <strong>Front-end Web Developer</strong>
-            </p>
-        </hgroup>
-        <math>
-            <mrow>
-              <mi>E</mi>
-              <mo>=</mo>
-              <mi>m</mi>
-              <msup>
-                <mi>c</mi>
-                <mn>2</mn>
-              </msup>
-            </mrow>
-        </math>
-        <label for="degree">Degree Progress:</label>
-        <progress id="degree" max="100" value="83.3">83.3%</progress>
-        
+        <section class="start-screen" aria-label="Portfolio start screen">
+            <div class="title-wrap">
+                <h1 class="game-title">ZACK ROLAND</h1>
+                <p class="edition">STUDENT EDITION</p>
+                <p class="splash" aria-label="splash message">Now with 3D skin render!</p>
+            </div>
+
+            <div class="play-area">
+                <div class="menu-stack" aria-label="homepage options">
+                    <a class="menu-btn" href="src/pages/projects.html">Projects</a>
+                    <a class="menu-btn" href="src/pages/about.html">About Me</a>
+                    <a class="menu-btn" href="src/pages/contact.html">Contact</a>
+                    <a class="menu-btn" href="src/pages/blog.html">Blog</a>
+                    <div class="menu-row">
+                        <a class="menu-btn" href="src/pages/now.html">Now</a>
+                        <a class="menu-btn" href="src/pages/projects-crud.html">Build Log</a>
+                    </div>
+                </div>
+
+                <aside
+                    class="skin-panel"
+                    aria-label="Minecraft profile"
+                    data-minecraft-ign="SozinsComet_"
+                    data-minecraft-uuid="6970cb6524274b0c8b62b03317579c47"
+                    data-minecraft-model="slim"
+                >
+                    <p class="panel-title">Player Model</p>
+                    <img
+                        id="minecraft-skin-image"
+                        src=""
+                        alt="Rendered Minecraft character model"
+                        loading="lazy"
+                    >
+                    <p id="minecraft-ign" class="ign-label">Loading player...</p>
+                    <p id="minecraft-skin-status" class="skin-status">Querying Mojang API...</p>
+                </aside>
+            </div>
+
+            <div class="status-line">
+                <small>Portfolio Beta 1.1</small>
+                <small>&copy; 2025 Zack Roland</small>
+            </div>
+        </section>
     </main>
-    <script>
-      
-    </script>
-    <noscript></noscript>
+
     <footer>
-        <small id="copywright">&copy; 2025 Zack Roland </small>
+        <small id="copywright">&copy; 2025 Zack Roland</small>
     </footer>
 </body>
 </html>
