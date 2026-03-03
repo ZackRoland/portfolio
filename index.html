@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="src/styles/index-styles.css">
     <script src="src/scripts/theme-toggle.js" defer></script>
     <script src="src/scripts/view-transitions.js" defer></script>
-    <script defer src="src/scripts/minecraft-skin.js" defer></script>
+    <script src="https://unpkg.com/skinview3d@3.2.0/bundles/skinview3d.bundle.js" defer></script>
+    <script defer src="src/scripts/minecraft-skin.js?v=2"></script>
 </head>
 <body>
     <header>
@@ -98,6 +99,7 @@
                         alt="Rendered Minecraft character model"
                         loading="lazy"
                     >
+                    <canvas id="minecraft-skin-canvas" hidden aria-hidden="true"></canvas>
                     <p id="minecraft-ign" class="ign-label">Loading player...</p>
                     <p id="minecraft-skin-status" class="skin-status">Querying Mojang API...</p>
                 </aside>
