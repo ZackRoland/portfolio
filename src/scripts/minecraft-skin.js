@@ -20,9 +20,9 @@
 
     function updateStatus(message) {
         if (message === 'Skin render loaded') {
-            statusLabel.textContent = ''; // or return without changing anything
+            statusLabel.textContent = '';
             return;
-        }    
+        }
         statusLabel.textContent = message;
     }
 
@@ -34,6 +34,15 @@
             `https://mc-heads.net/body/${encodedIgn}/right`,
             `https://minotar.net/armor/body/${encodedIgn}/300.png`,
             `https://minotar.net/armor/body/${uuid}/300.png`
+        ];
+    }
+
+    function skinTextureUrls(uuid, ign) {
+        const encodedIgn = encodeURIComponent(ign || '');
+        return [
+            `https://mc-heads.net/skin/${uuid}`,
+            `https://mc-heads.net/skin/${encodedIgn}`,
+            `https://crafatar.com/skins/${uuid}`
         ];
     }
 
@@ -70,6 +79,11 @@
             if (skinViewer.camera && skinViewer.camera.rotation) {
                 skinViewer.camera.rotation.x = -0.05;
             }
+
+            if (window.skinview3d.WalkingAnimation) {
+                skinViewer.animation = new window.skinview3d.WalkingAnimation();
+                skinViewer.animation.paused = true;
+            }
         } catch (error) {
             skinViewerUnavailable = true;
             skinViewer = null;
@@ -79,31 +93,40 @@
         return skinViewer;
     }
 
-    function load3dSkin(uuid) {
+    async function load3dSkin(uuid, ign) {
         if (!uuid) {
-            return;
+            return false;
         }
 
         const viewer = ensureSkinViewer();
         if (!viewer) {
-            return;
+            return false;
         }
 
-        const skinLoad = viewer.loadSkin(`https://crafatar.com/skins/${uuid}`);
-        Promise.resolve(skinLoad)
-            .then(() => {
+        const urls = skinTextureUrls(uuid, ign);
+
+        for (let i = 0; i < urls.length; i += 1) {
+            try {
+                await Promise.resolve(viewer.loadSkin(urls[i]));
                 skinCanvas.hidden = false;
                 skinImage.hidden = true;
-            })
-            .catch(() => {
-                skinCanvas.hidden = true;
-                skinImage.hidden = false;
-            });
+                return true;
+            } catch (error) {
+                // Try next provider URL.
+            }
+        }
+
+        skinCanvas.hidden = true;
+        skinImage.hidden = false;
+        return false;
     }
 
     function setupSkinHoverRotation() {
         panel.addEventListener('pointerenter', () => {
             panel.classList.add('is-hovering-skin');
+            if (skinViewer && skinViewer.animation) {
+                skinViewer.animation.paused = false;
+            }
         });
 
         panel.addEventListener('pointermove', (event) => {
@@ -118,12 +141,15 @@
 
         panel.addEventListener('pointerleave', () => {
             panel.classList.remove('is-hovering-skin');
+            if (skinViewer && skinViewer.animation) {
+                skinViewer.animation.paused = true;
+            }
             applySkinRotation(0);
         });
     }
 
-    function loadFromProviders(uuid, ign) {
-        load3dSkin(uuid);
+    async function loadFromProviders(uuid, ign) {
+        await load3dSkin(uuid, ign);
 
         const urls = providerUrls(uuid, ign);
         let index = 0;
@@ -203,17 +229,12 @@
     async function initializeSkin() {
         ignLabel.textContent = configuredIgn || 'Unknown Player';
 
-        if (configuredUuid) {
-            loadFromProviders(configuredUuid, configuredIgn);
-            updateStatus('Loading preferred skin render...');
-        } else {
-            updateStatus('Resolving player UUID...');
-        }
-
         if (!configuredUuid && !configuredIgn) {
             updateStatus('Missing Minecraft IGN/UUID configuration');
             return;
         }
+
+        updateStatus(configuredUuid ? 'Loading preferred skin render...' : 'Resolving player UUID...');
 
         try {
             let uuid = configuredUuid;
@@ -227,10 +248,11 @@
 
             panel.dataset.minecraftUuid = uuid;
             ignLabel.textContent = ign;
-            loadFromProviders(uuid, ign);
+            await loadFromProviders(uuid, ign);
         } catch (error) {
             if (configuredUuid) {
                 updateStatus('Using configured UUID (Mojang sync unavailable)');
+                await loadFromProviders(configuredUuid, configuredIgn);
             } else {
                 updateStatus('Could not resolve player profile from Mojang');
             }

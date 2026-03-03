@@ -118,6 +118,7 @@ main::before {
     gap: 0.45rem;
     justify-items: center;
     perspective: 700px;
+    cursor: ew-resize;
 }
 
 .skin-panel.is-hovering-skin #minecraft-skin-image,
