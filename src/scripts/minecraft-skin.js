@@ -173,6 +173,34 @@
         tryNext();
     }
 
+    function applySkinRotation(normalizedX) {
+        const rotateY = normalizedX * MAX_ROTATE_Y;
+        skinImage.style.transform `rotateY(${rotateY.toFixed(2)}deg)`;
+    }
+    
+    function setupSkinHoverRotation () {
+        panel.addEventListener('mouseenter', () => {
+            isHoveringSkin = true;
+        });
+
+        panel.addEventListener('mousemove', (event) => {
+            if (!isHoveringSkin) {
+                return;
+            }
+
+            const rect = panel.getBoundingClientRect();
+            const positionX = event.clientX - rect.left;
+            const halfWidth = rect.width / 2;
+            const normalizedX = (positionX - halfWidth) / halfWidth;
+            const clampedX = Math.max(-1, Math.min(1, normalizedX));
+            applyingSkinRotation(clampedX);
+        });
+        panel.addEventListener('mouseleave', () => {
+            isHoveringSkin = false;
+            applyingSkinRotation(0);
+        })
+    }
+
     async function fetchJson(url, timeoutMs) {
         const proxiedUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
         const controller = new AbortController();
