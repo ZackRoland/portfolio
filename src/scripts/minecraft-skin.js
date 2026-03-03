@@ -13,9 +13,7 @@
     const MAX_ROTATE_Y_RADIANS = (MAX_ROTATE_Y * Math.PI) / 180;
 
     let skinViewer = null;
-    const MAX_ROTATE_Y = 22;
-
-    let isHoveringSkin = false;
+    let skinViewerUnavailable = false;
 
     const configuredIgn = panel.dataset.minecraftIgn;
     const configuredUuid = panel.dataset.minecraftUuid;
@@ -40,7 +38,7 @@
     }
 
     function applySkinRotation(normalizedX) {
-        if (skinViewer?.playerObject) {
+        if (skinViewer && skinViewer.playerObject) {
             skinViewer.playerObject.rotation.y = normalizedX * MAX_ROTATE_Y_RADIANS;
             return;
         }
@@ -50,20 +48,33 @@
     }
 
     function ensureSkinViewer() {
-        if (!skinCanvas || !window.skinview3d || skinViewer) {
+        if (skinViewerUnavailable || !skinCanvas || skinViewer) {
             return skinViewer;
         }
 
-        skinViewer = new window.skinview3d.SkinViewer({
-            canvas: skinCanvas,
-            width: 192,
-            height: 256,
-            model: panel.dataset.minecraftModel === 'slim' ? 'slim' : 'default'
-        });
+        if (!window.skinview3d) {
+            skinViewerUnavailable = true;
+            return null;
+        }
 
-        skinViewer.fov = 45;
-        skinViewer.zoom = 0.75;
-        skinViewer.camera.rotation.x = -0.05;
+        try {
+            skinViewer = new window.skinview3d.SkinViewer({
+                canvas: skinCanvas,
+                width: 192,
+                height: 256,
+                model: panel.dataset.minecraftModel === 'slim' ? 'slim' : 'default'
+            });
+
+            skinViewer.fov = 45;
+            skinViewer.zoom = 0.75;
+            if (skinViewer.camera && skinViewer.camera.rotation) {
+                skinViewer.camera.rotation.x = -0.05;
+            }
+        } catch (error) {
+            skinViewerUnavailable = true;
+            skinViewer = null;
+            return null;
+        }
 
         return skinViewer;
     }
@@ -78,9 +89,16 @@
             return;
         }
 
-        viewer.loadSkin(`https://crafatar.com/skins/${uuid}`);
-        skinCanvas.hidden = false;
-        skinImage.hidden = true;
+        const skinLoad = viewer.loadSkin(`https://crafatar.com/skins/${uuid}`);
+        Promise.resolve(skinLoad)
+            .then(() => {
+                skinCanvas.hidden = false;
+                skinImage.hidden = true;
+            })
+            .catch(() => {
+                skinCanvas.hidden = true;
+                skinImage.hidden = false;
+            });
     }
 
     function setupSkinHoverRotation() {
