@@ -117,6 +117,12 @@ main::before {
     display: grid;
     gap: 0.45rem;
     justify-items: center;
+    perspective: 700px;
+}
+
+.skin-panel.is-hovering-skin #minecraft-skin-image,
+.skin-panel.is-hovering-skin #minecraft-skin-canvas {
+    filter: drop-shadow(0 0.35rem 0.25rem rgb(0 0 0 / 40%));
 }
 
 .panel-title {
@@ -136,6 +142,24 @@ main::before {
     background: #2e2e2e;
     border: 2px solid #1f1f1f;
     image-rendering: pixelated;
+    transform-origin: center;
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+    transition: transform 180ms ease-out;
+    will-change: transform;
+}
+
+#minecraft-skin-canvas {
+    width: min(100%, 12rem);
+    max-height: 15rem;
+    aspect-ratio: 3 / 4;
+    background: #2e2e2e;
+    border: 2px solid #1f1f1f;
+    image-rendering: pixelated;
+    transform-origin: center;
+    transform: rotateY(0deg);
+    transition: transform 180ms ease-out;
+    will-change: transform;
 }
 @font-face {
     font-family: Minecraftia;
