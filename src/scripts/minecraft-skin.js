@@ -8,6 +8,11 @@
     const ignLabel = document.getElementById('minecraft-ign');
     const statusLabel = document.getElementById('minecraft-skin-status');
     const skinImage = document.getElementById('minecraft-skin-image');
+    const skinCanvas = document.getElementById('minecraft-skin-canvas');
+    const MAX_ROTATE_Y = 35;
+    const MAX_ROTATE_Y_RADIANS = (MAX_ROTATE_Y * Math.PI) / 180;
+
+    let skinViewer = null;
 
     const configuredIgn = panel.dataset.minecraftIgn;
     const configuredUuid = panel.dataset.minecraftUuid;
@@ -31,7 +36,74 @@
         ];
     }
 
+    function applySkinRotation(normalizedX) {
+        if (skinViewer?.playerObject) {
+            skinViewer.playerObject.rotation.y = normalizedX * MAX_ROTATE_Y_RADIANS;
+            return;
+        }
+
+        const rotateY = normalizedX * MAX_ROTATE_Y;
+        skinImage.style.transform = `rotateY(${rotateY.toFixed(2)}deg)`;
+    }
+
+    function ensureSkinViewer() {
+        if (!skinCanvas || !window.skinview3d || skinViewer) {
+            return skinViewer;
+        }
+
+        skinViewer = new window.skinview3d.SkinViewer({
+            canvas: skinCanvas,
+            width: 192,
+            height: 256,
+            model: panel.dataset.minecraftModel === 'slim' ? 'slim' : 'default'
+        });
+
+        skinViewer.fov = 45;
+        skinViewer.zoom = 0.75;
+        skinViewer.camera.rotation.x = -0.05;
+
+        return skinViewer;
+    }
+
+    function load3dSkin(uuid) {
+        if (!uuid) {
+            return;
+        }
+
+        const viewer = ensureSkinViewer();
+        if (!viewer) {
+            return;
+        }
+
+        viewer.loadSkin(`https://crafatar.com/skins/${uuid}`);
+        skinCanvas.hidden = false;
+        skinImage.hidden = true;
+    }
+
+    function setupSkinHoverRotation() {
+        panel.addEventListener('pointerenter', () => {
+            panel.classList.add('is-hovering-skin');
+        });
+
+        panel.addEventListener('pointermove', (event) => {
+            const rect = panel.getBoundingClientRect();
+            const positionX = event.clientX - rect.left;
+            const halfWidth = rect.width / 2;
+            const normalizedX = (positionX - halfWidth) / halfWidth;
+            const clampedX = Math.max(-1, Math.min(1, normalizedX));
+
+            applySkinRotation(clampedX);
+        });
+
+        panel.addEventListener('pointerleave', () => {
+            panel.classList.remove('is-hovering-skin');
+            applySkinRotation(0);
+        });
+    }
+
     function loadFromProviders(uuid, ign) {
+        load3dSkin(uuid);
+
         const urls = providerUrls(uuid, ign);
         let index = 0;
 
@@ -116,5 +188,6 @@
         }
     }
 
+    setupSkinHoverRotation();
     initializeSkin();
 })();
