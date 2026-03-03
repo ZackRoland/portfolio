@@ -13,6 +13,10 @@
     const configuredUuid = panel.dataset.minecraftUuid;
 
     function updateStatus(message) {
+        if (message === 'Skin render loaded') {
+            statusLabel.textContent = ''; // or return without changing anything
+            return;
+        }    
         statusLabel.textContent = message;
     }
 
