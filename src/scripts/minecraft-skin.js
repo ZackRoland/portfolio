@@ -11,6 +11,8 @@
     const skinCanvas = document.getElementById('minecraft-skin-canvas');
     const MAX_ROTATE_Y = 35;
     const MAX_ROTATE_Y_RADIANS = (MAX_ROTATE_Y * Math.PI) / 180;
+    const IDLE_WALK_SPEED = 0.6;
+    const HOVER_WALK_SPEED = 1;
 
     let skinViewer = null;
     let skinViewerUnavailable = false;
@@ -82,7 +84,10 @@
 
             if (window.skinview3d.WalkingAnimation) {
                 skinViewer.animation = new window.skinview3d.WalkingAnimation();
-                skinViewer.animation.paused = true;
+                skinViewer.animation.paused = false;
+                if (typeof skinViewer.animation.speed === 'number') {
+                    skinViewer.animation.speed = IDLE_WALK_SPEED;
+                }
             }
         } catch (error) {
             skinViewerUnavailable = true;
@@ -124,8 +129,8 @@
     function setupSkinHoverRotation() {
         panel.addEventListener('pointerenter', () => {
             panel.classList.add('is-hovering-skin');
-            if (skinViewer && skinViewer.animation) {
-                skinViewer.animation.paused = false;
+            if (skinViewer && skinViewer.animation && typeof skinViewer.animation.speed === 'number') {
+                skinViewer.animation.speed = HOVER_WALK_SPEED;
             }
         });
 
@@ -141,8 +146,8 @@
 
         panel.addEventListener('pointerleave', () => {
             panel.classList.remove('is-hovering-skin');
-            if (skinViewer && skinViewer.animation) {
-                skinViewer.animation.paused = true;
+            if (skinViewer && skinViewer.animation && typeof skinViewer.animation.speed === 'number') {
+                skinViewer.animation.speed = IDLE_WALK_SPEED;
             }
             applySkinRotation(0);
         });
