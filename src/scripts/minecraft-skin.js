@@ -155,7 +155,10 @@
     }
 
     async function loadFromProviders(uuid, ign) {
-        await load3dSkin(uuid, ign);
+        const loaded3d = await load3dSkin(uuid, ign);
+        if (loaded3d) {
+            return;
+        }
 
         const urls = providerUrls(uuid, ign);
         let index = 0;

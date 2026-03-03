@@ -156,10 +156,6 @@ main::before {
     background: #2e2e2e;
     border: 2px solid #1f1f1f;
     image-rendering: pixelated;
-    transform-origin: center;
-    transform: rotateY(0deg);
-    transition: transform 180ms ease-out;
-    will-change: transform;
 }
 @font-face {
     font-family: Minecraftia;
