@@ -11,8 +11,8 @@
     const skinCanvas = document.getElementById('minecraft-skin-canvas');
     const MAX_ROTATE_Y = 35;
     const MAX_ROTATE_Y_RADIANS = (MAX_ROTATE_Y * Math.PI) / 180;
-    const IDLE_WALK_SPEED = 0.6;
-    const HOVER_WALK_SPEED = 1;
+    const IDLE_WALK_SPEED = 0.4;
+    const HOVER_WALK_SPEED = 0.5;
 
     let skinViewer = null;
     let skinViewerUnavailable = false;
@@ -77,7 +77,7 @@
             });
 
             skinViewer.fov = 45;
-            skinViewer.zoom = 0.75;
+            skinViewer.zoom = 1;
             if (skinViewer.camera && skinViewer.camera.rotation) {
                 skinViewer.camera.rotation.x = -0.05;
             }
