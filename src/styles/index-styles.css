@@ -136,7 +136,6 @@ main::before {
 }
 
 #minecraft-skin-image {
-    width: min(100%, 12rem);
     max-height: 15rem;
     aspect-ratio: 3 / 4;
     object-fit: contain;
