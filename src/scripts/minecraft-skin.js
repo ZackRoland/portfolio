@@ -115,6 +115,7 @@
                 await Promise.resolve(viewer.loadSkin(urls[i]));
                 skinCanvas.hidden = false;
                 skinImage.hidden = true;
+                updateStatus('Skin render loaded');
                 return true;
             } catch (error) {
                 // Try next provider URL.
