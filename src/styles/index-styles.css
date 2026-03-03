@@ -117,6 +117,7 @@ main::before {
     display: grid;
     gap: 0.45rem;
     justify-items: center;
+    perspective: 700px;
 }
 
 .panel-title {
@@ -136,6 +137,10 @@ main::before {
     background: #2e2e2e;
     border: 2px solid #1f1f1f;
     image-rendering: pixelated;
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+    transition: transform 180ms ease-out;
+    will-change: transform;
 }
 @font-face {
     font-family: Minecraftia;
