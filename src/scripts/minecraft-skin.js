@@ -13,7 +13,9 @@
     const MAX_ROTATE_Y_RADIANS = (MAX_ROTATE_Y * Math.PI) / 180;
 
     let skinViewer = null;
-    let skinViewerUnavailable = false;
+    const MAX_ROTATE_Y = 22;
+
+    let isHoveringSkin = false;
 
     const configuredIgn = panel.dataset.minecraftIgn;
     const configuredUuid = panel.dataset.minecraftUuid;
@@ -48,33 +50,20 @@
     }
 
     function ensureSkinViewer() {
-        if (skinViewerUnavailable || !skinCanvas || skinViewer) {
+        if (!skinCanvas || !window.skinview3d || skinViewer) {
             return skinViewer;
         }
 
-        if (!window.skinview3d) {
-            skinViewerUnavailable = true;
-            return null;
-        }
+        skinViewer = new window.skinview3d.SkinViewer({
+            canvas: skinCanvas,
+            width: 192,
+            height: 256,
+            model: panel.dataset.minecraftModel === 'slim' ? 'slim' : 'default'
+        });
 
-        try {
-            skinViewer = new window.skinview3d.SkinViewer({
-                canvas: skinCanvas,
-                width: 192,
-                height: 256,
-                model: panel.dataset.minecraftModel === 'slim' ? 'slim' : 'default'
-            });
-
-            skinViewer.fov = 45;
-            skinViewer.zoom = 0.75;
-            if (skinViewer.camera?.rotation) {
-                skinViewer.camera.rotation.x = -0.05;
-            }
-        } catch (error) {
-            skinViewerUnavailable = true;
-            skinViewer = null;
-            return null;
-        }
+        skinViewer.fov = 45;
+        skinViewer.zoom = 0.75;
+        skinViewer.camera.rotation.x = -0.05;
 
         return skinViewer;
     }
@@ -89,16 +78,9 @@
             return;
         }
 
-        const skinLoad = viewer.loadSkin(`https://crafatar.com/skins/${uuid}`);
-        Promise.resolve(skinLoad)
-            .then(() => {
-                skinCanvas.hidden = false;
-                skinImage.hidden = true;
-            })
-            .catch(() => {
-                skinCanvas.hidden = true;
-                skinImage.hidden = false;
-            });
+        viewer.loadSkin(`https://crafatar.com/skins/${uuid}`);
+        skinCanvas.hidden = false;
+        skinImage.hidden = true;
     }
 
     function setupSkinHoverRotation() {
@@ -145,6 +127,34 @@
         };
 
         tryNext();
+    }
+
+    function applySkinRotation(normalizedX) {
+        const rotateY = normalizedX * MAX_ROTATE_Y;
+        skinImage.style.transform `rotateY(${rotateY.toFixed(2)}deg)`;
+    }
+    
+    function setupSkinHoverRotation () {
+        panel.addEventListener('mouseenter', () => {
+            isHoveringSkin = true;
+        });
+
+        panel.addEventListener('mousemove', (event) => {
+            if (!isHoveringSkin) {
+                return;
+            }
+
+            const rect = panel.getBoundingClientRect();
+            const positionX = event.clientX - rect.left;
+            const halfWidth = rect.width / 2;
+            const normalizedX = (positionX - halfWidth) / halfWidth;
+            const clampedX = Math.max(-1, Math.min(1, normalizedX));
+            applyingSkinRotation(clampedX);
+        });
+        panel.addEventListener('mouseleave', () => {
+            isHoveringSkin = false;
+            applyingSkinRotation(0);
+        })
     }
 
     async function fetchJson(url, timeoutMs) {
