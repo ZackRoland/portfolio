@@ -1,3 +1,13 @@
+@font-face {
+    font-family: minecraftia;
+    src: url(../assets/fonts/minecraftia.woff2) format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+* {
+    font-family: minecraftia;
+}
 main {
     position: relative;
     overflow: hidden;
@@ -52,8 +62,8 @@ main::before {
 
 .splash {
     position: absolute;
-    right: -1.4rem;
-    top: 0.2rem;
+    -right: -1.4rem;
+    -top: 0.2rem;
     transform: rotate(-13deg);
     transform-origin: center;
     font-weight: 800;
@@ -90,7 +100,7 @@ main::before {
     width: 100%;
     min-height: 3.2rem;
     text-decoration: none;
-    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-family: minecraftia,"Trebuchet MS", Arial, sans-serif;
     font-size: clamp(1.05rem, 1rem + 0.5vw, 1.45rem);
     font-weight: 700;
     letter-spacing: 0.02em;
@@ -121,10 +131,7 @@ main::before {
     cursor: ew-resize;
 }
 
-.skin-panel.is-hovering-skin #minecraft-skin-image,
-.skin-panel.is-hovering-skin #minecraft-skin-canvas {
-    filter: drop-shadow(0 0.35rem 0.25rem rgb(0 0 0 / 40%));
-}
+
 
 .panel-title {
     font-size: 1rem;
@@ -149,23 +156,9 @@ main::before {
     will-change: transform;
 }
 
-#minecraft-skin-canvas {
-    width: min(100%, 12rem);
-    max-height: 15rem;
-    aspect-ratio: 3 / 4;
-    background: #2e2e2e;
-    border: 2px solid #1f1f1f;
-    image-rendering: pixelated;
-}
-@font-face {
-    font-family: Minecraftia;
-    src: url(../media/Minecraftia-Regular.6a8d695b.ttf)format("truetype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
+
+
 .mc-btn {
-    font: Minecraftia;
     cursor: pointer;
     white-space: nowrap;
     -webkit-user-select: none;
@@ -186,7 +179,7 @@ main::before {
 
 .ign-label,
 .skin-status {
-    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-family: minecraftia,"Trebuchet MS", Arial, sans-serif;
     color: #f4f4f4;
     text-shadow: 0.08rem 0.08rem 0 #111;
 }
@@ -210,7 +203,7 @@ main::before {
 
 .status-line small {
     color: #f0f0f0;
-    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-family: minecraftia,"Trebuchet MS", Arial, sans-serif;
     text-shadow: 0.1rem 0.1rem 0 #111;
     margin: 0;
 }
