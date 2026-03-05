@@ -37,6 +37,10 @@ main::before {
 
 .title-wrap {
     position: relative;
+    width: min(100%, 42rem);
+    display: grid;
+    justify-items: center;
+    margin-inline: auto;
 }
 
 .game-title {
@@ -50,7 +54,15 @@ main::before {
         0.32rem 0.32rem 0 #0a0a0a,
         0.45rem 0.45rem 0.1rem #000;
 }
-
+img.game-title {
+    width: clamp(14rem, 62vw, 38rem);
+    max-width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0.22rem 0.22rem 0 #151515)
+            drop-shadow(0.34rem 0.34rem 0 #090909)
+            drop-shadow(0.46rem 0.46rem 0.08rem #000);
+}
 .edition {
     font-family: "Trebuchet MS", sans-serif;
     font-weight: 700;
@@ -62,10 +74,12 @@ main::before {
 
 .splash {
     position: absolute;
-    -right: -1.4rem;
-    -top: 0.2rem;
+    right: clamp(-2.6rem, -4vw, -0.9rem);
+    top: clamp(-0.35rem, -1vw, 0.3rem);
     transform: rotate(-13deg);
     transform-origin: center;
+    font-size: clamp(0.85rem, 0.5rem + 1.3vw, 1.35rem);
+    white-space: nowrap;
     font-weight: 800;
     color: #ffe35b;
     text-shadow: 0.12rem 0.12rem 0 #3f3300;
@@ -83,32 +97,40 @@ main::before {
 }
 
 .play-area {
-    width: min(100%, 58rem);
+    width: min(100%, 42rem);
     display: grid;
-    grid-template-columns: minmax(19rem, 1fr) minmax(13rem, 16rem);
-    gap: 1rem;
+    grid-template-columns: minmax(14rem, 1fr) minmax(9.5rem, 12rem);
+    gap: clamp(0.75rem, 2.4vw, 1.25rem);
     align-items: start;
+    justify-content: center;
 }
 
 .menu-stack {
-    width: 100%;
+    width: min(100%, clamp(14rem, 68vw, 27rem));
     display: grid;
     gap: 0.8rem;
+    justify-self: center;
 }
 
 .menu-btn {
     width: 100%;
     min-height: 3.2rem;
+    white-space: nowrap;
+    image-rendering: pixelated;
     text-decoration: none;
+    background: #999 url(https://i.ibb.co/rb2TWXL/bgbtn.png) 50%/cover;
     font-family: minecraftia,"Trebuchet MS", Arial, sans-serif;
     font-size: clamp(1.05rem, 1rem + 0.5vw, 1.45rem);
-    font-weight: 700;
     letter-spacing: 0.02em;
-    transition: transform 120ms ease, filter 120ms ease;
     color: #ddd;
     text-shadow: 2px 2px #000a;
     box-shadow: inset -2px -4px #0006,inset 2px 2px #fff7;
+    border: 2px solid #000;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
+
 
 .menu-btn:hover,
 .menu-btn:focus-visible {
@@ -158,22 +180,7 @@ main::before {
 
 
 
-.mc-btn {
-    cursor: pointer;
-    white-space: nowrap;
-    -webkit-user-select: none;
-    user-select: none;
-    width: 100%;
-    image-rendering: pixelated;
-    background: #999 url(https://i.ibb.co/rb2TWXL/bgbtn.png) 50%/cover;
-    border: 2px solid #000;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    font-size: 1.25rem;
-    display: flex;
-    overflow: hidden;
-}
+
 
 
 
@@ -213,17 +220,25 @@ footer {
 }
 
 @media (max-width: 900px) {
+   
     .play-area {
         grid-template-columns: 1fr;
-        width: min(100%, 35rem);
+        width: min(100%, 30rem);
+        justify-items: center;
     }
 
+    .menu-stack {
+        width: min(100%, 27rem);
+    }
     .skin-panel {
         order: -1;
     }
 }
 
 @media (max-width: 760px) {
+    img.game-title {
+        width: clamp(12rem, 80vw, 26rem);
+    }
     .splash {
         position: static;
         transform: rotate(-7deg);
