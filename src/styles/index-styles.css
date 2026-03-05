@@ -11,37 +11,42 @@
 * {
     font-family: minecraftia;
 }
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(hsl(0 0% 0% / 0.42), hsl(0 0% 0% / 0.42)),
+        url("../assets/imgs/original/club-triton/home-page/home-page.png") center / cover no-repeat;
+    filter: blur(2px) saturate(0.9);
+    transform: scale(1.04);
+}
 main {
     display:grid;
     justify-items: center;
-    &::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-            linear-gradient(hsl(0 0% 0% / 0.42), hsl(0 0% 0% / 0.42)),
-            url("../assets/imgs/original/club-triton/home-page/home-page.png") center / cover no-repeat;
-        filter: blur(2px) saturate(0.9);
-        transform: scale(1.04);
-    }
+    height:90%;
 }
 
 game-title{
+    display:grid;
     position: relative;
     grid-row: 1;
-    width: min(100%, 42rem);
+    width: min(100%,48rem);
     justify-items: center;
+    margin-inline:auto;
     img{
-        width: clamp(34rem, 62vw, 58rem);
+        width: clamp(44rem, 70vw, 58rem);
         max-width: 100%;
         filter: drop-shadow(0.22rem 0.22rem 0 #151515)
                 drop-shadow(0.34rem 0.34rem 0 #090909);
     }
     p.splash {
         position: absolute;
-        right: clamp(-2.6rem, -6vw, -0.9rem);
+        -right: clamp(-2.6rem, -6vw, -0.9rem);
+        left: 50%;
         top:3rem;
-        transform: rotate(-13deg);
+        -transform: rotate(-13deg);
+        transform: translateX(45%) rotate(-13deg);
         transform-origin: center;
         font-size: clamp(0.85rem, 0.5rem + 1.3vw, 1.35rem);
         white-space: nowrap;
@@ -56,10 +61,10 @@ game-title{
 @keyframes splash-pulse {
     0%,
     100% {
-        transform: rotate(-13deg) scale(1);
+        transform: translateX(45%) rotate(-13deg) scale(1);
     }
     50% {
-        transform: rotate(-13deg) scale(1.06);
+        transform: translateX(45%) rotate(-13deg) scale(1.06);
     }
 }
 
@@ -107,7 +112,6 @@ site-hub {
     display: grid;
     grid-column: 2;
     grid-row:2;
-
     gap: 0.45rem;
     justify-items: center;
     perspective: 700px;
@@ -154,24 +158,8 @@ site-hub {
     margin: 0;
 }
 
-
-@media (max-width: 900px) {
-   
-    .play-area {
-        grid-template-columns: 1fr;
-        width: min(100%, 30rem);
-        justify-items: center;
-    }
-
-    .menu-stack {
-        width: min(100%, 27rem);
-    }
-}
-
 @media (max-width: 760px) {
-    img.game-title {
-        width: clamp(12rem, 80vw, 26rem);
-    }
+    
     .splash {
         position: static;
         transform: rotate(-7deg);
@@ -182,6 +170,7 @@ site-hub {
     }
     game-title {
         grid-row:1;
+        margin-bottom: 3rem;
     }
     .skin-panel {
         grid-row:2;
