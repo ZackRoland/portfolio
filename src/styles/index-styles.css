@@ -42,6 +42,7 @@ main {
     display:grid;
     justify-items: center;
     background: transparent;
+    grid-template-columns: repeat(7, 1fr)
    
 }
 
@@ -49,11 +50,11 @@ game-title{
     display:grid;
     position: relative;
     grid-row: 1;
+    grid-column: 1/-1;
     width: min(100%,48rem);
     justify-items: center;
     margin-inline:auto;
     img{
-        width: clamp(44rem, 70vw, 58rem);
         max-width: 100%;
         filter: drop-shadow(0.22rem 0.22rem 0 #151515)
                 drop-shadow(0.34rem 0.34rem 0 #090909);
@@ -88,7 +89,7 @@ game-title{
 
 site-hub {
     display:grid;
-    grid-column:1;
+    grid-column:3/6;
     grid-row:2;
     position: relative;
     text-align: center;
@@ -128,7 +129,7 @@ site-hub {
 
 .skin-panel {
     display: grid;
-    grid-column: 2;
+    grid-column: 6;
     grid-row:2;
     gap: 0.45rem;
     justify-items: center;
@@ -180,7 +181,9 @@ site-hub {
 }
 
 @media (max-width: 760px) {
-    
+    main {
+        grid-template-columns: 1fr;
+    }
     .splash {
         position: static;
         transform: rotate(-7deg);
