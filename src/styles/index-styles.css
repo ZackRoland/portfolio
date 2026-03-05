@@ -11,20 +11,32 @@
 * {
     font-family: minecraftia;
 }
+body {
+    position: relative;
+    isolation: isolate;
+}
+
 body::before {
     content: "";
-    position: absolute;
+    position: fixed;
     inset: 0;
     background:
         linear-gradient(hsl(0 0% 0% / 0.42), hsl(0 0% 0% / 0.42)),
         url("../assets/imgs/original/club-triton/home-page/home-page.png") center / cover no-repeat;
     filter: blur(2px) saturate(0.9);
     transform: scale(1.04);
+    z-index: 0;
+}
+
+body > * {
+    position: relative;
+    z-index: 1;
 }
 main {
     display:grid;
     justify-items: center;
-    height:90%;
+    background: transparent;
+   
 }
 
 game-title{
@@ -145,10 +157,13 @@ site-hub {
 }
 
 .status-line {
-    width: 100%;
+    width: min(100%, 70rem);
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 1rem;
+    padding-inline: 1rem;
+    margin-inline: auto;
 }
 
 .status-line small {
