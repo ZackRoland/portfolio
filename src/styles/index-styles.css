@@ -19,7 +19,7 @@ body {
 body {
     overscroll-behavior: none;
     position: relative;
-    isolation: isolate;
+    -isolation: isolate;
 }
 
 body::before {
@@ -28,7 +28,7 @@ body::before {
     inset: 0;
     background:
         linear-gradient(hsl(0 0% 0% / 0.42), hsl(0 0% 0% / 0.42)),
-        url("../assets/imgs/original/club-triton/home-page/home-page.png") center / cover no-repeat;
+        url("../assets/imgs/original/wmc.png") center / cover no-repeat;
     filter: blur(2px) saturate(0.9);
     transform: scale(1.04);
     z-index: 0;
