@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zack's Portfolio Website</title>
     <link rel="stylesheet" href="../styles/main-styles.css">
+    <link rel="stylesheet" href="../styles/now-styles.css">
     <script src="../scripts/theme-toggle.js" defer></script>
     <script src="../scripts/view-transitions.js" defer></script>
+    <script src="../scripts/now-calendar.js" defer></script>
 
 </head>
 <body>
@@ -66,12 +68,41 @@
         </menu>
     </header>
     <main>
-        <div class="layout">
-            
-        </div>
-        <aside>
+        <section class="now-page">
+            <hgroup class="now-header">
+                <h1 class="page-title">/now</h1>
+                <p>Monthly updates and key milestones. Use the calendar to track highlights for each month.</p>
+            </hgroup>
+            <section class="monthly-update" aria-labelledby="monthly-update-title">
+                <h2 id="monthly-update-title">March 2026 Update</h2>
+                <p>
+                    I am moving to month-by-month updates here. This gives me one place to summarize what I am building,
+                    what I am learning, and what is coming next.
+                </p>
+            </section>
+            <section class="calendar-section" aria-labelledby="calendar-title">
+                <div class="calendar-toolbar">
+                    <h2 id="calendar-title">Important Dates</h2>
+                    <div class="calendar-nav">
+                        <button id="prev-month" type="button" aria-label="Go to previous month">←</button>
+                        <p id="calendar-month" aria-live="polite"></p>
+                        <button id="next-month" type="button" aria-label="Go to next month">→</button>
+                    </div>
+                </div>
 
-        </aside>
+                <div class="calendar-grid-wrapper">
+                    <div class="calendar-weekdays" aria-hidden="true">
+                        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                    </div>
+                    <div id="calendar-grid" class="calendar-grid" role="grid" aria-label="Monthly calendar"></div>
+                </div>
+
+                <aside class="event-panel" aria-labelledby="event-panel-title">
+                    <h3 id="event-panel-title">Highlighted Events</h3>
+                    <ul id="event-list"></ul>
+                </aside>
+            </section>
+        </section>
     </main>
     <footer>
         <small id="copywright">&copy; 2025 Zack Roland </small>

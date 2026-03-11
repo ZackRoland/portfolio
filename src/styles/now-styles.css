@@ -1,0 +1,124 @@
+.now-page {
+    width: min(1100px, 100%);
+    display: grid;
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.now-header,
+.monthly-update,
+.calendar-section {
+    background: color-mix(in srgb, var(--main-bg-color), white 16%);
+    border: 1px solid color-mix(in srgb, var(--base-text-color), transparent 65%);
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+}
+
+.now-header h1 {
+    justify-content: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.monthly-update p,
+.now-header p {
+    line-height: 1.5;
+}
+
+.calendar-section {
+    display: grid;
+    gap: 1rem;
+}
+
+.calendar-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.calendar-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.calendar-nav button {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--base-text-color), transparent 35%);
+    background: color-mix(in srgb, var(--main-bg-color), white 25%);
+}
+
+#calendar-month {
+    min-width: 11rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.calendar-weekdays,
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 0.5rem;
+}
+
+.calendar-weekdays span {
+    text-align: center;
+    font-weight: 600;
+}
+
+.calendar-day {
+    min-height: 4.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid color-mix(in srgb, var(--base-text-color), transparent 70%);
+    background: color-mix(in srgb, var(--main-bg-color), white 25%);
+    text-align: left;
+    padding: 0.4rem;
+    display: grid;
+    align-content: start;
+    gap: 0.25rem;
+}
+
+.calendar-day--muted {
+    opacity: 0.45;
+}
+
+.calendar-day--today {
+    outline: 2px solid var(--page-highlight);
+    outline-offset: 2px;
+}
+
+.calendar-day--event {
+    border-color: color-mix(in srgb, var(--page-highlight), black 30%);
+    background: color-mix(in srgb, var(--page-highlight), white 60%);
+}
+
+.calendar-day__event-name {
+    font-size: 0.8rem;
+    line-height: 1.2;
+}
+
+.event-panel {
+    border-top: 1px solid color-mix(in srgb, var(--base-text-color), transparent 70%);
+    padding-top: 0.75rem;
+}
+
+#event-list {
+    margin: 0.75rem 0 0;
+    padding-left: 1rem;
+    display: grid;
+    gap: 0.4rem;
+}
+
+@media (max-width: 700px) {
+    .calendar-day {
+        min-height: 4rem;
+        font-size: 0.9rem;
+    }
+
+    .calendar-day__event-name {
+        display: none;
+    }
+}

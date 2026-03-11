@@ -1,28 +1,161 @@
 :root {
-    --max-paragraph-size: 60ch;
+    --max-paragraph-size: 62ch;
+    --about-border: color-mix(in oklab, currentColor 12%, transparent);
+    --about-surface: color-mix(in oklab, canvas 92%, currentColor 8%);
+    --about-highlight: color-mix(in oklab, canvastext 20%, dodgerblue 80%);
 }
 
 main {
-    height:max-content;
+    display: grid;
+    gap: clamp(1.25rem, 2.5vw, 2.25rem);
+    padding-block-end: 3rem;
 }
-hgroup {
-    
-}
-hgroup > p {
+
+hgroup,hgroup > p {
     margin: 1rem 0 0 0;
     max-width: var(--max-paragraph-size);
 }
-h3 {
+h2 {
     text-decoration: underline;
     font-size: clamp(1.25rem,calc(1rem + 0.8vw), 1.5rem);
 }
-/* hgroup, hgroup+section {
-    margin: 2em ;
+
+.about-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--about-border);
+    border-radius: 1rem;
+    -background: linear-gradient(135deg, var(--about-surface), transparent 60%);
+    padding: clamp(1rem, 3vw, 2rem);
+    animation: fade-up 700ms ease both;
+}
+
+.about-card::after {
+    content: "";
+    position: absolute;
+    inset: auto -5rem -5rem auto;
+    width: clamp(9rem, 25vw, 14rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    -background: radial-gradient(circle, color-mix(in oklab, var(--about-highlight), transparent 55%) 0%, transparent 70%);
+    filter: blur(2px);
+    animation: float-orb 6s ease-in-out infinite;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    font-size: 0.85rem;
+    opacity: 0.75;
+}
+
+.page-title {
+    max-width: 22ch;
+    margin-top: 0.5rem;
+    text-wrap: balance;
+}
+
+
+
+
+.about-card {
+    border: 1px solid var(--about-border);
+    border-radius: 0.9rem;
+    padding: 1rem;
+    background: linear-gradient(
+        to left,
+        var(--mint-cream), 
+        var(--lighter-cyan)), 
+        linear-gradient(135deg, var(--keppel), 
+        var(--tiffany-blue));
+    transform-origin: center;
+    animation: fade-up 650ms ease both;
+    transition: transform 220ms ease, border-color 220ms ease;
+}
+
+/* .about-card:nth-child(2) {
+    animation-delay: 100ms;
+}
+
+.about-card:nth-child(3) {
+    animation-delay: 180ms;
+}
+
+.about-card:nth-child(4) {
+    animation-delay: 260ms;
 } */
+
+.about-card:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in oklab, var(--about-highlight), white 45%);
+}
+
+.about-card h2,
+.skills-panel h2 {
+    font-size: clamp(1.1rem, 0.8rem + 1vw, 1.5rem);
+    margin-bottom: 0.6rem;
+}
+.skills-panel {
+    border: 1px solid var(--about-border);
+    border-radius: 1rem;
+    padding: clamp(1rem, 2.2vw, 1.5rem);
+    background: linear-gradient(160deg, var(--about-surface), transparent 70%);
+    animation: fade-up 700ms ease both;
+    animation-delay: 220ms;
+}
+
+
+.skills-list li {
+    border: 1px dashed var(--about-border);
+    border-radius: 0.7rem;
+    padding: 0.8rem;
+    display: grid;
+    gap: 0.25rem;
+}
 hgroup:nth-of-type(odd) {
     text-align: left;
 }
 hgroup:nth-of-type(even) {
     text-align: right;
 }
+/**/
+.skills-list strong {
+    font-size: 0.95rem;
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float-orb {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-hero,
+    .about-hero::after,
+    .about-card,
+    .skills-panel {
+        animation: none;
+    }
+
+    .about-card {
+        transition: none;
+    }
+}
+
 
