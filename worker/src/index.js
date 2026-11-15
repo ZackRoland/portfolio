@@ -31,7 +31,7 @@ export default {
                 );
             }
             
-            return await handleContact(request,env,requestID);
+            return await handleContact(request,env,requestId);
         }   catch (error) {
             if (error instanceof HttpError) {
                 return readJsonResponse({ error: error.message }, error.status );
@@ -54,7 +54,7 @@ export default {
     },
 };
 
-function jsonResponse(body, status = 200){
+function readJsonResponse(body, status = 200){
     return new Response(JSON.stringify(body), {
         status,
         headers: JSON_HEADERS,

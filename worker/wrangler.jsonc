@@ -8,13 +8,13 @@
     
     "routes": [
         {
-            "pattern": "zackroland/api/contact",
-            "zone_name": "zackroland"
+            "pattern": "zackroland.com/api/contact",
+            "zone_name": "zackroland.com"
         }
     ],
 
     "vars": {
-        "ALLOWED_ORIGINS": ["https://zackroland", "https:://www.zackroland"],
+        "ALLOWED_ORIGINS": ["https://zackroland.com", "https://www.zackroland.com"],
 
         // Hostname only
         "TURNSTILE_HOSTNAME": "zackroland",
@@ -23,7 +23,7 @@
         "CONTACT_TO_EMAIL": "zack.portfolio.inbox@gmail.com",
 
         // must belong to domain onboard
-        "CONTACT_FROM_EMAIL": "website@zackroland"
+        "CONTACT_FROM_EMAIL": "contact@zackroland.com"
     },
 
     "secrets": {
