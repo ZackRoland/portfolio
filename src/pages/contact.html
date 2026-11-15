@@ -86,7 +86,13 @@
                 as soon as I can.
                 </p>
             </section>
-            <form id="contact-form" action="https://httpbin.org/post" method="post" novalidate>
+            <script
+                src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+                async
+                defer
+            >
+            </script>
+            <form id="contact-form" action="/api/contact" method="post" novalidate>
                 <fieldset>
                     <legend id="form-heading">Contact Form</legend>
                     <form-field class="full-name">
@@ -179,6 +185,11 @@
                         <input type="hidden" name="form-errors" class="field" id="form-errors" value="[]">
                         <button type="submit" name="submit" id="submit">Send</button>
                     </form-field>
+                    <div 
+                        class = "cf-turnstile"
+                        data-sitekey = "YOUR_PUBLIC_SITE_KEY"
+                    ></div>
+                    <button type ="submit">Send</button>
                 </fieldset>
             </form>
         </div>
@@ -305,7 +316,7 @@
         </aside>
     </main>
     <footer>
-        <small id="copywright">&copy; 2025 Zack Roland </small>
+        <small id="copywright">&copy; 2026 Zack Roland </small>
     </footer>
 </body>
 </html>
