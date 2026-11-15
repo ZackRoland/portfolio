@@ -8,7 +8,7 @@
     
     "routes": [
         {
-            "pattern": "zackroland.com/api/contact",
+            "pattern": "zackroland.com/api/contact*",
             "zone_name": "zackroland.com"
         }
     ],
@@ -17,7 +17,7 @@
         "ALLOWED_ORIGINS": ["https://zackroland.com", "https://www.zackroland.com"],
 
         // Hostname only
-        "TURNSTILE_HOSTNAME": "zackroland",
+        "TURNSTILE_HOSTNAME": "zackroland.com",
 
         // dedicated destination email
         "CONTACT_TO_EMAIL": "zack.portfolio.inbox@gmail.com",
