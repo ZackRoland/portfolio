@@ -141,6 +141,13 @@ fieldset {
 fieldset > *{
     margin:1rem 0 0 0;
 }
+.honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
 /* ========= Legend Styling ========= */
 
 legend[id="form-heading"] {

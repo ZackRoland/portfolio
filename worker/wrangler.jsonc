@@ -1,0 +1,65 @@
+{
+    "schema": "./node_modules/wrangler/config-schema.json",
+
+    "name": "portfolio-contact-api",
+    "main": "src/index.js",
+    "compatibility_date": "2026-11-15",
+
+    // For Testing purposes, can disable later
+    "workers_dev": true,
+    
+    "routes": [
+        {
+            "pattern": "zackroland/api/contact",
+            "zone_name": "zackroland"
+        }
+    ],
+
+    "vars": {
+        "ALLOWED_ORIGINS": ["https://zackroland", "https:://www.zackroland"],
+
+        // Hostname only
+        "TURNSTILE_HOSTNAME": "zackroland",
+
+        // dedicated destination email
+        "CONTACT_TO_EMAIL": "zack.portfolio.inbox@gmail.com",
+
+        // must belong to domain onboard
+        "CONTACT_FROM_EMAIL": "website@zackroland"
+    },
+
+    "secrets": {
+        "required": [
+            "TURNSTILE_SECRET_KEY"
+        ]
+    },
+
+    "ratelimits": [
+        {
+            "name": "CONTACT_RATE_LIMITER",
+
+            // positive integer unique to account
+
+            "namespace_id": "3005",
+
+            "simple": {
+                "limit": 5,
+                "period": 60
+            }
+        }
+    ],
+
+    "send_email": [
+        {
+            "name": "EMAIL",
+
+            // Restricts binding to dedicated email
+            "destination_address": "zack.portfolio.inbox@gmail.com"
+        }
+    ],
+
+    "observability": {
+        "enabled": true,
+        "head_sampling_rate":1
+    }
+}
