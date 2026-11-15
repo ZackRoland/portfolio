@@ -92,6 +92,11 @@
                 defer
             >
             </script>
+            <output 
+                id = "contact-form-status"
+                role = "status"
+                aria-live = "polite"
+            ></output>
             <form id="contact-form" action="/api/contact" method="post" novalidate>
                 <fieldset>
                     <legend id="form-heading">Contact Form</legend>
@@ -162,7 +167,18 @@
                         <output class="error" id="contact-error"></output>
                         <output class="info" id="contact-info"></output>
                     </form-field>
-                    <input type="hidden" name="possible_bot" id="possible_bot" value="true">
+
+                    <div class="honeypot" aria-hidden="true">
+                        <label for="website">Leave this field empty</label>
+                        <input
+                          id="website"
+                          name="website"
+                          type="text"
+                          tabindex="-1"
+                          autocomplete="off"
+                        >
+                    </div>
+
                     <form-field class="msg">
                         <label for="message" >Enquiry</label>
                         <textarea 
