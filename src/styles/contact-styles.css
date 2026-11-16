@@ -210,6 +210,25 @@ form-field > select {
     background-clip: padding-box, border-box;
     box-shadow: 4px 4px oklch(0% 0 0 / .1);
 }
+
+.field:-webkit-autofill,
+.field:-webkit-autofill:hover,
+.field:-webkit-autofill:focus,
+.field:autofill {
+    -webkit-text-fill-color: var(--field-text-color);
+    caret-color: var(--field-text-color);
+
+    -webkit-box-shadow:
+        0 0 0 1000px var(--lighter-cyan) inset,
+        4px 4px oklch(0% 0 0 / .1);
+
+    box-shadow:
+        0 0 0 1000px var(--lighter-cyan) inset,
+        4px 4px oklch(0% 0 0 / .1);
+    border: 2.5px solid var(--keppel);
+
+}
+
 output.info {
     font-size:var(--output-info-font-size);
     color: var(--info-font-color);
