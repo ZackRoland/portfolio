@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects</title>
-    <link rel="stylesheet" href="../styles/main-styles.css">
+    <link rel="stylesheet" href="../styles/main-styles.css?v=5">
     <link rel="stylesheet" href="../styles/project-styles.css">
     <script src="../scripts/theme-toggle.js" defer></script>
     <script src="../scripts/view-transitions.js" defer></script>
@@ -17,7 +17,7 @@
                 <li class="logo"><a href="./../../index.html">ZR</a></li>
                 <li><a href="./../../index.html">Home</a></li>
                 <li><a href="./about.html">About</a></li>
-                <li><a href="./projects.html" aria-current="page">Projects</a></li>
+                <li><span class="nav-current" aria-current="page">Projects</span></li>
                 <li><a href="./contact.html">Contact Me</a></li>
                 <li class="theme-menu">
                     <details open>
@@ -60,12 +60,12 @@
         <menu id="main-menu" popover hidden>
             <li><a href="./../../index.html">Home</a></li>
             <li><a href="./about.html">About</a></li>
-            <li><a href="./projects.html">Projects</a></li>
+            <li><a href="./projects.html" aria-current="page">Projects</a></li>
             <li><a href="./contact.html">Contact Me</a></li>
         </menu>
     </header>
     <main> 
-        <h1 id="project-heading" aria-labelledby="project-heading">Projects</h1>
+        <h1 class="page-title" id="project-heading">Projects</h1>
         <nav id="projects-breadcrumb">
             <a href="./../../index.html">Home</a>
             <span>›</span>

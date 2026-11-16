@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Projects (CRUD)</title>
 
-    <link rel="stylesheet" href="../styles/main-styles.css">
+    <link rel="stylesheet" href="../styles/main-styles.css?v=5">
     <link rel="stylesheet" href="../styles/project-styles.css">
     <link rel="stylesheet" href="../styles/project-crud-styles.css">
 
@@ -22,7 +22,7 @@
         <li class="logo"><a href="./../../index.html">ZR</a></li>
         <li><a href="./../../index.html">Home</a></li>
         <li><a href="./about.html">About</a></li>
-        <li><a href="./projects.html" aria-current="page">Projects</a></li>
+        <li><span class="nav-current" aria-current="page">Projects</span></li>
         <li><a href="./contact.html">Contact Me</a></li>
         <li class="theme-menu">
             <details open>
@@ -61,10 +61,17 @@
         </li>
       </ul>
     </nav>
+    <button aria-label="Open menu" popovertarget="main-menu"></button>
+    <menu id="main-menu" popover hidden>
+      <li><a href="./../../index.html">Home</a></li>
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./projects.html" aria-current="page">Projects</a></li>
+      <li><a href="./contact.html">Contact Me</a></li>
+    </menu>
   </header>
 
   <main>
-    <h1>Manage Projects (CRUD)</h1>
+    <h1 class="page-title">Manage Projects (CRUD)</h1>
     <nav id="projects-breadcrumb" aria-label="Projects breadcrumb">
         <a href="./../../index.html">Home</a>
         <span>›</span>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me</title>
-    <link rel="stylesheet" href="../styles/main-styles.css">
+    <link rel="stylesheet" href="../styles/main-styles.css?v=5">
     <link rel="stylesheet" href="../styles/about-styles.css">
     <script src="../scripts/theme-toggle.js" defer></script>
     <script src="../scripts/view-transitions.js" defer></script>
@@ -15,7 +15,7 @@
             <ul>
                 <li class="logo"><a href="./../../index.html">ZR</a></li>
                 <li><a href="./../../index.html">Home</a></li>
-                <li><a href="./about.html" aria-current="page">About</a></li>
+                <li><span class="nav-current" aria-current="page">About</span></li>
                 <li><a href="./projects.html">Projects</a></li>
                 <li><a href="./contact.html">Contact Me</a></li>
                 <li class="theme-menu">
@@ -58,7 +58,7 @@
         <button aria-label="Open menu" popovertarget="main-menu"></button>
         <menu id="main-menu" popover hidden>
             <li><a href="./../../index.html">Home</a></li>
-            <li><a href="./about.html">About</a></li>
+            <li><a href="./about.html" aria-current="page">About</a></li>
             <li><a href="./projects.html">Projects</a></li>
             <li><a href="./contact.html">Contact Me</a></li>
         </menu>
