@@ -1,0 +1,230 @@
+:root {
+    --motion-distance-sm: .35rem;
+    --motion-distance-md: 1rem;
+    --motion-duration-fast: 160ms;
+    --motion-duration-normal: 560ms;
+    /* Smaller durations move faster; larger durations move slower. */
+    --space-star-speed: 45s;
+    --space-dust-speed: 115s;
+    --space-glow-speed: 34s;
+    --motion-ease-gravity: cubic-bezier(.2, .8, .2, 1);
+    --motion-ease-settle: cubic-bezier(.16, 1, .3, 1);
+    --space-star-color: rgb(45 105 101 / 24%);
+    --space-dust-color: rgb(49 151 142 / 14%);
+    --space-glow-color: rgb(66 191 184 / 14%);
+}
+
+:root.dark {
+    --space-star-color: rgb(217 244 255 / 46%);
+    --space-dust-color: rgb(104 198 207 / 24%);
+    --space-glow-color: rgb(57 155 190 / 18%);
+}
+
+.space-field {
+    position: fixed;
+    z-index: 20;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    contain: strict;
+    opacity: .8;
+    mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+}
+
+.space-field > span {
+    position: absolute;
+    display: block;
+    pointer-events: none;
+    will-change: transform;
+}
+
+.space-field__stars,
+.space-field__dust {
+    inset: -18%;
+    background-repeat: repeat;
+}
+
+.space-field__stars {
+    background-image:
+        radial-gradient(circle at 13% 22%, var(--space-star-color) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 72% 68%, var(--space-star-color) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 88% 17%, var(--space-star-color) 0 1.4px, transparent 2px);
+    background-size: 8rem 8rem, 11rem 11rem, 15rem 15rem;
+    animation: space-drift-near var(--space-star-speed) linear infinite;
+}
+
+.space-field__dust {
+    background-image:
+        radial-gradient(circle at 38% 42%, var(--space-dust-color) 0 .8px, transparent 1.4px),
+        radial-gradient(circle at 81% 29%, var(--space-dust-color) 0 .7px, transparent 1.2px);
+    background-size: 5rem 5rem, 7rem 7rem;
+    opacity: .75;
+    animation: space-drift-far var(--space-dust-speed) linear infinite reverse;
+}
+
+.space-field__glow {
+    top: 12%;
+    left: 58%;
+    width: min(42rem, 78vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--space-glow-color), transparent 68%);
+    filter: blur(1.25rem);
+    opacity: .65;
+    animation: gravity-orbit var(--space-glow-speed) ease-in-out infinite alternate;
+}
+
+@keyframes space-drift-near {
+    to { transform: translate3d(8rem, 5rem, 0); }
+}
+
+@keyframes space-drift-far {
+    to { transform: translate3d(-5rem, 3rem, 0); }
+}
+
+@keyframes gravity-orbit {
+    from { transform: translate3d(-12%, -6%, 0) scale(.9); }
+    to { transform: translate3d(18%, 12%, 0) scale(1.08); }
+}
+
+html.motion-capable [data-gravity-reveal] {
+    opacity: 0;
+    translate: 0 calc(-1 * var(--motion-distance-md));
+    filter: blur(2px);
+    transition:
+        opacity var(--motion-duration-normal) var(--motion-ease-settle),
+        translate var(--motion-duration-normal) var(--motion-ease-settle),
+        filter calc(var(--motion-duration-normal) * .8) var(--motion-ease-gravity);
+    transition-delay: var(--motion-delay, 0ms);
+}
+
+html.motion-capable [data-gravity-reveal].is-visible {
+    opacity: 1;
+    translate: 0 0;
+    filter: none;
+}
+
+project-card[data-gravity-card] {
+    --gravity-rotate-x: 0deg;
+    --gravity-rotate-y: 0deg;
+    --gravity-lift: 0rem;
+    --gravity-image-x: 0px;
+    --gravity-image-y: 0px;
+    transform:
+        perspective(900px)
+        translate3d(0, var(--gravity-lift), 0)
+        rotateX(var(--gravity-rotate-x))
+        rotateY(var(--gravity-rotate-y));
+    transform-style: preserve-3d;
+    transition:
+        transform 360ms var(--motion-ease-settle),
+        box-shadow var(--motion-duration-fast) var(--motion-ease-gravity);
+}
+
+project-card[data-gravity-card]:hover,
+project-card[data-gravity-card]:focus-within {
+    --gravity-lift: -.3rem;
+    box-shadow: .55rem .7rem 0 color-mix(in srgb, var(--border-color), transparent 48%);
+}
+
+project-card[data-gravity-card] project-image img {
+    transform: scale(1.025) translate3d(var(--gravity-image-x), var(--gravity-image-y), 0);
+    transition: transform 420ms var(--motion-ease-settle);
+}
+
+[data-gravity-press] {
+    transition:
+        translate var(--motion-duration-fast) var(--motion-ease-gravity),
+        box-shadow var(--motion-duration-fast) var(--motion-ease-gravity),
+        filter var(--motion-duration-fast) var(--motion-ease-gravity);
+}
+
+[data-gravity-press]:active {
+    translate: 0 .14rem;
+}
+
+.form-panel:focus-within,
+#contact-form:focus-within {
+    transform: none;
+}
+
+html.motion-reduced .space-field > span,
+html.motion-reduced project-card[data-gravity-card],
+html.motion-reduced project-card[data-gravity-card] project-image img {
+    animation: none;
+    transform: none;
+}
+
+html.motion-reduced [data-gravity-reveal] {
+    opacity: 1;
+    translate: none;
+    filter: none;
+    transition: none;
+}
+
+html.motion-reduced [data-gravity-press] {
+    transition: none;
+}
+
+html.motion-reduced .splash,
+html.motion-reduced .flash {
+    animation: none !important;
+}
+
+html.motion-reduced::view-transition-old(default),
+html.motion-reduced::view-transition-new(default) {
+    animation-duration: 1ms;
+}
+
+@media (hover: none), (pointer: coarse) {
+    project-card[data-gravity-card],
+    project-card[data-gravity-card]:hover {
+        --gravity-lift: 0rem;
+        transform: none;
+    }
+
+    project-card[data-gravity-card] project-image img {
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .space-field > span,
+    project-card[data-gravity-card],
+    project-card[data-gravity-card] project-image img {
+        animation: none !important;
+        transform: none !important;
+    }
+
+    [data-gravity-reveal] {
+        opacity: 1 !important;
+        translate: none !important;
+        filter: none !important;
+        transition: none !important;
+    }
+
+    [data-gravity-press] {
+        transition: none !important;
+    }
+
+    .splash,
+    .flash {
+        animation: none !important;
+    }
+
+    ::view-transition-old(default),
+    ::view-transition-new(default) {
+        animation-duration: 1ms !important;
+    }
+}
+
+@media (max-width: 760px) {
+    .space-field {
+        opacity: .58;
+    }
+
+    .space-field__glow {
+        width: 34rem;
+        left: 38%;
+    }
+}

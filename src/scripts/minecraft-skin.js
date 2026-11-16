@@ -13,12 +13,17 @@
     const MAX_ROTATE_Y_RADIANS = (MAX_ROTATE_Y * Math.PI) / 180;
     const IDLE_WALK_SPEED = 0.4;
     const HOVER_WALK_SPEED = 0.5;
+    const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     let skinViewer = null;
     let skinViewerUnavailable = false;
 
     const configuredIgn = panel.dataset.minecraftIgn;
     const configuredUuid = panel.dataset.minecraftUuid;
+
+    function motionShouldBeReduced() {
+        return reduceMotionQuery.matches || document.documentElement.classList.contains('motion-reduced');
+    }
 
     function updateStatus(message) {
         if (message === 'Skin render loaded') {
@@ -84,7 +89,7 @@
 
             if (window.skinview3d.WalkingAnimation) {
                 skinViewer.animation = new window.skinview3d.WalkingAnimation();
-                skinViewer.animation.paused = false;
+                skinViewer.animation.paused = motionShouldBeReduced();
                 if (typeof skinViewer.animation.speed === 'number') {
                     skinViewer.animation.speed = IDLE_WALK_SPEED;
                 }
@@ -129,6 +134,7 @@
 
     function setupSkinHoverRotation() {
         panel.addEventListener('pointerenter', () => {
+            if (motionShouldBeReduced()) return;
             panel.classList.add('is-hovering-skin');
             if (skinViewer && skinViewer.animation && typeof skinViewer.animation.speed === 'number') {
                 skinViewer.animation.speed = HOVER_WALK_SPEED;
@@ -136,6 +142,7 @@
         });
 
         panel.addEventListener('pointermove', (event) => {
+            if (motionShouldBeReduced()) return;
             const rect = panel.getBoundingClientRect();
             const positionX = event.clientX - rect.left;
             const halfWidth = rect.width / 2;
@@ -152,6 +159,17 @@
             }
             applySkinRotation(0);
         });
+    }
+
+    function syncViewerMotion() {
+        const reduced = motionShouldBeReduced();
+        if (skinViewer?.animation) {
+            skinViewer.animation.paused = reduced;
+        }
+        if (reduced) {
+            panel.classList.remove('is-hovering-skin');
+            applySkinRotation(0);
+        }
     }
 
     async function loadFromProviders(uuid, ign) {
@@ -180,34 +198,6 @@
         };
 
         tryNext();
-    }
-
-    function applySkinRotation(normalizedX) {
-        const rotateY = normalizedX * MAX_ROTATE_Y;
-        skinImage.style.transform `rotateY(${rotateY.toFixed(2)}deg)`;
-    }
-    
-    function setupSkinHoverRotation () {
-        panel.addEventListener('mouseenter', () => {
-            isHoveringSkin = true;
-        });
-
-        panel.addEventListener('mousemove', (event) => {
-            if (!isHoveringSkin) {
-                return;
-            }
-
-            const rect = panel.getBoundingClientRect();
-            const positionX = event.clientX - rect.left;
-            const halfWidth = rect.width / 2;
-            const normalizedX = (positionX - halfWidth) / halfWidth;
-            const clampedX = Math.max(-1, Math.min(1, normalizedX));
-            applyingSkinRotation(clampedX);
-        });
-        panel.addEventListener('mouseleave', () => {
-            isHoveringSkin = false;
-            applyingSkinRotation(0);
-        })
     }
 
     async function fetchJson(url, timeoutMs) {
@@ -269,5 +259,6 @@
     }
 
     setupSkinHoverRotation();
+    window.addEventListener('portfolio-motion-change', syncViewerMotion);
     initializeSkin();
 })();
