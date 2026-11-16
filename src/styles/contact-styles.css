@@ -26,6 +26,17 @@
     --contact-required-color: var(--crayola-red);
 }
 
+:root.dark {
+    --contact-heading-color: var(--accent-strong-color);
+    --contact-border-color: var(--border-color);
+    --contact-legend-color: var(--accent-color);
+    --contact-label-color: var(--accent-strong-color);
+    --contact-field-text: var(--field-text-color);
+    --contact-info-color: var(--muted-text-color);
+    --contact-required-color: #FF7B91;
+    --feature-h3-font-color: var(--accent-color);
+}
+
 /* ========= Global Vars ========= */
 
 main {
@@ -173,7 +184,7 @@ p[id="contact-desc"] {
     color: var(--contact-field-text);
     border-radius: 0.4em;
     font-size: var(--contact-field-size);
-    background-color: hsl(0 0% 110% / .5);
+    background-color: var(--field-bg-color);
     font-family: inherit;
     margin: 0;
     background-image: linear-gradient(
@@ -225,7 +236,7 @@ p[id="contact-desc"] {
     padding: 0.5em;
     border: none;
     border-radius: 0.4em;
-    background: var(--wine);
+    background: var(--button-bg-color);
     color: white;
     font-size: var(--contact-field-size);
     cursor: pointer;

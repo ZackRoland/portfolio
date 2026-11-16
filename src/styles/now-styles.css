@@ -8,8 +8,8 @@
 .now-header,
 .monthly-update,
 .calendar-section {
-    background: color-mix(in srgb, var(--main-bg-color), white 16%);
-    border: 1px solid color-mix(in srgb, var(--base-text-color), transparent 65%);
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
     border-radius: 0.75rem;
     padding: 1rem 1.25rem;
 }
@@ -48,7 +48,7 @@
     height: 2rem;
     border-radius: 999px;
     border: 1px solid color-mix(in srgb, var(--base-text-color), transparent 35%);
-    background: color-mix(in srgb, var(--main-bg-color), white 25%);
+    background: var(--surface-raised-color);
 }
 
 #calendar-month {
@@ -73,7 +73,7 @@
     min-height: 4.5rem;
     border-radius: 0.5rem;
     border: 1px solid color-mix(in srgb, var(--base-text-color), transparent 70%);
-    background: color-mix(in srgb, var(--main-bg-color), white 25%);
+    background: var(--surface-raised-color);
     text-align: left;
     padding: 0.4rem;
     display: grid;
@@ -91,8 +91,8 @@
 }
 
 .calendar-day--event {
-    border-color: color-mix(in srgb, var(--page-highlight), black 30%);
-    background: color-mix(in srgb, var(--page-highlight), white 60%);
+    border-color: var(--accent-color);
+    background: var(--theme-highlight);
 }
 
 .calendar-day__event-name {

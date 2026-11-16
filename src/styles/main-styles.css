@@ -1,76 +1,68 @@
-@import "colors.css";
+@import "colors.css?v=6";
 @layer base, layout, components;
 /* ========= Root Variables ========= */
 :root {
-   
-    --base-text-color-1: white;
-    --base-text-color-2: var(--chocolate-cosmos);
-    --base-text-color-3: var(--pistachio);
-    --base-text-color-4: var(--mint-green);
-    --base-text-color: var(--base-text-color-4);
-    --nav-fill: var(--mossy-green);
-    --nav-gradient: var(--dark-turqoise);
+    /* Theme controls: change these tokens to adjust an entire color mode. */
+    --theme-text: var(--mint-green);
+    --theme-text-muted: var(--mossy-green);
+    --theme-heading: color-mix(in srgb, var(--theme-text), black 20%);
+    --theme-logo: color-mix(in srgb, var(--theme-text), black 40%);
+    --theme-body-start: var(--light-orange);
+    --theme-body-end: var(--cream);
+    --theme-main-start: var(--lighter-orange);
+    --theme-main-end: var(--lighter-cream);
+    --theme-nav-start: var(--mossy-green);
+    --theme-nav-end: var(--dark-turqoise);
+    --theme-surface: var(--mint-cream);
+    --theme-surface-raised: var(--lighter-cyan);
+    --theme-border: var(--mossy-green);
+    --theme-accent: var(--keppel);
+    --theme-accent-strong: var(--tiffany-blue);
+    --theme-highlight: var(--light-cyan);
+    --theme-outline-a: var(--celadon);
+    --theme-outline-b: var(--tiffany-blue);
+    --theme-field-bg: rgb(255 255 255 / 55%);
+    --theme-field-text: #101827;
+    --theme-button-bg: var(--wine);
 
-    --nav-bg-color-1: linear-gradient(to left,var(--nav-fill), var(--nav-gradient));
-    --nav-bg-color-2: #1c1c1c;
-    --nav-bg-color-3:#2E2C2F;
-    --nav-bg-color:var(--nav-bg-color-1);
+    /* Semantic aliases consumed by page-level styles. */
+    --base-text-color: var(--theme-text);
+    --muted-text-color: var(--theme-text-muted);
+    --surface-color: var(--theme-surface);
+    --surface-raised-color: var(--theme-surface-raised);
+    --border-color: var(--theme-border);
+    --accent-color: var(--theme-accent);
+    --accent-strong-color: var(--theme-accent-strong);
+    --field-bg-color: var(--theme-field-bg);
+    --field-text-color: var(--theme-field-text);
+    --button-bg-color: var(--theme-button-bg);
 
-    --nav-text-color-1:white;
-    --nav-text-color-2:black;
-    --nav-text-color-3:var(--wine);
-    --nav-text-color-4:var(--light-wine);
-    --nav-text-color-5:  var(--pistachio);
-    --nav-text-color-6: var(--base-text-color);
-    --nav-text-color:var(--nav-text-color-6);
-
-    --nav-border-color-1: var(--nav-text-color);
-    --nav-border-color-2:white;
-    --nav-border-color:var(--nav-border-color-1);
+    --nav-fill: var(--theme-nav-start);
+    --nav-gradient: var(--theme-nav-end);
+    --nav-bg-color: linear-gradient(to left, var(--nav-fill), var(--nav-gradient));
+    --nav-text-color: var(--base-text-color);
+    --nav-border-color: var(--theme-border);
 
     --nav-gap:clamp(1.5rem, 4vw, 4.6875rem);
     --nav-font-size:1rem;
     --nav-padding:clamp(1rem, 2.5vw, 2rem);
-    --page-highlight:var(--light-cyan);
-
-    --theme-svg-color-1: white;
-    --theme-svg-color-2: var(--base-text-color);
-    --theme-svg-color: var(--theme-svg-color-2);
+    --page-highlight: var(--theme-highlight);
+    --theme-svg-color: var(--base-text-color);
     
     --logo-size-1:2rem;
     --logo-size-2:2.5rem;
     --logo-size:var(--logo-size-2);
-    --logo-color-1: var(--base-text-color);
-    --logo-color-2: var(--mint-green);
-    --logo-color-3: color-mix(in srgb, var(--base-text-color), black 40%);
-    --logo-color:var(--logo-color-3);
-
-
-    --body-fill: var(--mossy-green);
-    --body-gradient: var(--dark-turqoise);
-
-    --body-bg-color-1: linear-gradient(to left,var(--body-fill), var(--body-gradient));
-    --body-bg-color-2:  linear-gradient(to right,var(--light-orange), var(--cream));
-    --body-bg-color-3: linear-gradient(to right,var(--radiant-lapis-lazuli), var(--lapis-lazuli));
-    --body-bg-color:  var(--body-bg-color-2);
-
-    --main-fill:var(--mint-green);
-    --main-gradient: var(--dark-mint-green);
+    --logo-color: var(--theme-logo);
+    --body-fill: var(--theme-body-start);
+    --body-gradient: var(--theme-body-end);
+    --body-bg-color: linear-gradient(to right, var(--body-fill), var(--body-gradient));
+    --main-fill: var(--theme-main-start);
+    --main-gradient: var(--theme-main-end);
     --main-height: 80vh;
-
-    --main-bg-color-1: linear-gradient(to left,var(--main-fill), var(--main-gradient));
-    --main-bg-color-2: linear-gradient(to right,var(--lighter-orange),var(--lighter-cream));
-    --main-bg-color-3: linear-gradient(to right,var(--charcoal-black),var(--gunmetal), var(--dark-mint-green),var(--pale-green));
-    --main-bg-color-4: var(--body-bg-color-2);
-    --main-bg-color: var(--main-bg-color-2);
-
-    --intro-text-color: white;
-    --two-color-outline: var(--celadon) 5px 5px, var(--tiffany-blue) -5px -5px;
-
-    --h1-color-1: var(--vanilla);
-    --h1-color-2: var(--wine);
-    --h1-color-3: color-mix(in srgb, var(--base-text-color), black 20%);
-    --h1-color: var(--h1-color-3);
+    --main-bg-color: linear-gradient(to right, var(--main-fill), var(--main-gradient));
+    --intro-text-color: var(--theme-heading);
+    --two-color-outline: var(--theme-outline-a) 5px 5px, var(--theme-outline-b) -5px -5px;
+    --h1-color: var(--theme-heading);
 
     --h1-font-size-1: 2rem;
     --h1-font-size-2: 3rem;
@@ -84,61 +76,27 @@
 }
 /* ========= Root Variables Dark Mode ========= */
 :root.dark {
-    --base-text-color-1: white;
-    --base-text-color: var(--base-text-color-1);
-
-    --nav-fill: var(--mossy-green);
-    --nav-gradient: var(--dark-turqoise);
-
-    --nav-bg-color-1: linear-gradient(to left,var(--nav-fill), var(--nav-gradient));
-    --nav-bg-color:var(--nav-bg-color-1);
-
-    --nav-text-color-1:white;
-    --nav-text-color-2: var(--base-text-color);
-    --nav-text-color:var(--nav-text-color-2);
-
-    --nav-border-color-1: var(--nav-text-color);
-    --nav-border-color-2:white;
-    --nav-border-color:var(--nav-border-color-1);
-
-    --page-highlight-1: var(--light-cyan);
-    --page-highlight:var(--page-highlight-1);
-
-    --theme-svg-color-1: white;
-    --theme-svg-color-2: var(--base-text-color);
-    --theme-svg-color: var(--theme-svg-color-2);
-    
-    --logo-color-1: var(--base-text-color);
-    --logo-color-2: var(--mint-green);
-    --logo-color-3: color-mix(in srgb, var(--base-text-color), black 40%);
-    --logo-color:var(--logo-color-3);
-
-
-    --body-fill: var(--mossy-green);
-    --body-gradient: var(--dark-turqoise);
-
-    --body-bg-color-1: linear-gradient(to left,var(--body-fill), var(--body-gradient));
-    --body-bg-color-3: linear-gradient(to right,var(--radiant-lapis-lazuli), var(--lapis-lazuli));
-    --body-bg-color-4: linear-gradient(to right,
-        color-mix(in srgb, var(--light-orange), var(--dark-turqoise) 10%), 
-        color-mix(in srgb, var(--cream),var(--dark-turqoise) 10%));
-    --body-bg-color-5: linear-gradient(to right,var(--violet),var(--wine), var(--chocolate-cosmos));
-    --body-bg-color:  var(--body-bg-color-5);
-
-    --main-fill:var(--mint-green);
-    --main-gradient: var(--dark-mint-green);
-
-    --main-bg-color-1: linear-gradient(to right,var(--charcoal-black),var(--gunmetal), var(--dark-mint-green),var(--pale-green));
-    --main-bg-color-2: var(--body-bg-color-2);
-    --main-bg-color-3: linear-gradient(to right,var(--light-violet),var(--light-wine), var(--light-chocolate-cosmos));
-    --main-bg-color: var(--main-bg-color-3);
-
-    --intro-text-color: white;
-    --two-color-outline: var(--celadon) 5px 5px, var(--tiffany-blue) -5px -5px;
-
-    --h1-color-1: var(--vanilla);
-    --h1-color-3: color-mix(in srgb, var(--base-text-color), black 20%);
-    --h1-color: var(--h1-color-1);
+    --theme-text: var(--moonlight-blue);
+    --theme-text-muted: var(--mist-blue);
+    --theme-heading: #F1F6FC;
+    --theme-logo: var(--moonlight-blue);
+    --theme-body-start: var(--midnight-950);
+    --theme-body-end: var(--midnight-850);
+    --theme-main-start: var(--midnight-900);
+    --theme-main-end: var(--midnight-800);
+    --theme-nav-start: #102A43;
+    --theme-nav-end: var(--midnight-950);
+    --theme-surface: #102943;
+    --theme-surface-raised: #173955;
+    --theme-border: var(--steel-blue);
+    --theme-accent: var(--aurora-cyan);
+    --theme-accent-strong: #8BD9C9;
+    --theme-highlight: #294B68;
+    --theme-outline-a: #3D738B;
+    --theme-outline-b: #69BFC1;
+    --theme-field-bg: #E6EFF8;
+    --theme-field-text: #091625;
+    --theme-button-bg: #285F78;
 }
 /* ========= Universal Tags ========= */
 * {

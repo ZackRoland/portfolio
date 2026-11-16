@@ -1,8 +1,9 @@
 :root {
     --max-paragraph-size: 62ch;
-    --about-border: color-mix(in oklab, currentColor 12%, transparent);
-    --about-surface: color-mix(in oklab, canvas 92%, currentColor 8%);
-    --about-highlight: color-mix(in oklab, canvastext 20%, dodgerblue 80%);
+    --about-border: var(--border-color);
+    --about-surface: var(--surface-color);
+    --about-surface-raised: var(--surface-raised-color);
+    --about-highlight: var(--accent-color);
 }
 
 main {
@@ -65,10 +66,8 @@ h2 {
     padding: 1rem;
     background: linear-gradient(
         to left,
-        var(--mint-cream), 
-        var(--lighter-cyan)), 
-        linear-gradient(135deg, var(--keppel), 
-        var(--tiffany-blue));
+        var(--about-surface),
+        var(--about-surface-raised));
     transform-origin: center;
     animation: fade-up 650ms ease both;
     transition: transform 220ms ease, border-color 220ms ease;

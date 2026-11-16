@@ -31,6 +31,16 @@
 
     --project-description-color-1:white;
 }
+
+:root.dark {
+    --project-border-style-1: 0.5rem solid var(--border-color);
+    --project-body-color-2: linear-gradient(145deg, var(--midnight-800), var(--midnight-900));
+    --project-body-color-3: linear-gradient(145deg, var(--midnight-800), var(--midnight-900));
+    --project-body-color-4: linear-gradient(145deg, var(--surface-raised-color), var(--surface-color));
+    --project-hub-background-1: linear-gradient(to left, var(--steel-blue), var(--aurora-cyan));
+    --project-hub-border-color-1: var(--moonlight-blue);
+    --project-description-color-1: var(--moonlight-blue);
+}
 /* =========== 2. Global Tags ============= */
 main {
     height: max-content;
@@ -48,18 +58,18 @@ main > section {
     padding: 0;
     font-size: 1.1rem;
     text-align: left;  
-    color: var(--nav-text-color, #fff);
+    color: var(--muted-text-color);
     a {
-        color: #e3b6d7; 
+        color: var(--accent-color);
         text-decoration: underline;
         text-underline-offset: 2px;
         font-weight: 500;
         &:hover {
-            color: #ffffff;  
+            color: var(--h1-color);
         }
     }
     span {
-        color: #d4cfcf;
+        color: var(--muted-text-color);
         padding: 0 0.35rem;
     }
 }
