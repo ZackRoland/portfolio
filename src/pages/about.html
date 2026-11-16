@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
+    <meta name="description" content="Learn how Zack Roland approaches front-end engineering, software development, and technical problem solving.">
+    <title>About Zack Roland</title>
     <link rel="stylesheet" href="../styles/main-styles.css?v=6">
-    <link rel="stylesheet" href="../styles/about-styles.css?v=6">
+    <link rel="stylesheet" href="../styles/about-styles.css?v=9">
     <script src="../scripts/theme-toggle.js" defer></script>
     <script src="../scripts/view-transitions.js" defer></script>
 </head>
 <body>
     <header>
-        <nav id = "navigation">
+        <nav id="navigation" aria-label="Primary navigation">
             <ul>
                 <li class="logo"><a href="./../../index.html">ZR</a></li>
                 <li><a href="./../../index.html">Home</a></li>
@@ -20,33 +21,27 @@
                 <li><a href="./contact.html">Contact Me</a></li>
                 <li class="theme-menu">
                     <details open>
-                        <summary hidden>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" focusable="false" aria-hidden="true" data-icon="settings">
-                                <path d="M10.675 21V15.375H12.175V17.45H21V18.95H12.175V21H10.675ZM3 18.95V17.45H9.175V18.95H3ZM7.675 14.8V12.75H3V11.25H7.675V9.15H9.175V14.8H7.675ZM10.675 12.75V11.25H21V12.75H10.675ZM14.825 8.625V3H16.325V5.05H21V6.55H16.325V8.625H14.825ZM3 6.55V5.05H13.325V6.55H3Z" fill="currentColor" style="fill: currentColor;"></path>
-                            </svg>
-                            <span id="theme-menu-heading" hidden>Theme</span>
-                        </summary>
+                        <summary hidden><span id="theme-menu-heading">Theme</span></summary>
                         <ul>
                             <li>
                                 <button type="button" data-theme="light" aria-label="Use light theme">
                                     <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
-                                      <circle cx="12" cy="12" r="4" />
-                                      <line x1="12" y1="1"  x2="12" y2="4"  />
-                                      <line x1="12" y1="20" x2="12" y2="23" />
-                                      <line x1="1"  y1="12" x2="4"  y2="12" />
-                                      <line x1="20" y1="12" x2="23" y2="12" />
-                                      <line x1="4.2"  y1="4.2"  x2="6.3"  y2="6.3"  />
-                                      <line x1="17.7" y1="17.7" x2="19.8" y2="19.8" />
-                                      <line x1="4.2"  y1="19.8" x2="6.3"  y2="17.7" />
-                                      <line x1="17.7" y1="6.3"  x2="19.8" y2="4.2"  />
+                                        <circle cx="12" cy="12" r="4" />
+                                        <line x1="12" y1="1" x2="12" y2="4" />
+                                        <line x1="12" y1="20" x2="12" y2="23" />
+                                        <line x1="1" y1="12" x2="4" y2="12" />
+                                        <line x1="20" y1="12" x2="23" y2="12" />
+                                        <line x1="4.2" y1="4.2" x2="6.3" y2="6.3" />
+                                        <line x1="17.7" y1="17.7" x2="19.8" y2="19.8" />
+                                        <line x1="4.2" y1="19.8" x2="6.3" y2="17.7" />
+                                        <line x1="17.7" y1="6.3" x2="19.8" y2="4.2" />
                                     </svg>
-                                  </button>
+                                </button>
                             </li>
                             <li>
                                 <button type="button" data-theme="dark" aria-label="Use dark theme">
                                     <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
-                                      <path d="M18.5 15.5A7 7 0 0 1 9 5.5
-                                               A6 6 0 1 0 18.5 15.5Z" />
+                                        <path d="M18.5 15.5A7 7 0 0 1 9 5.5 A6 6 0 1 0 18.5 15.5Z" />
                                     </svg>
                                 </button>
                             </li>
@@ -63,82 +58,148 @@
             <li><a href="./contact.html">Contact Me</a></li>
         </menu>
     </header>
-    <main class="content-grid">
-        <h1 class="eyebrow page-title">About</h1>
-        <section class="about-grid" aria-label="About sections">
-            <hgroup class="about-card" id="personal-background">
-                <h2>Background</h2>
-                <p>
-                    My name is Zack Roland and I am currently a 21 year old 
-                    undergraduate student at 
-                    <abbr title="University of California San Diego">UCSD</abbr>. 
-                    I am from Anaheim (Yay Disneyland!) so I am a SoCal kid 
-                    through n through. I was raised in a household of all girls 
-                    so I have been through the warzone and and made it out 
-                    unscathed. Fortunately, I am not the youngest of my 
-                    siblings (I beat out my twin sister by 5 mins). She goes to 
-                    <abbr title="California State University Long Beach">CSULB</abbr>
-                    so neither of us are too far from home which I know makes my 
-                    mom happy. I love animals and had a variety of pets from dogs 
-                    and cats to bunnies and turtles. While I loved them all I would 
-                    say for sure that I am more of a cat person. I used to be into 
-                    art and would draw and paint but never had the talent for it 
-                    compared to my twin. Though we did not grow up with a lot our 
-                    mom always made sure that we had enough so I owe her the world 
-                    for that.
+
+    <main class="about-page" aria-labelledby="about-title">
+        <section class="about-hero" aria-label="Introduction">
+            <div class="hero-copy">
+                <p class="section-kicker">About / Zack Roland</p>
+                <h1 class="page-title about-title" id="about-title">
+                    I like turning complicated ideas into useful, understandable software.
+                </h1>
+                <p class="hero-lede">
+                    I’m a Mathematics and Computer Science graduate with an interest in front-end engineering, software systems, and machine learning. I care about how things work, but just as much about whether they make sense to the people using them.
                 </p>
-            </hgroup>
-            <hgroup class="about-card" id="academic-background">
-                <h2>Academic Background</h2>
-                <p>I came into University wanting to pursue a degree 
-                    in <em>Math and Computer Science</em> and for better or 
-                    worse, I stuck true to that path with my stubborness 
-                    refusing to let myself quit no matter how hard it got. I 
-                    was challenged every step of the way but I knew that if 
-                    I were to succeed that I would be able to develop into the 
-                    best version of myself. Over the course of my 4 years I 
-                    fell in love with math and its various sub-fields. I took 
-                    courses and have experience in subjects such as; 
-                    Cryptography, Graph Theory, Number Theory, Linear Algebra, 
-                    Probability Theory, etc, which thought me how to really 
-                    think like a mathematician. My Computer Science interests 
-                    lead to take courses such as; AI Algorithms, Machine 
-                    Learning, Software Engineering, etc, which thought me how
-                    to be able to apply my knowledge into real world areas 
-                    where I could make a genuine impact in.
-                </p>
-            </hgroup>
-            <hgroup class="about-card" id="career-interests">
-                <h2>Career Interests</h2>
-                <p>My career intrests most closely align to that of 
-                    a software or machine learning engineer. I desire to be 
-                    able to develop something that will bring a net positive
-                    to this world and I want to work for a company that will
-                    allow me to do that. For me that means that we hold each
-                    other to high standards in all that we do so that we 
-                    aren't just popping out junk into the world to make a 
-                    quick buck. So we build with maintainability, reliability,
-                    and accessibility in our minds at all time.
-                </p>
-            </hgroup>
-            <hgroup class="about-card"id="personal-interests">
-                <h2>Intrests &amp; Hobbies</h2>
-                <p><i><b>Coming soon ...</b></i></p>
-            </hgroup>
+                <div class="hero-actions" aria-label="Explore more">
+                    <a class="primary-action" href="./projects.html">View selected work</a>
+                    <a class="text-action" href="./contact.html">Start a conversation <span aria-hidden="true">↗</span></a>
+                </div>
+            </div>
+
+            <figure class="profile-portrait">
+                <div class="portrait-frame">
+                    <img src="../assets/imgs/original/head-shot/headshot.jpeg" alt="Portrait of Zack Roland" width="360" height="476">
+                </div>
+                <figcaption>Zack Roland <span>Math + CS</span></figcaption>
+            </figure>
+
+            <aside class="profile-brief" aria-labelledby="profile-brief-title">
+                <div class="brief-heading">
+                    <span class="section-number" aria-hidden="true">01</span>
+                    <h2 id="profile-brief-title">At a glance</h2>
+                </div>
+                <dl>
+                    <div>
+                        <dt>Education</dt>
+                        <dd>Mathematics &amp; Computer Science, UC San Diego</dd>
+                    </div>
+                    <div>
+                        <dt>Focus</dt>
+                        <dd>Front-end engineering, software, and applied ML</dd>
+                    </div>
+                    <div>
+                        <dt>Based in</dt>
+                        <dd>Southern California</dd>
+                    </div>
+                    <div>
+                        <dt>Priorities</dt>
+                        <dd>Clarity, accessibility, and maintainable systems</dd>
+                    </div>
+                </dl>
+            </aside>
         </section>
 
-        <section id="skills" class="skills-panel">
-            <h2 id="skills-header">Skills</h2>
-            <ul id="skills-list">
-                <li><strong>Programming</strong><span>Java, Python, C</span></li>
-                <li><strong>Web</strong><span>HTML5, CSS, JavaScript</span></li>
-                <li><strong>Machine Learning</strong><span>Pandas, NumPy</span></li>
-                <li><strong>Tools</strong><span>Git, GitHub, MATLAB, Figma, Photoshop</span></li>
-            </ul>
+        <section class="about-section" aria-labelledby="working-style-title">
+            <header class="section-heading">
+                <span class="section-number" aria-hidden="true">02</span>
+                <div>
+                    <p class="section-kicker">How I work</p>
+                    <h2 id="working-style-title">Thoughtful work, without the theatre.</h2>
+                </div>
+                <p>I’m at my best when a problem needs both careful reasoning and a practical path forward.</p>
+            </header>
+
+            <div class="principles-grid">
+                <article>
+                    <span aria-hidden="true">A</span>
+                    <h3>Make it understandable</h3>
+                    <p>Good software should explain itself. I favor clear interfaces, readable code, and decisions a teammate can follow later.</p>
+                </article>
+                <article>
+                    <span aria-hidden="true">B</span>
+                    <h3>Sweat the useful details</h3>
+                    <p>I pay attention to responsive behavior, accessibility, edge cases, and the small interactions that shape trust.</p>
+                </article>
+                <article>
+                    <span aria-hidden="true">C</span>
+                    <h3>Build for what comes next</h3>
+                    <p>I prefer maintainable foundations over quick fixes, while staying pragmatic about the needs of the current release.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="about-section story-section" aria-labelledby="story-title">
+            <div class="story-copy">
+                <p class="section-kicker">The through line</p>
+                <h2 id="story-title">From proofs to products</h2>
+                <p>
+                    Mathematics trained me to sit with difficult problems, question assumptions, and work carefully from first principles. Computer science gave me a way to turn that thinking into something other people can actually use.
+                </p>
+                <p>
+                    That combination still guides how I build: understand the system, reduce unnecessary complexity, and keep the human experience in view.
+                </p>
+            </div>
+
+            <div class="technical-snapshot" aria-labelledby="technical-snapshot-title">
+                <div class="snapshot-heading">
+                    <span class="section-number" aria-hidden="true">03</span>
+                    <h2 id="technical-snapshot-title">Technical snapshot</h2>
+                </div>
+                <div class="skill-groups">
+                    <section>
+                        <h3>Web</h3>
+                        <p>HTML, CSS, JavaScript, responsive UI, accessibility</p>
+                    </section>
+                    <section>
+                        <h3>Programming</h3>
+                        <p>Python, Java, C, algorithms, software design</p>
+                    </section>
+                    <section>
+                        <h3>Data &amp; ML</h3>
+                        <p>Pandas, NumPy, data analysis, machine-learning foundations</p>
+                    </section>
+                    <section>
+                        <h3>Workflow</h3>
+                        <p>Git, GitHub, Figma, MATLAB, iterative prototyping</p>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <section class="personal-band" aria-labelledby="outside-work-title">
+            <div>
+                <span class="section-number" aria-hidden="true">04</span>
+                <p class="section-kicker">Away from the keyboard</p>
+                <h2 id="outside-work-title">Still curious, just less technical.</h2>
+            </div>
+            <p>
+                I grew up in Anaheim in a lively family, including a twin sister. I’m a cat person, an occasional artist, and someone who enjoys learning how people make things—whether that’s software, visual design, or something entirely unrelated to tech.
+            </p>
+        </section>
+
+        <section class="about-cta" aria-labelledby="about-cta-title">
+            <div>
+                <p class="section-kicker">What’s next</p>
+                <h2 id="about-cta-title">The work tells the rest of the story.</h2>
+            </div>
+            <div class="cta-links">
+                <a href="./projects.html">Explore my projects <span aria-hidden="true">→</span></a>
+                <a href="./contact.html">Get in touch <span aria-hidden="true">→</span></a>
+            </div>
         </section>
     </main>
+
     <footer>
-        <small id="copywright">&copy; 2025 Zack Roland </small>
+        <small>&copy; 2026 Zack Roland</small>
     </footer>
 </body>
 </html>
