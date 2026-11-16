@@ -81,7 +81,9 @@ function setupCharacterCounter(form) {
     if (!output) return;
 
     const remaining = maximum - message.value.length;
-    output.textContent = `At least ${minimum} characters. ${remaining} characters remaining.`;
+    output.textContent = message.value.length >= minimum
+      ? `${remaining} characters remaining.`
+      : `At least ${minimum} characters. ${remaining} characters remaining.`;
     output.classList.toggle("warning", remaining <= 50);
   };
 
@@ -124,16 +126,35 @@ function flashFieldError(control, message) {
 }
 
 function setupLiveValidation(form) {
+  const resetFeedback = [];
+  const helperFields = new Set(["full-name", "email", "job-title"]);
+
   for (const control of form.elements) {
     if (!isValidatedControl(control)) continue;
 
-    const clearIfValid = () => {
-      if (control.validity.valid) clearFieldError(control);
+    const infoOutput = helperFields.has(control.name)
+      ? getOutput(INFO_ID_BY_NAME, control)
+      : null;
+
+    const updateFeedback = () => {
+      const hasValue = control.value.trim().length > 0;
+      const isValid = hasValue && control.validity.valid;
+
+      if (isValid) clearFieldError(control);
+      infoOutput?.classList.toggle("hidden", isValid);
     };
 
-    control.addEventListener("input", clearIfValid);
-    control.addEventListener("change", clearIfValid);
+    updateFeedback();
+    resetFeedback.push(updateFeedback);
+    control.addEventListener("input", updateFeedback);
+    control.addEventListener("change", updateFeedback);
   }
+
+  form.addEventListener("reset", () => {
+    window.setTimeout(() => {
+      for (const updateFeedback of resetFeedback) updateFeedback();
+    }, 0);
+  });
 }
 
 function isValidatedControl(control) {
