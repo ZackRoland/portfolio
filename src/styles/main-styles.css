@@ -28,9 +28,9 @@
     --nav-border-color-2:white;
     --nav-border-color:var(--nav-border-color-1);
 
-    --nav-gap:75px;
+    --nav-gap:clamp(1.5rem, 4vw, 4.6875rem);
     --nav-font-size:1rem;
-    --nav-padding:2rem;
+    --nav-padding:clamp(1rem, 2.5vw, 2rem);
     --page-highlight:var(--light-cyan);
 
     --theme-svg-color-1: white;
@@ -142,12 +142,18 @@
 }
 /* ========= Universal Tags ========= */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
     color:var(--base-text-color);
     font-family: Helvetica, Arial, sans-serif;
     font-size: clamp(1rem,calc(1rem + 0.4vw), 1.15rem);
 
+}
+
+*::before,
+*::after {
+    box-sizing: inherit;
 }
 
 .content-grid {
@@ -211,6 +217,8 @@ header menu, nav+button{
 header {
     display:flex;
     flex-direction: row;  
+    width: 100%;
+    min-width: 0;
     height: var(--header-height);
     align-items: center;
     
@@ -219,9 +227,11 @@ header {
         text-transform: uppercase;
         padding:var(--nav-padding);
         flex:1;
+        min-width: 0;
     }
     ul {
         display:flex;
+        min-width: 0;
         list-style-type: none;
         align-items: center;
         justify-content: flex-start;
@@ -231,6 +241,7 @@ header {
         a {
             display:inline-flex;
             align-items: center;
+            white-space: nowrap;
             text-decoration: none;
             &:not(.logo a) {
                 box-shadow: var(--two-color-outline);
@@ -379,8 +390,9 @@ small {
 
 /*========== Sizing Adjustments for Nav Breakpoints========*/
 
+/* The compact menu is a mobile fallback; wider layouts retain the full nav. */
 @media (max-width: 760px){
-    header nav > ul a:not(.logo a){
+    header nav > ul > li:not(.logo){
         display: none;
     }
     header{
