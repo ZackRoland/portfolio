@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects</title>
+    <meta name="description" content="Selected web, game, machine-learning, and data projects by Zack Roland.">
+    <title>Projects | Zack Roland</title>
     <link rel="stylesheet" href="../styles/main-styles.css?v=6">
-    <link rel="stylesheet" href="../styles/project-styles.css?v=7">
+    <link rel="stylesheet" href="../styles/project-styles.css?v=10">
     <script src="../scripts/theme-toggle.js" defer></script>
     <script src="../scripts/view-transitions.js" defer></script>
-    <script src="../scripts/projects-data.js" defer></script>
+    <script src="../scripts/projects-data.js?v=2" defer></script>
 </head>
 <body>
     <header>
-        <nav id = "navigation">
+        <nav id="navigation" aria-label="Primary navigation">
             <ul>
                 <li class="logo"><a href="./../../index.html">ZR</a></li>
                 <li><a href="./../../index.html">Home</a></li>
@@ -21,33 +22,27 @@
                 <li><a href="./contact.html">Contact Me</a></li>
                 <li class="theme-menu">
                     <details open>
-                        <summary hidden>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" focusable="false" aria-hidden="true" data-icon="settings">
-                                <path d="M10.675 21V15.375H12.175V17.45H21V18.95H12.175V21H10.675ZM3 18.95V17.45H9.175V18.95H3ZM7.675 14.8V12.75H3V11.25H7.675V9.15H9.175V14.8H7.675ZM10.675 12.75V11.25H21V12.75H10.675ZM14.825 8.625V3H16.325V5.05H21V6.55H16.325V8.625H14.825ZM3 6.55V5.05H13.325V6.55H3Z" fill="currentColor" style="fill: currentColor;"></path>
-                            </svg>
-                            <span id="theme-menu-heading" hidden>Theme</span>
-                        </summary>
+                        <summary hidden><span id="theme-menu-heading">Theme</span></summary>
                         <ul>
                             <li>
                                 <button type="button" data-theme="light" aria-label="Use light theme">
                                     <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
-                                      <circle cx="12" cy="12" r="4" />
-                                      <line x1="12" y1="1"  x2="12" y2="4"  />
-                                      <line x1="12" y1="20" x2="12" y2="23" />
-                                      <line x1="1"  y1="12" x2="4"  y2="12" />
-                                      <line x1="20" y1="12" x2="23" y2="12" />
-                                      <line x1="4.2"  y1="4.2"  x2="6.3"  y2="6.3"  />
-                                      <line x1="17.7" y1="17.7" x2="19.8" y2="19.8" />
-                                      <line x1="4.2"  y1="19.8" x2="6.3"  y2="17.7" />
-                                      <line x1="17.7" y1="6.3"  x2="19.8" y2="4.2"  />
+                                        <circle cx="12" cy="12" r="4" />
+                                        <line x1="12" y1="1" x2="12" y2="4" />
+                                        <line x1="12" y1="20" x2="12" y2="23" />
+                                        <line x1="1" y1="12" x2="4" y2="12" />
+                                        <line x1="20" y1="12" x2="23" y2="12" />
+                                        <line x1="4.2" y1="4.2" x2="6.3" y2="6.3" />
+                                        <line x1="17.7" y1="17.7" x2="19.8" y2="19.8" />
+                                        <line x1="4.2" y1="19.8" x2="6.3" y2="17.7" />
+                                        <line x1="17.7" y1="6.3" x2="19.8" y2="4.2" />
                                     </svg>
-                                  </button>
+                                </button>
                             </li>
                             <li>
                                 <button type="button" data-theme="dark" aria-label="Use dark theme">
                                     <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
-                                      <path d="M18.5 15.5A7 7 0 0 1 9 5.5
-                                               A6 6 0 1 0 18.5 15.5Z" />
+                                        <path d="M18.5 15.5A7 7 0 0 1 9 5.5 A6 6 0 1 0 18.5 15.5Z" />
                                     </svg>
                                 </button>
                             </li>
@@ -64,33 +59,68 @@
             <li><a href="./contact.html">Contact Me</a></li>
         </menu>
     </header>
-    <main> 
-        <h1 class="page-title" id="project-heading">Projects</h1>
-        <nav id="projects-breadcrumb">
-            <a href="./../../index.html">Home</a>
-            <span>›</span>
-            <a href="./projects.html">Projects</a>
-            <span>›</span>
-            <a href="./projects-crud.html" id="manage-projects-link">Manage Projects</a>
-        </nav>
-        
-        <div class="project-controls">
-            <button id="load-local">Load Local</button>
-            <button id="load-remote">Load Remote</button>
-        </div>
-    
-        <section id="web-projects" aria-labelledby="web-projects-title">
-            <h2 id="web-projects-title">Web & Game Projects</h2>
-            <div id="web-projects-container" class="project-grid"></div>
+
+    <main class="projects-page" aria-labelledby="project-heading">
+        <section class="projects-hero">
+            <div>
+                <p class="project-kicker">Work / Selected projects</p>
+                <h1 class="page-title project-title" id="project-heading">Built to learn. Refined to be useful.</h1>
+            </div>
+            <p class="project-intro">
+                A working collection of web experiences, software projects, and data-driven experiments. Each one reflects a different part of how I approach a problem—from interface decisions to the logic underneath.
+            </p>
         </section>
-    
-        <section id="ml-projects" aria-labelledby="ml-projects-title">
-            <h2 id="ml-projects-title">Machine Learning & Data Science Projects</h2>
-            <div id="ml-projects-container" class="project-grid"></div>
+
+        <section class="project-source" aria-labelledby="project-source-title">
+            <div class="source-heading">
+                <span class="project-number" aria-hidden="true">01</span>
+                <div>
+                    <p class="project-kicker">Data source</p>
+                    <h2 id="project-source-title">Choose the project collection</h2>
+                </div>
+            </div>
+            <div class="project-controls" aria-label="Project data source">
+                <button id="load-local" type="button">Load local</button>
+                <button id="load-remote" type="button">Load remote</button>
+            </div>
+            <a href="./projects-crud.html" id="manage-projects-link">Manage local projects <span aria-hidden="true">→</span></a>
         </section>
-    </main>    
+
+        <section class="project-section" id="web-projects" aria-labelledby="web-projects-title">
+            <header class="project-section-heading">
+                <span class="project-number" aria-hidden="true">02</span>
+                <div>
+                    <p class="project-kicker">Interfaces &amp; interactions</p>
+                    <h2 id="web-projects-title">Web &amp; game projects</h2>
+                </div>
+                <p>Projects centered on browser experiences, interaction design, and front-end implementation.</p>
+            </header>
+            <div id="web-projects-container" class="project-grid" aria-live="polite"></div>
+        </section>
+
+        <section class="project-section" id="ml-projects" aria-labelledby="ml-projects-title">
+            <header class="project-section-heading">
+                <span class="project-number" aria-hidden="true">03</span>
+                <div>
+                    <p class="project-kicker">Models &amp; analysis</p>
+                    <h2 id="ml-projects-title">Machine learning &amp; data</h2>
+                </div>
+                <p>Explorations that use mathematical reasoning, data analysis, and machine-learning methods.</p>
+            </header>
+            <div id="ml-projects-container" class="project-grid" aria-live="polite"></div>
+        </section>
+
+        <section class="projects-cta" aria-labelledby="projects-cta-title">
+            <div>
+                <p class="project-kicker">04 / Conversation</p>
+                <h2 id="projects-cta-title">Interested in the decisions behind the work?</h2>
+            </div>
+            <a href="./contact.html">Let’s talk <span aria-hidden="true">→</span></a>
+        </section>
+    </main>
+
     <footer>
-        <small id="copywright">&copy; 2025 Zack Roland </small>
+        <small>&copy; 2026 Zack Roland</small>
     </footer>
 </body>
 </html>

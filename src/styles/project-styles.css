@@ -1,320 +1,495 @@
-/* ========= Root Variables ========= */
 :root {
+    --project-max-width: 76rem;
+    --project-section-gap: clamp(3.5rem, 8vw, 7rem);
+    --project-panel: color-mix(in srgb, var(--surface-color), transparent 8%);
+    --project-panel-strong: var(--surface-raised-color);
+    --project-rule: color-mix(in srgb, var(--border-color), transparent 28%);
+
+    /* Retained for the project editor page. */
     --cyan-1: #9AC7BF;
     --cyan-2: #89E3D4;
-    --project-border-style-1: 0.5rem solid black;
-    --project-body-color-1: linear-gradient(to left,var(--coral-pink), var(--melon));
-    --project-body-color-5: linear-gradient(to left,var(--pink-lavender), var(--tropical-indigo));
-    --project-body-color-3: linear-gradient(to left,var(--coral-pink), var(--muted-rose));
-    --project-body-color-4: radial-gradient(
-        circle at 50% 250%,
-        var(--muted-rose),
-        var(--coral-pink)
-      )
-      padding-box;
-      --project-body-color-2: radial-gradient(
-        circle at 50% 250%,
-        var(--tropical-indigo),
-        var(--pink-lavender)
-      )
-      padding-box;
-    
-
-    --project-tech-menu-color-1: linear-gradient(to bottom,#89E3D4, var(--tiffany-blue) );
-
-
-    --project-hub-background-1: linear-gradient(to left,var(--cyan-1), var(--cyan-2));
+    --project-border-style-1: .35rem solid var(--border-color);
+    --project-body-color-3: linear-gradient(145deg, var(--surface-raised-color), var(--surface-color));
+    --project-hub-background-1: linear-gradient(to left, var(--cyan-1), var(--cyan-2));
     --project-hub-font-color-1: white;
     --project-hub-border-color-1: white;
-    --project-hub-border-style-1: 0.35rem ridge var(--project-hub-border-color-1);
-    --project-hub-border-style-2: 0.35rem solid var(--project-hub-border-color-1);
-
-    --project-description-color-1:white;
+    --project-hub-border-style-2: .25rem solid var(--project-hub-border-color-1);
 }
 
-:root.dark {
-    --project-border-style-1: 0.5rem solid var(--border-color);
-    --project-body-color-2: linear-gradient(145deg, var(--midnight-800), var(--midnight-900));
-    --project-body-color-3: linear-gradient(145deg, var(--midnight-800), var(--midnight-900));
-    --project-body-color-4: linear-gradient(145deg, var(--surface-raised-color), var(--surface-color));
-    --project-hub-background-1: linear-gradient(to left, var(--steel-blue), var(--aurora-cyan));
-    --project-hub-border-color-1: var(--moonlight-blue);
-    --project-description-color-1: var(--moonlight-blue);
-}
-/* =========== 2. Global Tags ============= */
-main {
-    height: max-content;
-    margin: 0 auto;
-    padding: 1rem;
-    display:block;
+main.projects-page {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    max-width: none;
+    min-height: var(--main-height);
+    display: grid;
+    justify-items: stretch;
+    gap: var(--project-section-gap);
+    padding: clamp(2.5rem, 7vw, 6rem) clamp(1.25rem, 5vw, 5rem);
+    background:
+        linear-gradient(color-mix(in srgb, var(--border-color), transparent 94%) 1px, transparent 1px),
+        linear-gradient(90deg, color-mix(in srgb, var(--border-color), transparent 94%) 1px, transparent 1px),
+        var(--main-bg-color);
+    background-size: 3rem 3rem, 3rem 3rem, auto;
 }
 
-main > section {
-    margin: 1.5rem 0 0 0;
+.projects-page > * {
+    width: min(100%, var(--project-max-width));
+    margin-inline: auto;
 }
-/*============ Project Nav ============*/
-#projects-breadcrumb {
-    margin: 0.75rem 0 2rem 0;
-    padding: 0;
-    font-size: 1.1rem;
-    text-align: left;  
+
+.projects-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(18rem, .65fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: end;
+    padding-top: clamp(1.25rem, 3vw, 2rem);
+    border-top: .2rem solid var(--accent-color);
+}
+
+.project-kicker {
+    margin: 0 0 .75rem;
+    color: var(--accent-color);
+    font-size: .78rem;
+    font-weight: 750;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.project-title {
+    justify-content: flex-start;
+    max-width: 13ch;
+    margin: 0;
+    font-size: clamp(2.7rem, 7vw, 6.2rem);
+    line-height: .98;
+    letter-spacing: -.055em;
+    text-wrap: balance;
+}
+
+.project-intro {
+    max-width: 43ch;
     color: var(--muted-text-color);
-    a {
-        color: var(--accent-color);
-        text-decoration: underline;
-        text-underline-offset: 2px;
-        font-weight: 500;
-        &:hover {
-            color: var(--h1-color);
-        }
-    }
-    span {
-        color: var(--muted-text-color);
-        padding: 0 0.35rem;
-    }
+    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+    line-height: 1.7;
 }
 
+.project-source {
+    display: grid;
+    grid-template-columns: minmax(14rem, .9fr) auto minmax(12rem, .55fr);
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+    align-items: center;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border: 1px solid var(--project-rule);
+    background: var(--project-panel);
+    box-shadow: .55rem .55rem 0 color-mix(in srgb, var(--border-color), transparent 45%);
+}
 
-
-/*======= Project Buttons =======*/
-.project-controls {
-    margin: 1rem 0;
+.source-heading {
     display: flex;
-    gap: 0.75rem;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.source-heading h2 {
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+    line-height: 1.15;
+}
+
+.project-number {
+    flex: none;
+    color: var(--accent-color);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+}
+
+.project-controls {
+    display: flex;
+    gap: .75rem;
 }
 
 .project-controls button {
-    color: var(--violet);
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border: 2px solid black;
-    border-radius: 0.4rem;
+    padding: .7rem .9rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0;
+    background: var(--surface-color);
+    color: var(--base-text-color);
+    font: inherit;
+    font-weight: 700;
     cursor: pointer;
+    transition: translate 150ms ease, box-shadow 150ms ease;
 }
 
-#load-local {
-    background: #e8f5e9;       
+.project-controls button:hover,
+.project-controls button:focus-visible {
+    translate: -.12rem -.12rem;
+    box-shadow: .25rem .25rem 0 var(--theme-outline-a);
 }
 
-#load-remote {
-    background: #e3f2fd;       
+.project-controls button[aria-pressed="true"] {
+    border-color: var(--accent-color);
+    background: var(--surface-raised-color);
+    box-shadow: .25rem .25rem 0 var(--theme-outline-a);
 }
 
-.project-controls button:hover {
-    opacity: 0.85;
+#manage-projects-link {
+    justify-self: end;
+    font-weight: 700;
+    text-underline-offset: .25em;
 }
 
-/*========= Project Grid Styling ==========*/
+#manage-projects-link span,
+.projects-cta span {
+    color: inherit;
+}
+
+.project-section {
+    display: grid;
+    gap: clamp(1.75rem, 4vw, 3rem);
+}
+
+.project-section-heading {
+    position: static;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 3rem minmax(15rem, .9fr) minmax(18rem, 1fr);
+    gap: clamp(1rem, 3vw, 3rem);
+    align-items: start;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--project-rule);
+}
+
+.project-section-heading h2,
+.projects-cta h2 {
+    max-width: 19ch;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    line-height: 1.08;
+    letter-spacing: -.03em;
+    text-wrap: balance;
+}
+
+.project-section-heading > p {
+    max-width: 47ch;
+    color: var(--muted-text-color);
+    line-height: 1.65;
+}
+
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.25rem, 3vw, 2rem);
     align-items: stretch;
-    margin-top: 1rem;
 }
 
-main > section > h2 {
-    margin: 0 0 0.5rem 0;
+project-card,
+project-head,
+project-image,
+project-body,
+project-header,
+project-name,
+project-date,
+project-main,
+project-description,
+project-tech,
+project-links {
+    display: block;
+}
+
+project-card {
+    position: relative;
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid var(--project-rule);
+    background: var(--project-panel);
+    box-shadow: .4rem .4rem 0 color-mix(in srgb, var(--border-color), transparent 52%);
+}
+
+project-head {
+    position: relative;
+    border-bottom: 1px solid var(--project-rule);
+}
+
+project-image {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--surface-raised-color);
+}
+
+project-image picture,
+project-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+project-image img {
+    object-fit: cover;
+}
+
+project-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(to top, rgb(6 17 31 / 32%), transparent 45%);
+}
+
+project-links {
+    position: absolute;
+    z-index: 2;
+    inset: .8rem .8rem auto auto;
+}
+
+project-links ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: .55rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+project-links li {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    box-shadow: .2rem .2rem 0 var(--theme-outline-a);
+}
+
+project-links a {
+    display: block;
+    padding: .45rem .65rem;
+    color: var(--base-text-color);
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+project-links li:hover,
+project-links li:focus-within {
+    background: var(--surface-raised-color);
+}
+
+project-body {
+    min-height: 13rem;
+    padding: clamp(1.1rem, 3vw, 1.65rem);
+}
+
+project-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: start;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--project-rule);
+}
+
+project-header h2,
+project-header h3 {
+    font-size: clamp(1.35rem, 2.5vw, 2rem);
+    line-height: 1.06;
+    letter-spacing: -.025em;
+}
+
+project-header time {
+    color: var(--muted-text-color);
+    font-size: .72rem;
+    font-weight: 750;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+project-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(8rem, .42fr);
+    gap: 1.5rem;
+    align-items: start;
+    padding-top: 1rem;
+}
+
+project-description p {
+    color: var(--muted-text-color);
+    line-height: 1.65;
+}
+
+project-tech details {
+    border-left: .2rem solid var(--accent-color);
+    background: var(--surface-raised-color);
+}
+
+project-tech summary {
+    padding: .65rem .75rem;
+    color: var(--base-text-color);
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: .06em;
+    cursor: pointer;
+    list-style: none;
+    text-transform: uppercase;
+}
+
+project-tech summary::-webkit-details-marker {
+    display: none;
+}
+
+project-tech menu {
+    display: grid;
+    gap: .35rem;
+    margin: 0;
+    padding: 0 .75rem .75rem;
+    list-style: none;
+}
+
+project-tech li {
+    color: var(--muted-text-color);
+    font-size: .75rem;
+    line-height: 1.35;
+}
+
+.project-template {
+    opacity: .58;
+}
+
+.project-template::after {
+    content: "Planned";
+    position: absolute;
+    z-index: 3;
+    inset: 1rem auto auto 1rem;
+    padding: .4rem .55rem;
+    background: var(--theme-highlight);
+    border: 1px solid var(--border-color);
+    color: var(--base-text-color);
+    font-size: .7rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.projects-cta {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-block: clamp(1.5rem, 4vw, 3rem);
+    border-block: 1px solid var(--project-rule);
+}
+
+.projects-cta a {
+    min-width: 12rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: .55rem;
+    border-bottom: 1px solid var(--project-rule);
+    font-weight: 750;
+    text-decoration: none;
+}
+
+/* Project editor breadcrumb compatibility. */
+#projects-breadcrumb {
+    margin: .75rem 0 2rem;
+    color: var(--muted-text-color);
+}
+
+#projects-breadcrumb a {
+    color: var(--accent-color);
+    text-underline-offset: .2em;
+}
+
+#projects-breadcrumb span {
+    padding-inline: .35rem;
+    color: var(--muted-text-color);
 }
 
 @media (max-width: 900px) {
-    .project-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .projects-hero {
+        grid-template-columns: 1fr;
     }
-}
 
-@media (max-width: 600px) {
-    .project-grid {
+    .project-source {
+        grid-template-columns: 1fr auto;
+    }
+
+    #manage-projects-link {
+        grid-column: 1 / -1;
+        justify-self: start;
+    }
+
+    .project-section-heading {
+        grid-template-columns: 2rem 1fr;
+    }
+
+    .project-section-heading > p {
+        grid-column: 2;
+    }
+
+    project-main {
         grid-template-columns: 1fr;
     }
 }
 
-
-/* ========= Project Card Core ========= */
-project-card {
-    display: grid;
-    max-width: 100%; 
-    height: 100%;           
-    grid-template-rows: auto 1fr;
-    border-radius: 0;
-    box-sizing: border-box;
-    border: var(--project-border-style-1);
-   
-    
-}
-
-/* ========= Project Head ========= */
-project-head {
-    position:relative;
-    border-bottom:0.5rem solid black;
-    img {
-        display:block;
-    }
-    picture {
-        margin: 0;
-    }
-}
-project-image {
-    position: relative;
-    aspect-ratio: 4/3;   
-    display: block;
-    overflow: hidden;
-    img {
-        display:block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        
-    }
-    &::after {
-        content: "";
-        position: absolute;
-        inset: 0;             
-        background: rgba(0, 0, 0, 0.35); 
-        pointer-events: none; 
-    }
-}
-
-
-
-
-
-/* ========= Project Body ========= */
-project-body {
-    padding: 0.75rem;
-    background: var(--project-body-color-3);
-
-    min-height: 10rem; 
-    background: var(--project-body-color-4);
-  
-    
-}
-
-/* ========= Project Header ========= */
-project-header {
-    display: grid;
-    grid-template-columns: 2fr auto; 
-    align-items: center;
-    gap:0.5rem;
-
-    h2, h3 {
-        font-size: 1.75rem;
-        text-decoration: underline;
+@media (max-width: 700px) {
+    main.projects-page {
+        gap: 3.5rem;
+        padding: 2.25rem 1rem 3.5rem;
+        background-size: 2rem 2rem, 2rem 2rem, auto;
     }
 
-    time {
-        font-size: 1.25rem;
-    }
-
-    h2, h3, time {
-        color: white;
-    }
-}
-
-/* ========= Project Main ========= */
-project-main {
-    display: grid;
-    grid-template-columns: 2fr  1fr;
-    margin: 0.5rem 0 0 0;
-    gap:1rem;
-    align-items: start;
-    project-description{
-        grid-column:1;
-        p {
-            color: var(--project-description-color-1);
-        
-        }
-    }
-    project-tech{
-        grid-column:2;
-        align-self: start;
-    
-    }
-}
-
-/* ========= Project Tech Dropdown ========= */
-project-tech {
-    details {
-        max-height: 100%; 
-        background: linear-gradient(to left, var(--columbia-blue),var(--celadon));
-        padding: 0.25rem 0.5rem;
-        border-radius: 0.5rem;
-        summary {
-            text-align: center;
-            cursor: pointer;
-            color: white;
-            font-weight: bold;
-            list-style:none;
-        }
-        menu {
-            overflow-y: auto;
-            display: block;
-            margin: 0.25rem 0 0;
-            padding: 0;
-            li {
-                display:flex;
-                justify-content: center;
-                color:white;
-                background: var(--project-tech-menu-color-1);
-                background-color: #89E3D4;
-            }
-        }
-    }
-}
-
-
-
-/* ========= Project Link Hub ========= */
-project-links {
-    position: absolute;
-    inset-inline: 0;  
-    top: 0;
-    z-index: 2;       
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    padding: 0.5rem 0.5rem 0 0;  
-    ul {
-        list-style: none;
+    .project-title.page-title {
         display: flex;
-        flex-direction: column;
-        gap: .75rem;
-        margin: 0.5rem 0.5rem 0 0;
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
         padding: 0;
-        li {
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            
-            padding: 0.35rem 0.75rem;
-            background: var(--project-hub-background-1);
-            background-clip: padding-box;
-            border: var(--project-hub-border-style-2);
-            border-radius: 0.5rem;
-            &:hover{
-                background: rgb(133, 123, 183); 
-            }
-            a {
-                color: var(--project-hub-font-color-1);
-                text-decoration: none;
-            }
-        }
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    .projects-hero {
+        padding-top: 1rem;
+    }
+
+    .project-source {
+        grid-template-columns: 1fr;
+        box-shadow: .4rem .4rem 0 color-mix(in srgb, var(--border-color), transparent 45%);
+    }
+
+    .project-controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    project-body {
+        min-height: 0;
+    }
+
+    .projects-cta {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .projects-cta a {
+        width: 100%;
     }
 }
 
-
-.project-template {
-    position: relative;
-}
-
-.project-template::after {
-    content: "";
-    position: absolute;
-    inset: 0;             
-    background: rgba(0, 0, 0, 0.5); 
-    pointer-events: auto;
-    z-index:2; 
-}
-
-#ml-projects project-body {
-    background: var(--project-body-color-2);
+@media (prefers-reduced-motion: reduce) {
+    .project-controls button {
+        transition: none;
+    }
 }

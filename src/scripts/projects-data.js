@@ -8,6 +8,11 @@ const mlContainer = document.getElementById("ml-projects-container");
 const loadLocalBtn = document.getElementById("load-local");
 const loadRemoteBtn = document.getElementById("load-remote");
 
+function setSourceState(source) {
+    loadLocalBtn?.setAttribute("aria-pressed", String(source === "local"));
+    loadRemoteBtn?.setAttribute("aria-pressed", String(source === "remote"));
+}
+
 function clearCards() {
     webContainer.innerHTML = "";
     mlContainer.innerHTML = "";
@@ -16,10 +21,14 @@ function clearCards() {
 function renderCard(project) {
     const card = document.createElement("project-card");
 
-  
     const demoLink = project.demoUrl ? `<li><a href="${project.demoUrl}">Demo</a></li>` : "";
-    const blogLink = project.blogUrl ? `<li><a href="${project.blogUrl}">Blog</a></li>` : "";
+    const blogLink = project.blogUrl && project.blogUrl !== "placeholder"
+        ? `<li><a href="${project.blogUrl}">Blog</a></li>`
+        : "";
     const repoLink = project.repoUrl ? `<li><a href="${project.repoUrl}">Repo</a></li>` : "";
+    const smallImageSrc = project.imageSmallSrc?.includes("/src/assets/...")
+        ? project.imageSrc
+        : project.imageSmallSrc;
 
     const techItems = (project.techStack || [])
         .map(t => `<li>${t}</li>`)
@@ -38,9 +47,9 @@ function renderCard(project) {
             </project-links>
             <project-image>
                 <picture>
-                    ${project.imageSmallSrc ? `
+                    ${smallImageSrc ? `
                         <source 
-                            srcset="${project.imageSmallSrc}"
+                            srcset="${smallImageSrc}"
                             media="(max-width: 600px)">` : ""}
                     <img
                         src="${project.imageSrc}"
@@ -99,6 +108,7 @@ async function loadLocalProjects() {
     projects.forEach(renderCard);
 
     localStorage.setItem(SOURCE_KEY, "local");
+    setSourceState("local");
 }
 
 async function loadRemoteProjects() {
@@ -116,6 +126,7 @@ async function loadRemoteProjects() {
         projects.forEach(renderCard);
 
         localStorage.setItem(SOURCE_KEY, "remote");
+        setSourceState("remote");
     } catch (err) {
         console.error("Error loading remote projects:", err);
     }
@@ -136,7 +147,7 @@ function seedLocalStorageIfEmpty() {
             description:
                 "A web-based card game modeled after the Card-Jitsu minigame from Disney's Club Penguin.",
             imageSrc: "../assets/imgs/original/club-triton/home-page/home-page.png",
-            imageSmallSrc: "/src/assets/.../club-triton-small.png",
+            imageSmallSrc: "../assets/imgs/original/club-triton/home-page/home-page.png",
             imageAlt: "Screenshot of The Club Triton project",
             demoUrl: "https://cse110-sp25-group13.github.io/The_club_triton/pages/home-page.html",
             repoUrl: "https://github.com/cse110-sp25-group13/The_club_triton",
